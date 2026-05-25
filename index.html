@@ -1,0 +1,538 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Northville — A village built for relationships</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #f6f1e8;
+    --cream-2: #ede5d3;
+    --ink: #1a1815;
+    --ink-2: #4a4640;
+    --wood: #8b6914;
+    --wood-soft: #d9c7a3;
+    --line: #d9d2c1;
+    --shadow: 0 12px 40px rgba(26, 24, 21, .08);
+    --maxw: 1280px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img, video { max-width: 100%; display: block; height: auto; }
+  a { color: var(--wood); text-decoration: none; border-bottom: 1px solid currentColor; }
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+  h1 { font-size: clamp(48px, 9vw, 120px); font-weight: 400; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(32px, 5vw, 56px); }
+  h3 { font-size: clamp(22px, 2.6vw, 30px); }
+  h4 { font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood); }
+  p { margin: 0 0 1em; color: var(--ink-2); font-size: 17px; }
+  .lead { font-size: 21px; color: var(--ink); font-weight: 300; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .section { padding: 120px 0; border-top: 1px solid var(--line); }
+  .section:first-child { border-top: 0; }
+  .eyebrow { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 24px; }
+
+  /* HERO */
+  .hero { position: relative; min-height: 92vh; overflow: hidden; display: flex; align-items: center; padding: 80px 0; border-top: 0; }
+  .hero-bg { position: absolute; inset: 0; z-index: 0; }
+  .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,24,21,.45) 0%, rgba(26,24,21,.25) 50%, rgba(246,241,232,.95) 100%); }
+  .hero-inner { position: relative; z-index: 1; color: #fff; max-width: 900px; }
+  .hero h1 { color: #fff; }
+  .hero .lead { color: rgba(255,255,255,.92); max-width: 600px; margin-top: 24px; }
+  .hero .meta { color: rgba(255,255,255,.75); margin-top: 16px; font-size: 14px; letter-spacing: 0.04em; }
+  .cta { display: inline-block; margin-top: 40px; padding: 18px 32px; background: var(--ink); color: var(--cream); border: 0; border-radius: 0; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+
+  /* GRID UTILS */
+  .grid { display: grid; gap: 32px; }
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  @media (max-width: 900px) {
+    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+  }
+
+  .card { background: #fff; padding: 32px; border: 1px solid var(--line); box-shadow: var(--shadow); }
+  .card.dark { background: var(--ink); color: var(--cream); }
+  .card.dark h3, .card.dark h4, .card.dark p { color: inherit; }
+
+  /* Visual */
+  .figure { background: var(--cream-2); border: 1px solid var(--line); overflow: hidden; }
+  .figure img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
+  .figure.tall img { aspect-ratio: 9/16; }
+  .figure figcaption { padding: 16px 20px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
+  .figure figcaption .role { color: var(--wood); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+
+  /* Films */
+  .film { background: #000; overflow: hidden; }
+  .film video { width: 100%; display: block; background: #000; }
+  .film.long video { aspect-ratio: 16/9; object-fit: cover; }
+  .film.short video { aspect-ratio: 9/16; object-fit: cover; }
+  .film-caption { background: #fff; padding: 24px; border: 1px solid var(--line); border-top: 0; }
+  .film-caption .role { color: var(--wood); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; margin-bottom: 8px; }
+  .film-caption blockquote { margin: 8px 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.35; color: var(--ink); font-style: italic; }
+  .film-caption .meta { color: var(--ink-2); font-size: 13px; }
+
+  /* Stats */
+  .stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; margin-top: 40px; }
+  .stats .stat { padding: 32px 0; border-top: 1px solid var(--line); }
+  .stats .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 52px; line-height: 1; color: var(--ink); }
+  .stats .stat .label { margin-top: 8px; font-size: 13px; color: var(--ink-2); letter-spacing: 0.02em; }
+  @media (max-width: 700px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+
+  /* Scripts */
+  .script { padding: 28px 32px; border-left: 3px solid var(--wood); background: var(--cream-2); margin-bottom: 24px; }
+  .script .who { font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; color: var(--wood); margin-bottom: 8px; }
+  .script blockquote { margin: 0 0 12px; font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.4; color: var(--ink); }
+  .script .note { font-size: 13px; color: var(--ink-2); }
+
+  /* Persona */
+  .persona { padding: 24px; border: 1px solid var(--line); background: #fff; }
+  .persona h4 { color: var(--wood); margin-bottom: 6px; }
+  .persona .name { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 8px; }
+  .persona p { font-size: 14px; margin-bottom: 8px; }
+
+  /* Idea list */
+  .ideas { display: grid; gap: 16px; }
+  .idea { padding: 24px 28px; border: 1px solid var(--line); background: #fff; display: grid; grid-template-columns: 64px 1fr; gap: 20px; }
+  .idea .n { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--wood); line-height: 1; }
+  .idea h4 { margin-bottom: 6px; color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 18px; font-weight: 600; }
+  .idea p { font-size: 14px; margin: 0; }
+
+  /* Distribution table */
+  .dist { width: 100%; border-collapse: collapse; background: #fff; }
+  .dist th, .dist td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--line); font-size: 14px; }
+  .dist th { background: var(--cream-2); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; color: var(--wood); }
+  .dist td:first-child { font-weight: 600; color: var(--ink); }
+
+  footer { padding: 60px 0; text-align: center; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); }
+  footer .brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; }
+
+  .pending { background: var(--cream-2); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; color: var(--ink-2); font-style: italic; font-size: 14px; }
+  .pending.tall { aspect-ratio: 9/16; }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg">
+    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212139_8e206ce3-7f95-424b-a55c-09d4a75f241d.png" alt="Aerial view of Northville at dawn" />
+  </div>
+  <div class="container hero-inner">
+    <div class="eyebrow" style="color: rgba(255,255,255,.85);">Northville — Campaign Sprint, May 2026</div>
+    <h1>A village built<br/>for relationships.</h1>
+    <p class="lead">100 small smart homes. One round Village Center. Everything booked in a single app. Northville opens on a clearing of pine forest between Västerås and Tillberga.</p>
+    <p class="meta">Designed by Sweden's design elite · 100 charter homes · One waiting list</p>
+    <a class="cta" href="#waitlist">Join the waiting list</a>
+  </div>
+</section>
+
+<!-- THE BRIEF -->
+<section class="section">
+  <div class="container">
+    <div class="grid grid-2" style="align-items: start;">
+      <div>
+        <div class="eyebrow">The brief</div>
+        <h2>Sell a village before it exists — by showing the life that comes with it.</h2>
+      </div>
+      <div>
+        <p class="lead">Northville is not 100 houses. It's a community wrapped around a single round wooden building — gym, pool, preschool, restaurant, coworking, hotel, neighbors — and every part of it is reservable in one app. That app, not the house, is what we're really selling.</p>
+        <p>This sprint produces the first ambitious cut of brand assets: a 15-second hero film, three 6-second social clips with three different voices, twelve photographic visuals, and a strategy that turns the proposition into a charter — "Be one of the first 100 neighbors."</p>
+      </div>
+    </div>
+
+    <div class="stats">
+      <div class="stat"><div class="num">100</div><div class="label">smart wooden homes</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">round Village Center</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">app to book it all</div></div>
+      <div class="stat"><div class="num">0</div><div class="label">strangers as neighbors</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRATEGY -->
+<section class="section" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="eyebrow">Strategy</div>
+    <h2 style="max-width: 900px;">Five moves that turn a real-estate project into a movement.</h2>
+
+    <div class="grid grid-2" style="margin-top: 64px;">
+      <div class="card">
+        <h4>01 — The app is the ad</h4>
+        <p>Every clip ends on the phone. The product feature ("Reserve pool", "Drop off preschool", "Guest hotel room") IS the marketing line. Showing the booking action is more persuasive than explaining the community.</p>
+      </div>
+      <div class="card">
+        <h4>02 — "The First 100" charter</h4>
+        <p>Scarcity reframed as belonging. You're not buyer #4327. You're neighbor #17. Limits the audience, deepens commitment, generates word-of-mouth, builds a real waiting list before launch.</p>
+      </div>
+      <div class="card">
+        <h4>03 — The round Village Center is the logo</h4>
+        <p>Apple has Apple Park. Northville has the round wooden Center with the copper roof. Every film, every still, every ad returns to it. It becomes ownable Nordic iconography.</p>
+      </div>
+      <div class="card">
+        <h4>04 — Persona, not target group</h4>
+        <p>One spokesperson can't sell 100 homes. Three voices in this sprint (warm mom-type, calm professional, founder/architect) cover three different buyer reasons. Future cuts add young family, downsizing couple, remote-worker single.</p>
+      </div>
+      <div class="card">
+        <h4>05 — Built for relationships</h4>
+        <p>The cultural counter-position: most housing is sold on square meters and yield. Northville is sold on the simple, uncommon promise that you'll know your neighbors' names. That line shows up in every script.</p>
+      </div>
+      <div class="card dark">
+        <h4 style="color: var(--wood-soft);">06 — Tone mix, one feel</h4>
+        <p>Cinematic for the hero (long film, sajt-hero, YouTube). UGC handheld for social (Reels, TikTok, IG stories). Founder-portrait for credibility (LinkedIn, PR). Three modes. One palette: wood, light, calm.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- THE HERO FILM -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">The hero film — two versions, 15 seconds, 16:9</div>
+    <h2 style="margin-bottom: 24px; max-width: 900px;">The campaign in one breath — and the same idea in two registers.</h2>
+    <p class="lead" style="max-width: 800px;">Same 15-second slot, same village, two very different tones. Version A is a long-form UGC endorsement — a neighbor speaking about why she's moving in. Version B is a cinematic Apple-style architectural film — no spoken words until the final tagline, just observed life across dawn, the round Center, and a twilight aerial.</p>
+
+    <div class="grid grid-2" style="margin-top: 48px;">
+      <div>
+        <div class="film long">
+          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212147_df61fae5-60fc-4282-baec-01e6dd67f73b.png">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212114_a1fbedc5-09c0-47d4-9fdf-fa8be298e2e3.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="film-caption">
+          <div class="role">Version A · UGC long-form endorsement · 15s</div>
+          <blockquote>"Okay, Northville is unreal — 100 smart wooden homes circling a round Village Center… It feels like real community. I'm joining. Northville. A village built for relationships. Join the waiting list."</blockquote>
+          <div class="meta">Use: LinkedIn organic, sajt-detalj, retargeting, founders sharing on personal accounts. Feels real, builds trust, low polish.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="film long">
+          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212139_8e206ce3-7f95-424b-a55c-09d4a75f241d.png">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_214011_1bcfb9be-b659-4cf4-ba6c-eb2c19b19d7a.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="film-caption">
+          <div class="role">Version B · Cinematic Apple-style hero · 15s</div>
+          <blockquote>"Northville. A village built for relationships. Join the waiting list."</blockquote>
+          <div class="meta">Use: site hero, YouTube preroll (skippable 15), Meta brand awareness, sales-deck opener, cinema/event reveal. Aspirational, ARRI-look, no talking head.</div>
+        </div>
+      </div>
+    </div>
+
+    <p style="margin-top: 32px; max-width: 800px; font-size: 14px; color: var(--ink-2); font-style: italic;">Note: Version A was generated in Marketing Studio's default UGC mode (it auto-reframed the cinematic prompt as a creator testimonial). Version B was re-rendered in Wild Card mode with explicit "no talking head" direction to land the original Apple-style intent. Both kept — they serve different funnels.</p>
+  </div>
+</section>
+
+<!-- SHORT CLIPS -->
+<section class="section" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="eyebrow">The 6-second clips — three voices, three reasons</div>
+    <h2 style="margin-bottom: 56px;">Three different people. Three different reasons to want it.</h2>
+
+    <div class="grid grid-3">
+      <div>
+        <div class="film short">
+          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_202441_129b18f5-f818-48d8-878c-e8012c0c8f3a.png">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212118_0adb6bdd-f423-492e-9a41-1f94dbedf9b2.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="film-caption">
+          <div class="role">Clip A · "The app" angle</div>
+          <blockquote>"100 smart homes. One Village Center. All in one app. Northville. Join the waiting list."</blockquote>
+          <div class="meta">Persona: warm, trustworthy mom-type, 40. Daytime UGC outdoor. The product-utility pitch.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="film short">
+          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_202444_c21fe3ac-5652-4c5e-8a21-e86ab46ec297.png">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212122_b9507e65-1472-4845-b668-f06fc55fd50b.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="film-caption">
+          <div class="role">Clip B · "Design + relationships" angle</div>
+          <blockquote>"Designed by Sweden's design elite. Built for relationships, not just for living. Northville. Now taking the first hundred names."</blockquote>
+          <div class="meta">Persona: calm professional, 40s. Golden hour UGC. The design + meaning pitch.</div>
+        </div>
+      </div>
+
+      <div>
+        <div class="film short">
+          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212125_768168fd-2414-4fea-8d3d-2e3d3bc25788.png">
+            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212348_3bb57afd-53d5-40c2-943d-a6911aa6ad17.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <div class="film-caption">
+          <div class="role">Clip C · "Founder manifesto" angle</div>
+          <blockquote>"We didn't design houses. We designed a village. A hundred neighbors. One Village Center. One app. Northville."</blockquote>
+          <div class="meta">Persona: Henrik, the architect, 45. Editorial studio. The credibility + vision pitch.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTS LIBRARY -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Scripts & captions library</div>
+    <h2 style="margin-bottom: 56px; max-width: 800px;">Ready-to-ship copy for posts, ads and stories.</h2>
+
+    <div class="grid grid-2">
+      <div>
+        <h3 style="margin-bottom: 24px;">Hero film VO</h3>
+        <div class="script">
+          <div class="who">Final voiceover · 15s film</div>
+          <blockquote>"Northville. A village built for relationships. Join the waiting list."</blockquote>
+          <div class="note">Soft warm female voice in English. Lands on the wide twilight aerial.</div>
+        </div>
+
+        <h3 style="margin: 40px 0 24px;">Talking-head scripts (6s each)</h3>
+
+        <div class="script">
+          <div class="who">Clip A · "The app"</div>
+          <blockquote>"100 smart homes. One Village Center. All in one app. Northville. Join the waiting list."</blockquote>
+          <div class="note">Delivery: warm, casual, hand briefly shows phone on "in one app".</div>
+        </div>
+
+        <div class="script">
+          <div class="who">Clip B · "Design + relationships"</div>
+          <blockquote>"Designed by Sweden's design elite. Built for relationships, not just for living. Northville. Now taking the first hundred names."</blockquote>
+          <div class="note">Delivery: calm, intentional, brief postcard reveal on "the first hundred".</div>
+        </div>
+
+        <div class="script">
+          <div class="who">Clip C · "Founder manifesto"</div>
+          <blockquote>"We didn't design houses. We designed a village. A hundred neighbors. One Village Center. One app. Northville."</blockquote>
+          <div class="note">Delivery: slow, measured, no smile. Editorial studio framing on the architect.</div>
+        </div>
+      </div>
+
+      <div>
+        <h3 style="margin-bottom: 24px;">Static-ad caption set</h3>
+
+        <div class="script">
+          <div class="who">Carousel #1 · scarcity</div>
+          <blockquote>"100 homes. Once. Sweden's smartest village isn't taking 101."</blockquote>
+          <div class="note">Pair with: aerial dawn shot of the village. CTA: Join the waiting list.</div>
+        </div>
+
+        <div class="script">
+          <div class="who">Carousel #2 · the app</div>
+          <blockquote>"Pool. Restaurant. Coworking. Guest room. All bookable. All in Northville."</blockquote>
+          <div class="note">Pair with: phone-in-hand shot of the app. Best for IG feed + TikTok still.</div>
+        </div>
+
+        <div class="script">
+          <div class="who">Carousel #3 · the round Center</div>
+          <blockquote>"Everything you'd leave the suburbs for. In one round wooden building."</blockquote>
+          <div class="note">Pair with: interior of Village Center coworking. Best for LinkedIn + IG.</div>
+        </div>
+
+        <div class="script">
+          <div class="who">Carousel #4 · design</div>
+          <blockquote>"Sweden's design elite drew every joint. You just move in."</blockquote>
+          <div class="note">Pair with: house interior or summer house exterior. Best for editorial PR.</div>
+        </div>
+
+        <div class="script">
+          <div class="who">Carousel #5 · founder line</div>
+          <blockquote>"We didn't design houses. We designed a village.<br/>— The Northville Studio"</blockquote>
+          <div class="note">Pair with: architect portrait. Best for LinkedIn + press.</div>
+        </div>
+
+        <div class="script">
+          <div class="who">Long-form lead (LinkedIn / blog)</div>
+          <blockquote>"We're building Sweden's first village for the next century — and you can be one of the first 100 neighbors."</blockquote>
+          <div class="note">Opens a 400-word piece by Henrik, the architect. CTA: waitlist.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VISUAL LIBRARY -->
+<section class="section" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="eyebrow">Visual library — twelve assets</div>
+    <h2 style="margin-bottom: 56px; max-width: 800px;">The brand world. Four homes, three village shots, three Village Center interiors, the app, the architect.</h2>
+
+    <h3 style="margin-bottom: 24px;">The homes</h3>
+    <div class="grid grid-2">
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212128_27219b34-594b-4a85-916e-5077b61273f8.png" alt="Smart home winter morning" />
+        <figcaption><span>Smart home · winter morning</span><span class="role">House</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212130_06dc3381-e4b7-42a3-9686-7ed567976206.png" alt="Smart home summer golden hour" />
+        <figcaption><span>Smart home · summer golden hour</span><span class="role">House</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212133_e0304538-782e-47dc-9602-b1aef880a448.png" alt="Cluster of four homes with kids on bikes" />
+        <figcaption><span>Cluster · kids and neighbors</span><span class="role">Neighborhood</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212136_c2f17b01-893a-4a2a-b975-e001abe8db3b.png" alt="Interior of a small smart home" />
+        <figcaption><span>Inside a home · Scandinavian minimal</span><span class="role">Interior</span></figcaption>
+      </figure>
+    </div>
+
+    <h3 style="margin: 64px 0 24px;">The village</h3>
+    <div class="grid grid-3">
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212139_8e206ce3-7f95-424b-a55c-09d4a75f241d.png" alt="Aerial dawn over Northville" />
+        <figcaption><span>Aerial dawn · master plan</span><span class="role">Drone</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212142_d64910d1-d71d-45cb-bad3-a3f7db036ee3.png" alt="Walking toward the Village Center" />
+        <figcaption><span>Path to the Center · golden hour</span><span class="role">Ground</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212144_3d70c580-f214-447a-a611-e56381465333.png" alt="Wide landscape view between Västerås and Tillberga" />
+        <figcaption><span>Landscape · Västerås–Tillberga</span><span class="role">Drone</span></figcaption>
+      </figure>
+    </div>
+
+    <h3 style="margin: 64px 0 24px;">Inside the round Village Center</h3>
+    <div class="grid grid-3">
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212147_df61fae5-60fc-4282-baec-01e6dd67f73b.png" alt="Coworking inside Village Center" />
+        <figcaption><span>Coworking · long communal table</span><span class="role">Center</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212240_210146e7-1c17-4154-aebe-f688ffa0c0f3.png" alt="Restaurant inside Village Center" />
+        <figcaption><span>Restaurant · wood fire and wine</span><span class="role">Center</span></figcaption>
+      </figure>
+      <figure class="figure">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212243_3254529f-73ee-42ca-9c42-9635c79a5d03.png" alt="Indoor pool inside Village Center" />
+        <figcaption><span>Pool · golden hour laps</span><span class="role">Center</span></figcaption>
+      </figure>
+    </div>
+
+    <h3 style="margin: 64px 0 24px;">Product & people</h3>
+    <div class="grid grid-2">
+      <figure class="figure tall" style="max-width: 480px;">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212245_ce51d8a7-380b-4ade-b397-39d47a5c2cd5.png" alt="The Northville app on a phone" />
+        <figcaption><span>The app — the product</span><span class="role">Phone</span></figcaption>
+      </figure>
+      <figure class="figure" style="max-width: 720px;">
+        <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212125_768168fd-2414-4fea-8d3d-2e3d3bc25788.png" alt="Henrik Söderberg, architect" />
+        <figcaption><span>Henrik, the architect</span><span class="role">Founder</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">The first 100 — who they are</div>
+    <h2 style="margin-bottom: 56px; max-width: 800px;">Four people. Four very different reasons to want this. One village.</h2>
+
+    <div class="grid grid-4">
+      <div class="persona">
+        <h4>Persona 01</h4>
+        <div class="name">The Returning Family</div>
+        <p><strong>34 + 36, two kids under 8.</strong> Tired of Stockholm prices and 90-minute round-trip preschool runs. Wants daycare 200 m from the kitchen and neighbors who babysit.</p>
+        <p style="color: var(--wood); font-weight: 500;">Buys for: preschool inside the Village Center.</p>
+      </div>
+      <div class="persona">
+        <h4>Persona 02</h4>
+        <div class="name">The Downsizing Couple</div>
+        <p><strong>57 + 59, kids grown.</strong> Sold the 280 m² villa, doesn't want a stale apartment in town. Wants design they can be proud of and a restaurant five minutes away.</p>
+        <p style="color: var(--wood); font-weight: 500;">Buys for: restaurant + design pedigree.</p>
+      </div>
+      <div class="persona">
+        <h4>Persona 03</h4>
+        <div class="name">The Remote-Work Single</div>
+        <p><strong>32, works for a Berlin startup.</strong> Hates working alone at home. Wants the coworking space as their "real" office and the pool as their lunch break.</p>
+        <p style="color: var(--wood); font-weight: 500;">Buys for: coworking + community.</p>
+      </div>
+      <div class="persona">
+        <h4>Persona 04</h4>
+        <div class="name">The Founding Believer</div>
+        <p><strong>Any age.</strong> Cares less about the house than about being one of the first 100. Wants the story, the charter, the feeling that they helped build something.</p>
+        <p style="color: var(--wood); font-weight: 500;">Buys for: belonging.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DISTRIBUTION -->
+<section class="section" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="eyebrow">Distribution plan</div>
+    <h2 style="margin-bottom: 56px;">Where each asset earns its keep.</h2>
+
+    <table class="dist">
+      <thead>
+        <tr>
+          <th>Asset</th>
+          <th>Primary channel</th>
+          <th>Secondary</th>
+          <th>Job to be done</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Hero film A (UGC long)</td><td>LinkedIn · sajt-detalj</td><td>Retargeting · founder DMs</td><td>Trust — "a real person"</td></tr>
+        <tr><td>Hero film B (cinematic)</td><td>Site hero · YouTube preroll</td><td>Sales deck · event reveal</td><td>Awareness — aspirational pull</td></tr>
+        <tr><td>Clip A (the app)</td><td>Reels · TikTok</td><td>IG feed</td><td>Utility — show the product</td></tr>
+        <tr><td>Clip B (design)</td><td>IG feed · Pinterest</td><td>Press kit</td><td>Credibility — "design elite"</td></tr>
+        <tr><td>Clip C (founder)</td><td>LinkedIn · founder DMs</td><td>Press / PR</td><td>Vision — premium trust</td></tr>
+        <tr><td>Aerial dawn still</td><td>Site hero · ads</td><td>Print, posters</td><td>Iconography</td></tr>
+        <tr><td>Phone-in-hand still</td><td>App-store screen · IG carousel</td><td>Out-of-home</td><td>Product proof</td></tr>
+        <tr><td>House interior stills</td><td>Site detail pages</td><td>Email + brochures</td><td>Conversion — desire</td></tr>
+        <tr><td>Village Center stills</td><td>Site amenities section</td><td>Carousels</td><td>Justify the price</td></tr>
+        <tr><td>Architect portrait</td><td>About / founder page</td><td>PR portraits</td><td>Credibility</td></tr>
+        <tr><td>Caption library</td><td>Social rotation, 4–6 wks</td><td>Email subject lines</td><td>Always-on awareness</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- BEYOND MVP -->
+<section class="section">
+  <div class="container">
+    <div class="eyebrow">Beyond this sprint</div>
+    <h2 style="max-width: 900px;">Eight things to commission next — in priority order.</h2>
+
+    <div class="ideas" style="margin-top: 56px;">
+      <div class="idea"><div class="n">01</div><div><h4>App demo film (8–12s)</h4><p>A finger taps the app: "Reserve pool", "Drop off preschool", "Guest hotel room". The product is the ad. This is probably the single highest-converting asset we don't yet have.</p></div></div>
+      <div class="idea"><div class="n">02</div><div><h4>Architect-in-the-place founder doc (60–90s)</h4><p>Henrik walks through the round Village Center at golden hour and explains the philosophy in his own words. Drops on LinkedIn, opens every press conversation, justifies a premium price.</p></div></div>
+      <div class="idea"><div class="n">03</div><div><h4>"A day in Northville" lifestyle film (30s)</h4><p>One family, morning to evening: coffee → preschool drop-off → coworking → pool with kids → dinner with neighbors. Shows the WHOLE proposition without explaining it. The film you can run for two years.</p></div></div>
+      <div class="idea"><div class="n">04</div><div><h4>Persona-expansion clips (3 × 6s)</h4><p>Young family, downsizing couple, remote-work single. Same script structure as Clips A–C, different reasons, different voices. Triples the addressable Reels audience.</p></div></div>
+      <div class="idea"><div class="n">05</div><div><h4>Master plan diagram + interactive map</h4><p>An axonometric drawing of all 100 plots around the Center, with each plot clickable. Doubles as scarcity ("plot #23 is gone") and as a sales tool.</p></div></div>
+      <div class="idea"><div class="n">06</div><div><h4>"Charter 100" landing experience</h4><p>Not a waitlist form. A claim-your-place experience: name, why you want to be a neighbor, the founder reads every entry. Creates the highest-intent leads possible.</p></div></div>
+      <div class="idea"><div class="n">07</div><div><h4>Sound brand</h4><p>One ten-second acoustic motif (Scandinavian piano + soft pad) that ends every film. Free recognition once the rotation starts. Cheap to commission; compounding for years.</p></div></div>
+      <div class="idea"><div class="n">08</div><div><h4>Local-market story arc</h4><p>Bring the people of Västerås and Tillberga into the narrative: existing café gets espresso machine in the Center, local baker bakes the bread, school cooperates with preschool. Pre-empts NIMBY, deepens community story, generates earned media.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- WAITLIST CTA -->
+<section class="section" id="waitlist" style="background: var(--ink); color: var(--cream);">
+  <div class="container" style="text-align: center;">
+    <div class="eyebrow" style="color: var(--wood-soft);">The waiting list</div>
+    <h2 style="color: var(--cream); max-width: 800px; margin: 0 auto;">There won't be a Northville 2. Be one of the first hundred.</h2>
+    <p class="lead" style="color: rgba(246,241,232,.8); max-width: 600px; margin: 32px auto 0;">100 small smart homes. One Village Center. One app. One waiting list, opening now.</p>
+    <a class="cta" href="#" style="background: var(--cream); color: var(--ink); margin-top: 40px;">Reserve my place</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="brand">Northville</div>
+    <div>Campaign sprint · May 2026 · Generated with Higgsfield (Marketing Studio + Soul) on the productionhub workspace.</div>
+    <div style="margin-top: 8px;">12 stills · 5 films (2 hero variants + 3 short clips) · 3 voices on camera · 1 architect named Henrik · ~325 credits.</div>
+  </div>
+</footer>
+
+</body>
+</html>
