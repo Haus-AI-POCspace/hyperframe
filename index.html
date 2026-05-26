@@ -88,32 +88,67 @@
     html { scroll-behavior: auto; }
   }
 
-  .eyebrow { font-family: 'Proxy Mono', monospace; font-size: 12px; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bright); margin-bottom: 24px; }
-  .uttag { font-family: 'Proxy Mono', monospace; font-size: 11px; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); padding: 0; border: 0; display: inline-block; }
+  .eyebrow { font-family: 'Proxy Mono', monospace; font-size: 12px; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); margin-bottom: 24px; }
+  .uttag { font-family: 'Proxy Mono', monospace; font-size: 11px; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); padding: 0; border: 0; display: inline-block; }
 
-  /* === BRAND STRIP (header, brand-book style) === */
-  header.site { position: sticky; top: 0; z-index: 100; background: rgba(247, 242, 229, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--bright); }
-  header.site .strip-top { padding: 14px 0; border-bottom: 1px solid var(--bright); }
+  /* === BRAND STRIP (header, brand-book style) ===
+     Default: transparent black 30% overlay + white text (över hero-bild).
+     .solid (toggleas via JS när du scrollat förbi heron): cream-beige + ink. */
+  header.site { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(14, 23, 23, 0.30); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.25); transition: background .35s ease, border-color .35s ease; }
+  header.site .strip-top { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.25); transition: border-color .35s ease; }
   header.site .strip-top .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  header.site .strip-top .docref { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); line-height: 1.4; }
+  header.site .strip-top .docref { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; line-height: 1.4; opacity: 0.9; transition: color .35s ease; }
   header.site .strip-main { padding: 24px 0; }
   header.site .strip-main .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; }
-  header.site .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.05em; line-height: 1; color: var(--bright); }
-  header.site .brand a { color: var(--bright); border: none; line-height: 1; }
-  header.site .brand a:hover { color: var(--bright); }
+  header.site .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 32px; letter-spacing: -0.05em; line-height: 1; color: #fff; transition: color .35s ease; }
+  header.site .brand a { color: inherit; border: none; line-height: 1; }
+  header.site .brand a:hover { opacity: 0.7; }
   header.site nav { display: flex; gap: 20px; flex-wrap: wrap; }
-  header.site nav a { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); border: none; line-height: 1.6; }
-  header.site nav a:hover { color: var(--bright); }
-  header.site .lib { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; padding: 12px 20px; background: var(--forest); color: var(--nature); border: none; line-height: 1; }
-  header.site .lib:hover { background: var(--bright); color: var(--forest); }
+  header.site nav a { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; border: none; line-height: 1.6; opacity: 0.85; transition: color .35s ease, opacity .2s ease; }
+  header.site nav a:hover { color: var(--bright); opacity: 1; }
+  header.site .lib { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; padding: 12px 20px; background: rgba(255,255,255,0.15); color: #fff; border: 1px solid rgba(255,255,255,0.35); line-height: 1; transition: background .25s ease, color .25s ease, border-color .25s ease; }
+  header.site .lib:hover { background: var(--bright); color: var(--ink); border-color: var(--bright); }
+  /* Solid state efter att man scrollat förbi heron */
+  header.site.solid { background: rgba(247, 242, 229, 0.94); backdrop-filter: blur(20px); border-bottom-color: var(--ink); }
+  header.site.solid .strip-top { border-bottom-color: var(--ink); }
+  header.site.solid .strip-top .docref { color: var(--ink); opacity: 1; }
+  header.site.solid .brand { color: var(--ink); }
+  header.site.solid nav a { color: var(--ink); opacity: 1; }
+  header.site.solid nav a:hover { color: var(--ink); opacity: 0.6; }
+  header.site.solid .lib { background: var(--ink); color: var(--nature); border-color: var(--ink); }
+  header.site.solid .lib:hover { background: var(--bright); color: var(--ink); border-color: var(--bright); }
 
   /* === HERO === */
   .hero { position: relative; min-height: 92vh; overflow: hidden; display: flex; align-items: flex-end; padding: 0; background: var(--forest); }
   .hero-bg { position: absolute; inset: 0; z-index: 0; }
   .hero-bg img, .hero-bg video { width: 100%; height: 100%; object-fit: cover; }
-  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(51,69,70,.35) 0%, transparent 30%, rgba(51,69,70,.18) 100%); z-index: 1; }
-  /* Film-grain overlay — subtle moving noise */
-  .grain { position: absolute; inset: -100% -100%; z-index: 2; pointer-events: none; opacity: 0.18; mix-blend-mode: overlay;
+  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,23,23,.45) 0%, rgba(14,23,23,.15) 30%, rgba(14,23,23,.55) 100%); z-index: 4; }
+
+  /* === HERO SLIDESHOW (4 Village Center stills, Ken Burns + crossfade) === */
+  .hero-slides { position: absolute; inset: 0; z-index: 0; }
+  .hero-slides .slide {
+    position: absolute; inset: 0; width: 100%; height: 100%;
+    object-fit: cover; opacity: 0;
+    animation: slideShow 24s infinite linear;
+    will-change: opacity, transform;
+  }
+  .hero-slides .slide:nth-child(1) { animation-delay: 0s; }
+  .hero-slides .slide:nth-child(2) { animation-delay: 6s; }
+  .hero-slides .slide:nth-child(3) { animation-delay: 12s; }
+  .hero-slides .slide:nth-child(4) { animation-delay: 18s; }
+  @keyframes slideShow {
+    0%   { opacity: 0; transform: scale(1.06); }
+    4%   { opacity: 1; }
+    25%  { opacity: 1; transform: scale(1.0); }
+    29%  { opacity: 0; transform: scale(1.0); }
+    100% { opacity: 0; transform: scale(1.06); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hero-slides .slide { animation-duration: 60s; }
+  }
+
+  /* Subtle film-grain overlay */
+  .grain { position: absolute; inset: -100% -100%; z-index: 3; pointer-events: none; opacity: 0.14; mix-blend-mode: overlay;
     background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
     background-size: 400px 400px;
     animation: grainShift 0.6s steps(6) infinite;
@@ -127,14 +162,19 @@
     83%  { transform: translate(3%, 1%); }
     100% { transform: translate(0, 0); }
   }
-  .hero-inner { position: relative; z-index: 3; color: var(--nature); width: 100%; padding: 48px 0 40px; }
-  .hero .hero-foot { display: flex; justify-content: space-between; align-items: end; gap: 32px; flex-wrap: wrap; padding-top: 28px; border-top: 1px solid var(--bright); }
-  .hero .hero-foot .left { display: flex; flex-direction: column; gap: 16px; }
-  .hero .hero-foot .docref { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); line-height: 1.6; }
-  .hero .hero-foot .place { font-family: 'Apercu', sans-serif; font-weight: 700; color: var(--nature); font-size: clamp(22px, 3vw, 38px); letter-spacing: -0.03em; line-height: 1.26; max-width: 700px; }
-  .hero .hero-foot .right { text-align: right; display: flex; flex-direction: column; gap: 10px; }
-  .hero .hero-foot .right .small { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); line-height: 1.4; }
-  .hero .hero-foot .right .big { font-family: 'Proxy Mono', monospace; font-size: clamp(28px, 5vw, 56px); color: var(--nature); line-height: 1.05; }
+
+  .hero-inner { position: relative; z-index: 5; color: #fff; width: 100%; padding: 48px 0 56px; }
+  .hero .hero-foot { display: flex; flex-direction: column; align-items: flex-start; gap: 32px; padding-top: 32px; border-top: 1px solid rgba(255,255,255,0.4); max-width: 760px; }
+  .hero .hero-foot .docref { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; line-height: 1.6; opacity: 0.85; }
+  .hero .hero-foot .place { font-family: 'Apercu', sans-serif; font-weight: 700; color: #fff; font-size: clamp(24px, 3.4vw, 44px); letter-spacing: -0.03em; line-height: 1.26; max-width: 700px; }
+  .hero .hero-foot .year { display: flex; flex-direction: column; gap: 8px; }
+  .hero .hero-foot .year .small { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; line-height: 1.4; opacity: 0.85; }
+  .hero .hero-foot .year .big { font-family: 'Proxy Mono', monospace; font-size: clamp(48px, 8vw, 96px); color: #fff; line-height: 1.0; }
+
+  /* Sound toggle for hero audio */
+  .hero-sound { position: absolute; right: var(--gutter); bottom: 28px; z-index: 6; background: rgba(255,255,255,0.1); color: #fff; border: 1px solid rgba(255,255,255,0.4); backdrop-filter: blur(8px); padding: 10px 16px; font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: background .2s ease; }
+  .hero-sound:hover { background: rgba(255,255,255,0.2); }
+  .hero-sound.playing { background: var(--bright); color: var(--ink); border-color: var(--bright); }
 
   /* === SECTION base === */
   section.uttag-section { padding: clamp(120px, 15vw, 220px) 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; position: relative; overflow: hidden; }
@@ -166,8 +206,9 @@
   .tone { padding: 56px 48px; background: var(--nature); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 24px; }
   .tone.dark { background: var(--forest); color: var(--nature); border-color: transparent; }
   .tone.bright { background: var(--bright); color: var(--forest); border-color: transparent; }
-  .tone .lbl { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); font-weight: 400; line-height: 1.4; }
+  .tone .lbl { font-family: 'Apercu', sans-serif; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); font-weight: 700; line-height: 1.4; }
   .tone.bright .lbl { color: var(--forest); }
+  .tone.dark .lbl { color: var(--bright); }
   .tone .quote { font-family: 'Apercu', sans-serif; font-weight: 300; font-size: clamp(20px, 2vw, 26px); line-height: 1.55; color: inherit; letter-spacing: -0.005em; }
   .tone.dark .quote { color: var(--nature); }
   .tone .when { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 24px; margin-top: auto; line-height: 1.7; }
@@ -180,7 +221,7 @@
   .tagline:nth-child(odd) { border-left: 1px solid var(--line); }
   .tagline:nth-child(-n+2) { border-top: 1px solid var(--line); }
   .tagline blockquote { margin: 0; font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.26; color: var(--ink); letter-spacing: -0.025em; }
-  .tagline .nr { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; color: var(--bright); margin-bottom: 20px; display: block; text-transform: uppercase; line-height: 1.4; }
+  .tagline .nr { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; color: var(--ink-2); margin-bottom: 20px; display: block; text-transform: uppercase; line-height: 1.4; }
   @media (max-width: 700px) {
     .taglines { grid-template-columns: 1fr; }
     .tagline { border-left: 1px solid var(--line) !important; padding: 40px 28px; min-height: 160px; }
@@ -193,7 +234,7 @@
   .spread .copy { padding: clamp(48px, 5vw, 80px); display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
   .spread .copy h3 { font-size: clamp(38px, 4vw, 64px); line-height: 1.1; color: var(--ink); font-family: 'Apercu'; font-weight: 700; letter-spacing: -0.035em; }
   .spread .copy .body { font-size: 17px; line-height: 1.7; color: var(--ink); max-width: 360px; opacity: 0.85; }
-  .spread .copy .cta { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); border-top: 1px solid var(--line); padding-top: 28px; line-height: 1.7; }
+  .spread .copy .cta { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); border-top: 1px solid var(--line); padding-top: 28px; line-height: 1.7; }
   @media (max-width: 800px) { .spread { grid-template-columns: 1fr; } .spread .visual { min-height: 320px; } }
 
   /* POSTER */
@@ -206,8 +247,8 @@
   .poster.bright .mark, .poster.bright .num, .poster.bright .line { color: var(--forest); }
   .poster.peach { background: var(--peach); color: var(--forest); border-color: transparent; }
   .poster.peach .mark, .poster.peach .num, .poster.peach .line { color: var(--forest); }
-  .poster .mark { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.04em; color: var(--bright); line-height: 1.2; }
-  .poster .num { font-family: 'Proxy Mono', monospace; font-size: clamp(80px, 14vw, 200px); line-height: 1.0; font-weight: 400; color: var(--forest); }
+  .poster .mark { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.04em; color: var(--ink); line-height: 1.2; }
+  .poster .num { font-family: 'Proxy Mono', monospace; font-size: clamp(120px, 18vw, 240px); line-height: 0.95; font-weight: 400; color: var(--ink); letter-spacing: -0.01em; }
   .poster .line { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.26; letter-spacing: -0.02em; color: var(--forest); }
   .poster .foot { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.6; }
   @media (max-width: 900px) { .poster-row { grid-template-columns: 1fr; } }
@@ -241,21 +282,25 @@
   .salesheet .top { display: flex; justify-content: space-between; align-items: start; border-bottom: 1px solid var(--line); padding-bottom: 48px; margin-bottom: 48px; gap: 32px; }
   .salesheet h3 { font-size: clamp(36px, 5vw, 56px); font-family: 'Apercu'; font-weight: 700; color: var(--ink); letter-spacing: -0.035em; line-height: 1.1; }
   .salesheet .sub { font-size: 12px; color: var(--ink-2); margin-top: 16px; font-family: 'Proxy Mono', monospace; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.7; }
-  .salesheet .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 32px; margin-bottom: 56px; }
-  .salesheet .stat-item .n { font-family: 'Proxy Mono', monospace; font-size: clamp(30px, 3vw, 38px); color: var(--ink); line-height: 1.1; }
-  .salesheet .stat-item .l { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); margin-top: 12px; line-height: 1.6; }
+  .salesheet .stats-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 48px; margin-bottom: 64px; }
+  .salesheet .stat-item .n { font-family: 'Proxy Mono', monospace; font-size: clamp(40px, 4.5vw, 64px); color: var(--ink); line-height: 1.1; }
+  .salesheet .stat-item .l { font-family: 'Apercu', sans-serif; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-2); margin-top: 12px; line-height: 1.6; font-weight: 400; }
   .salesheet .models { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 56px; }
-  .salesheet .model-cell { padding: 32px; background: var(--nature-2); border-left: 3px solid currentColor; }
+  .salesheet .model-cell { padding: 0; background: var(--nature-2); border-left: 3px solid currentColor; overflow: hidden; display: flex; flex-direction: column; }
+  .salesheet .model-cell .house-render { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; display: block; background: var(--nature); }
+  .salesheet .model-cell > *:not(.house-render) { padding-left: 28px; padding-right: 28px; }
+  .salesheet .model-cell > .uttag { padding-top: 28px; }
+  .salesheet .model-cell > .price { padding-bottom: 28px; }
   .salesheet .model-cell.s { color: var(--ink-2); }
   .salesheet .model-cell.m { color: var(--forest); }
-  .salesheet .model-cell.l { color: var(--bright); }
+  .salesheet .model-cell.l { color: var(--ink); }
   .salesheet .model-cell .name { font-family: 'Apercu'; font-weight: 700; font-size: 22px; color: var(--ink); letter-spacing: -0.02em; margin-top: 12px; line-height: 1.26; }
   .salesheet .model-cell .spec { font-size: 14px; color: var(--ink-2); margin-top: 12px; line-height: 1.7; }
   .salesheet .model-cell .price { font-family: 'Proxy Mono', monospace; font-size: 18px; color: var(--ink); margin-top: 20px; letter-spacing: 0.02em; line-height: 1.4; }
   .salesheet .amenities { columns: 3; column-gap: 40px; font-size: 15px; color: var(--ink); }
   .salesheet .amenities ul { list-style: none; padding: 0; margin: 0; }
   .salesheet .amenities li { padding: 10px 0; break-inside: avoid; line-height: 1.5; }
-  .salesheet .amenities li::before { content: '— '; color: var(--bright); }
+  .salesheet .amenities li::before { content: '— '; color: var(--ink); opacity: 0.45; }
   @media (max-width: 900px) {
     .salesheet { padding: 32px; }
     .salesheet .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -264,12 +309,12 @@
   }
 
   /* LETTER */
-  .letter { background: var(--nature); padding: clamp(40px, 7vw, 112px); border: 1px solid var(--line); max-width: 800px; margin: 0 auto; position: relative; box-shadow: 0 24px 80px rgba(14,23,23,.06); }
+  .letter { background: #FFFFFF; padding: clamp(40px, 7vw, 112px); border: 1px solid var(--line); max-width: 800px; margin: 0 auto; position: relative; box-shadow: 0 24px 80px rgba(14,23,23,.08); }
   .letter .salutation { font-family: 'Caveat', cursive; font-size: 46px; color: var(--ink); margin-bottom: 40px; line-height: 1.2; }
   .letter .body { font-family: 'Apercu', sans-serif; font-weight: 300; font-size: 19px; line-height: 1.75; color: var(--ink); }
   .letter .body p { font-family: 'Apercu', sans-serif; font-weight: 300; font-size: 19px; color: var(--ink); margin-bottom: 1.25em; line-height: 1.75; }
   .letter .sign { font-family: 'Caveat', cursive; font-size: 40px; color: var(--ink); margin-top: 56px; line-height: 1.2; }
-  .letter .role { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); margin-top: 12px; line-height: 1.6; }
+  .letter .role { font-family: 'Apercu', sans-serif; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); margin-top: 12px; line-height: 1.6; font-weight: 700; }
   @media (max-width: 700px) { .letter { padding: 40px 28px; } }
 
   /* MANIFEST */
@@ -281,27 +326,80 @@
   .manifest .sign { font-family: 'Proxy Mono', monospace; color: var(--bright); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 56px; line-height: 1.7; }
   @media (max-width: 700px) { .manifest { padding: 64px 28px; } }
 
-  /* IN-APP copy */
-  .app-samples { display: grid; grid-template-columns: repeat(2, 1fr); gap: 32px; }
-  .app-sample { background: var(--nature); border: 1px solid var(--line); padding: 40px; }
-  .app-sample .kind { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); margin-bottom: 20px; line-height: 1.6; }
-  .app-sample .title-line { font-family: 'Apercu'; font-weight: 700; font-size: 18px; color: var(--ink); margin-bottom: 10px; letter-spacing: -0.01em; line-height: 1.35; }
-  .app-sample .body-line { font-size: 14px; color: var(--ink-2); margin-bottom: 16px; line-height: 1.7; }
-  .app-sample .btns { display: flex; gap: 8px; margin-top: 20px; }
-  .app-sample .btn { font-family: 'Proxy Mono', monospace; padding: 12px 16px; background: var(--forest); color: var(--nature); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1; }
-  .app-sample .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
-  @media (max-width: 700px) { .app-samples { grid-template-columns: 1fr; } }
+  /* === APP MOCKUP — telefon-mockup med notiser som animerar in === */
+  .app-mockup { display: grid; grid-template-columns: minmax(280px, 380px) 1fr; gap: clamp(40px, 6vw, 96px); align-items: center; }
+  @media (max-width: 800px) { .app-mockup { grid-template-columns: 1fr; gap: 48px; justify-items: center; } }
+
+  .phone-mockup { width: 100%; max-width: 380px; aspect-ratio: 9/19; background: #000; border-radius: 48px; padding: 10px; box-shadow: 0 40px 100px rgba(14,23,23,.20); position: relative; }
+  .phone-mockup .notch { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); width: 28%; height: 26px; background: #000; border-radius: 0 0 18px 18px; z-index: 3; }
+  .phone-mockup .screen { background: radial-gradient(120% 80% at 50% 0%, #2D4445 0%, #0E1717 60%, #051010 100%); border-radius: 38px; height: 100%; position: relative; overflow: hidden; color: #fff; display: flex; flex-direction: column; padding: 12px 12px 16px; }
+  .phone-mockup .status-bar { display: flex; justify-content: space-between; padding: 10px 18px 0; font-family: 'Apercu'; font-size: 13px; font-weight: 700; opacity: 0.95; letter-spacing: 0.01em; }
+  .phone-mockup .lockscreen { padding: 14px 0 8px; text-align: center; }
+  .phone-mockup .lockscreen .time-large { font-family: 'Apercu'; font-weight: 300; font-size: 66px; line-height: 1; letter-spacing: -0.04em; }
+  .phone-mockup .lockscreen .date { font-family: 'Apercu'; font-size: 12px; font-weight: 400; opacity: 0.75; margin-top: 6px; letter-spacing: 0.02em; }
+  .phone-mockup .notifications { padding: 14px 12px 0; position: relative; flex: 1; }
+  .phone-mockup .notif {
+    position: absolute; left: 12px; right: 12px;
+    background: rgba(255,255,255,0.12);
+    backdrop-filter: blur(40px);
+    -webkit-backdrop-filter: blur(40px);
+    border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 20px;
+    padding: 14px 16px 18px;
+    opacity: 0;
+    transform: translateY(-32px) scale(0.98);
+    animation: notifCycle 20s infinite cubic-bezier(.22, .85, .36, 1);
+    will-change: opacity, transform;
+  }
+  .phone-mockup .notif:nth-child(1) { animation-delay: 0s; }
+  .phone-mockup .notif:nth-child(2) { animation-delay: 5s; }
+  .phone-mockup .notif:nth-child(3) { animation-delay: 10s; }
+  .phone-mockup .notif:nth-child(4) { animation-delay: 15s; }
+  @keyframes notifCycle {
+    0%   { opacity: 0; transform: translateY(-32px) scale(0.98); }
+    3%   { opacity: 1; transform: translateY(0) scale(1); }
+    22%  { opacity: 1; transform: translateY(0) scale(1); }
+    27%  { opacity: 0; transform: translateY(-14px) scale(0.97); }
+    100% { opacity: 0; transform: translateY(-32px) scale(0.98); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .phone-mockup .notif { animation: none; opacity: 1; transform: none; position: relative; left: 0; right: 0; margin-bottom: 12px; }
+  }
+  .phone-mockup .notif header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; font-family: 'Apercu'; font-size: 11px; font-weight: 700; opacity: 0.85; text-transform: uppercase; letter-spacing: 0.03em; }
+  .phone-mockup .notif .app { display: flex; align-items: center; gap: 8px; }
+  .phone-mockup .notif .icon { width: 22px; height: 22px; border-radius: 6px; background: var(--bright); color: var(--ink); display: grid; place-items: center; font-family: 'Apercu'; font-weight: 700; font-size: 13px; }
+  .phone-mockup .notif .title { font-family: 'Apercu'; font-weight: 700; font-size: 14px; line-height: 1.35; margin-bottom: 4px; color: #fff; letter-spacing: -0.005em; }
+  .phone-mockup .notif .body { font-family: 'Apercu'; font-weight: 300; font-size: 13px; line-height: 1.5; color: rgba(255,255,255,.85); }
+
+  /* Legends till höger om telefonen — markeras synkat med notiserna */
+  .app-legends { display: flex; flex-direction: column; gap: 0; }
+  .app-legend { padding: 28px 0; border-top: 1px solid var(--line); transition: opacity .5s ease; position: relative; }
+  .app-legend:first-child { border-top: 0; padding-top: 0; }
+  .app-legend .kind { font-family: 'Apercu', sans-serif; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); margin-bottom: 10px; font-weight: 700; }
+  .app-legend .title-line { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(20px, 2.2vw, 26px); color: var(--ink); margin-bottom: 10px; letter-spacing: -0.02em; line-height: 1.3; }
+  .app-legend .body-line { font-size: 14px; color: var(--ink-2); line-height: 1.65; }
+  .app-legend:nth-child(1) { animation: legendCycle 20s infinite; animation-delay: 0s; }
+  .app-legend:nth-child(2) { animation: legendCycle 20s infinite; animation-delay: 5s; }
+  .app-legend:nth-child(3) { animation: legendCycle 20s infinite; animation-delay: 10s; }
+  .app-legend:nth-child(4) { animation: legendCycle 20s infinite; animation-delay: 15s; }
+  @keyframes legendCycle {
+    0%, 27%, 100% { opacity: 0.32; }
+    3%, 22%       { opacity: 1; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .app-legend { opacity: 1 !important; animation: none !important; }
+  }
 
   /* PRESS */
   .press { background: var(--nature); border: 1px solid var(--line); padding: clamp(40px, 5vw, 80px); max-width: 920px; margin: 0 auto; }
-  .press .pre { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); line-height: 1.7; }
+  .press .pre { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); line-height: 1.7; }
   .press h3 { margin: 24px 0 32px; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.2; font-family: 'Apercu'; font-weight: 700; color: var(--ink); letter-spacing: -0.025em; }
   .press .lead-p { font-size: 19px; color: var(--ink); margin-bottom: 28px; font-weight: 300; line-height: 1.6; }
   .press .body-p { font-size: 15px; color: var(--ink-2); line-height: 1.75; margin-bottom: 1.2em; }
   .press .body-p strong { color: var(--ink); font-weight: 700; }
-  .press .quote-block { margin: 48px 0; padding-left: 32px; border-left: 3px solid var(--bright); font-family: 'Apercu', sans-serif; font-weight: 300; font-size: 22px; line-height: 1.55; color: var(--ink); font-style: italic; }
+  .press .quote-block { margin: 48px 0; padding-left: 32px; border-left: 3px solid var(--ink); font-family: 'Apercu', sans-serif; font-weight: 300; font-size: 22px; line-height: 1.55; color: var(--ink); font-style: italic; }
   .press .fact-box { background: var(--nature-2); padding: 32px; margin-top: 48px; font-size: 14px; color: var(--ink-2); line-height: 1.7; }
-  .press .fact-box .ttl { font-family: 'Proxy Mono', monospace; font-weight: 400; color: var(--bright); margin-bottom: 16px; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; line-height: 1.5; }
+  .press .fact-box .ttl { font-family: 'Apercu', sans-serif; font-weight: 700; color: var(--ink); margin-bottom: 16px; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.5; }
 
   /* SIGNAGE */
   .signage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
@@ -323,12 +421,12 @@
   .film-card.l video { aspect-ratio: 16/9; object-fit: cover; }
   .film-card.s video { aspect-ratio: 9/16; object-fit: cover; }
   .film-card .body { padding: 28px 28px 32px; }
-  .film-card .body .role { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bright); margin-bottom: 12px; line-height: 1.6; }
+  .film-card .body .role { font-family: 'Apercu', sans-serif; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); margin-bottom: 12px; line-height: 1.6; font-weight: 700; }
   .film-card .body blockquote { margin: 12px 0; font-family: 'Apercu'; font-weight: 300; font-style: italic; font-size: 17px; line-height: 1.55; color: var(--ink); }
   .film-card .body .meta { font-size: 13px; color: var(--ink-2); margin-top: 12px; line-height: 1.7; }
 
   footer { padding: 96px 0 64px; text-align: center; color: var(--ink-2); border-top: 1px solid var(--bright); background: var(--nature); }
-  footer .brand { font-family: 'Apercu'; font-weight: 700; font-size: 44px; color: var(--bright); margin-bottom: 16px; letter-spacing: -0.05em; line-height: 1; }
+  footer .brand { font-family: 'Apercu'; font-weight: 700; font-size: 44px; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.05em; line-height: 1; }
   footer > .container > div:not(.brand) { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.8; margin-top: 8px; }
 </style>
 </head>
@@ -363,24 +461,30 @@
   </div>
 </header>
 
-<!-- HERO -->
+<!-- HERO — 4-bild slideshow av Village Center (assets från library) -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <video autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png">
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_093620_df84636a-572a-4674-b927-966467585ef3.mp4" type="video/mp4" />
-      <img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="Northville Village Center golden hour" />
-    </video>
+    <div class="hero-slides" aria-hidden="true">
+      <img class="slide" src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="" />
+      <img class="slide" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052528_9b10b147-c228-4cba-ac3a-29a9d261760d.png" alt="" />
+      <img class="slide" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052537_9c4df364-5bdb-40cf-aa94-a0e830b88fb1.png" alt="" />
+      <img class="slide" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052532_a961a28f-dfed-4488-88e7-32bc1c7bae83.png" alt="" />
+    </div>
     <div class="grain" aria-hidden="true"></div>
   </div>
+  <audio id="hero-audio" loop preload="auto">
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_093620_df84636a-572a-4674-b927-966467585ef3.mp4" type="audio/mp4" />
+  </audio>
+  <button class="hero-sound" id="hero-sound-btn" aria-label="Sätt på musik">
+    <span class="ico">♪</span> Sound off
+  </button>
   <div class="container hero-inner">
     <div class="hero-foot">
-      <div class="left">
-        <span class="docref">00 · Brand Universe</span>
-        <div class="place">Mellan Västerås &amp; Tillberga.<br/>100 hus runt en cirkulär Village Center.</div>
-      </div>
-      <div class="right">
+      <span class="docref">00 · Brand Universe · 14 uttag · 1 idé</span>
+      <div class="place">Mellan Västerås &amp; Tillberga.<br/>100 hus runt en cirkulär Village Center.</div>
+      <div class="year">
         <div class="small">Inflytt</div>
-        <div class="big">2026</div>
+        <div class="big">2028</div>
       </div>
     </div>
   </div>
@@ -598,7 +702,7 @@
           <div class="sub">Mellan Västerås &amp; Tillberga · 800 m till Tillberga station · 8 km till V-rås C</div>
         </div>
         <div style="text-align: right;">
-          <div style="font-family: 'Apercu', sans-serif; font-size: 56px; color: var(--ink); line-height: 1;">2026</div>
+          <div style="font-family: 'Proxy Mono', monospace; font-size: 56px; color: var(--ink); line-height: 1.1;">2028</div>
           <div style="font-size: 11px; letter-spacing: 0.18em; color: var(--ink-2);">Första inflytt juni</div>
         </div>
       </div>
@@ -607,26 +711,27 @@
         <div class="stat-item"><div class="n">100</div><div class="l">små smarta hus</div></div>
         <div class="stat-item"><div class="n">3 000</div><div class="l">m² Village Center</div></div>
         <div class="stat-item"><div class="n">4 000</div><div class="l">m² solpark</div></div>
-        <div class="stat-item"><div class="n">450 MWh</div><div class="l">egen el / år</div></div>
-        <div class="stat-item"><div class="n">50 %</div><div class="l">självförsörjning</div></div>
       </div>
 
       <div class="models">
         <div class="model-cell s">
+          <img class="house-render" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050604_e2cbfe4f-6539-4958-83af-84dd849eaac6.png" alt="Model S Slamgrå" loading="lazy" />
           <span class="uttag">Model S · Slamgrå</span>
-          <div class="name" style="margin-top: 8px;">80 m² · 1 plan</div>
+          <div class="name">80 m² · 1 plan</div>
           <div class="spec">2 sovrum · naturrum 20 m² · altan 20 m² · förråd 12 m² · tomt 600 m²</div>
           <div class="price">4 850 000 SEK</div>
         </div>
         <div class="model-cell m">
+          <img class="house-render" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050609_c116b64c-84b0-4446-b14c-8b6de54c3ddf.png" alt="Model M Tjärsvart" loading="lazy" />
           <span class="uttag">Model M · Tjärsvart</span>
-          <div class="name" style="margin-top: 8px;">101 m² · 1,5 plan</div>
+          <div class="name">101 m² · 1,5 plan</div>
           <div class="spec">4 sovrum · naturrum 20 m² · altan 20 m² · förråd 12 m² · tomt 600 m²</div>
           <div class="price">5 500 000 SEK</div>
         </div>
         <div class="model-cell l">
+          <img class="house-render" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050615_53b240d6-0cab-447b-8ff3-5cb0f86f14c7.png" alt="Model L Falu-röd" loading="lazy" />
           <span class="uttag">Model L · Falu-röd</span>
-          <div class="name" style="margin-top: 8px;">112 m² · 2 plan</div>
+          <div class="name">112 m² · 2 plan</div>
           <div class="spec">4 sovrum · naturrum 40 m² · altan 20 m² · förråd 12 m² · tomt 600 m²</div>
           <div class="price">5 850 000 SEK</div>
         </div>
@@ -706,28 +811,72 @@
       <div class="note">Tone of voice för 4 vanliga app-moment. Korta, mänskliga, aldrig korporata.</div>
     </div>
 
-    <div class="app-samples">
-      <div class="app-sample">
-        <div class="kind">Push-notis · onboarding</div>
-        <div class="title-line">Välkommen till byn, Anna.</div>
-        <div class="body-line">Pia, din granne på Nordgatan 4, har precis bakat bullar. Hon säger att kaffet är på.</div>
+    <div class="app-mockup">
+      <div class="phone-mockup" aria-label="Northville app — notiser">
+        <div class="notch"></div>
+        <div class="screen">
+          <div class="status-bar"><span>22:27</span><span>5G · 87 %</span></div>
+          <div class="lockscreen">
+            <div class="time-large">22:27</div>
+            <div class="date">Onsdag · 17 juni</div>
+          </div>
+          <div class="notifications" aria-live="polite">
+            <article class="notif">
+              <header>
+                <div class="app"><span class="icon">N</span><span class="name">Northville</span></div>
+                <span class="time">nu</span>
+              </header>
+              <div class="title">Välkommen till byn, Anna.</div>
+              <div class="body">Pia, din granne på Nordgatan 4, har precis bakat bullar. Hon säger att kaffet är på.</div>
+            </article>
+            <article class="notif">
+              <header>
+                <div class="app"><span class="icon">N</span><span class="name">Northville</span></div>
+                <span class="time">för 2 min</span>
+              </header>
+              <div class="title">Pool bokad — lördag 14–15.</div>
+              <div class="body">Du delar passet med Familjen Lind (3 personer). Säg gärna hej till dem.</div>
+            </article>
+            <article class="notif">
+              <header>
+                <div class="app"><span class="icon">N</span><span class="name">Marketplace</span></div>
+                <span class="time">för 5 min</span>
+              </header>
+              <div class="title">Boka snöskottning?</div>
+              <div class="body">Erik på Östgatan 12 erbjuder snöskottning för 200 kr. Han brukar börja vid 06:30 — stötta din granne istället för ett företag.</div>
+            </article>
+            <article class="notif">
+              <header>
+                <div class="app"><span class="icon">N</span><span class="name">Veckobrev</span></div>
+                <span class="time">för 12 min</span>
+              </header>
+              <div class="title">Denna vecka i Northville</div>
+              <div class="body">Onsdag: gemensam middag, 18:30. Lördag: yoga vid poolen, 09:00. Anmäl barn till sportlovs-kollot — sex platser kvar.</div>
+            </article>
+          </div>
+        </div>
       </div>
-      <div class="app-sample">
-        <div class="kind">Modal · bokning lyckad</div>
-        <div class="title-line">Pool bokad — lördag 14–15.</div>
-        <div class="body-line">Du delar passet med Familjen Lind (3 personer). Säg gärna hej till dem.</div>
-        <div class="btns"><div class="btn">Lägg till i kalendern</div><div class="btn ghost">Ändra</div></div>
-      </div>
-      <div class="app-sample">
-        <div class="kind">In-app skärm · marketplace</div>
-        <div class="title-line">Boka snöskottning?</div>
-        <div class="body-line">Erik på Östgatan 12 erbjuder snöskottning för 200 kr per tillfälle. Han brukar börja vid 06:30. Du kan stötta din granne istället för ett företag.</div>
-        <div class="btns"><div class="btn">Boka Erik</div><div class="btn ghost">Visa fler</div></div>
-      </div>
-      <div class="app-sample">
-        <div class="kind">Email · veckans brev</div>
-        <div class="title-line">Denna vecka i Northville</div>
-        <div class="body-line">Onsdag: gemensam middag i Village Center, 18:30. Lördag: yoga vid poolen, 09:00. Anmäl barn till sportlovs-kollot innan fredag — sex platser kvar.</div>
+      <div class="app-legends">
+        <div class="app-legend">
+          <div class="kind">Push-notis · Onboarding</div>
+          <div class="title-line">Välkommen till byn, Anna.</div>
+          <div class="body-line">Första gången grannen knackar — Pia, Nordgatan 4. Aldrig korporat, alltid människa-till-människa.</div>
+        </div>
+        <div class="app-legend">
+          <div class="kind">Bokningsbekräftelse</div>
+          <div class="title-line">Pool bokad — lördag 14–15.</div>
+          <div class="body-line">När du bokar pool får du också reda på vilka andra som är där. Vardag, inte vardagsruta.</div>
+        </div>
+        <div class="app-legend">
+          <div class="kind">Marketplace · Granne-tjänst</div>
+          <div class="title-line">Boka snöskottning?</div>
+          <div class="body-line">Erik på Östgatan 12. 200 kr per tillfälle. En riktig människa istället för ett företag.</div>
+        </div>
+        <div class="app-legend">
+          <div class="kind">Veckobrev · Push</div>
+          <div class="title-line">Denna vecka i Northville</div>
+          <div class="body-line">Middag, yoga, sportlov. Inte ett nyhetsbrev — en kalender för byn.</div>
+        </div>
       </div>
     </div>
   </div>
@@ -750,7 +899,7 @@
       <h3>Sveriges första app-styrda by öppnar mellan Västerås och Tillberga 2026</h3>
       <p class="lead-p">Future Village, tillsammans med arkitektkontoret Archus, lanserar Northville — 100 små smarta trähus byggda runt ett 3 000 m² stort cirkulärt Village Center med gym, pool, förskola, restaurang och hotell. Allt boende-relaterat — från bokning av gäst-hotellrum till snöskottning — sker via en gemensam app.</p>
       <p class="body-p">Området är planerat i fyra sektioner längs fyra gator (Nord, Syd, Öst, Väst) på fastigheten Hubbo-Jädra 3:6, 800 meter från Tillberga station. Husen erbjuds i tre storlekar (80, 101 och 112 m²) i tre traditionella slamfärger till priser från 4,85 miljoner kronor. <strong>Försäljning startar januari 2027 med första inflytt juni samma år.</strong></p>
-      <div class="quote-block">"Vi bygger inte 100 hus. Vi bygger en by med 100 grannar. Det är medvetet att vi stannar vid hundra — för det är storleken där man fortfarande kan kunna sina grannars namn."<br/><span style="font-style: normal; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bright);">— Johnnie Pettersson, arkitekt, Archus</span></div>
+      <div class="quote-block">"Vi bygger inte 100 hus. Vi bygger en by med 100 grannar. Det är medvetet att vi stannar vid hundra — för det är storleken där man fortfarande kan kunna sina grannars namn."<br/><span style="font-style: normal; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); font-weight: 700; font-family: 'Apercu', sans-serif;">— Johnnie Pettersson, arkitekt, Archus</span></div>
       <p class="body-p">Northville har en planerad solpark på 4 000 m² som målet är ska producera 450 MWh per år — omkring 50 procent av områdets totala elbehov. Alla hus förbereds med laddstation och smart-hem-system. Restaurang, hotell och förskola drivs av externa verksamheter som betalar hyra, vilket finansierar driften av Village Center utan månadsavgift för de boende utöver bokade tjänster.</p>
       <div class="fact-box">
         <div class="ttl">Bakom Northville</div>
@@ -786,7 +935,7 @@
       <div class="sign-item cream">
         <div class="small">Förskolan</div>
         <div class="label">Lilla<br/>byn</div>
-        <div class="arrow" style="color: var(--bright);">→</div>
+        <div class="arrow" style="color: var(--ink);">→</div>
       </div>
     </div>
   </div>
@@ -804,7 +953,7 @@
       <div class="note">Cinematic hero film + UGC long-form. Reels på 9:16 ovan. Allt audio-on.</div>
     </div>
 
-    <h3 style="font-size: 22px; font-family: 'Proxy Mono', monospace; font-weight: 400; text-transform: uppercase; letter-spacing: 0.04em; color: var(--bright); margin-bottom: 16px;">Hero films · 16:9 · 15 s</h3>
+    <h3 style="font-size: 16px; font-family: 'Apercu', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--ink); margin-bottom: 24px;">Hero films · 16:9 · 15 s</h3>
     <div class="film-grid long">
       <div class="film-card l">
         <video src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_061857_1e773ba6-0b9b-4ccd-baf5-72ae064e7b6f.mp4" controls preload="metadata" poster="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png"></video>
@@ -884,7 +1033,7 @@
     targets.forEach(function (el) { io.observe(el); });
   })();
 
-  // Subtle parallax on hero video (slows scroll, keeps text-free)
+  // Subtle parallax on hero (slows scroll, keeps imagery centered)
   (function () {
     const hero = document.querySelector('.hero-bg');
     if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
@@ -897,6 +1046,46 @@
       raf = null;
     }
     window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  })();
+
+  // Header solidify — transparent över hero, cream/ink när scrollat förbi
+  (function () {
+    const header = document.querySelector('header.site');
+    const hero = document.querySelector('.hero');
+    if (!header || !hero) return;
+    let raf = null;
+    function update() {
+      const threshold = hero.offsetHeight - header.offsetHeight - 8;
+      if (window.scrollY > threshold) {
+        header.classList.add('solid');
+      } else {
+        header.classList.remove('solid');
+      }
+      raf = null;
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Hero sound toggle (audio autoplay är blockerat → kräver klick)
+  (function () {
+    const btn = document.getElementById('hero-sound-btn');
+    const audio = document.getElementById('hero-audio');
+    if (!btn || !audio) return;
+    audio.volume = 0.5;
+    btn.addEventListener('click', function () {
+      if (audio.paused) {
+        audio.play().then(function () {
+          btn.classList.add('playing');
+          btn.innerHTML = '<span class="ico">♪</span> Sound on';
+        }).catch(function () { /* user dismissed */ });
+      } else {
+        audio.pause();
+        btn.classList.remove('playing');
+        btn.innerHTML = '<span class="ico">♪</span> Sound off';
+      }
+    });
   })();
 </script>
 
