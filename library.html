@@ -1,0 +1,460 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Northville — Asset Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --cream: #f6f1e8;
+    --cream-2: #ede5d3;
+    --ink: #1a1815;
+    --ink-2: #4a4640;
+    --falu: #7a2a1f;
+    --char: #25221e;
+    --taupe: #8a7864;
+    --wood: #8b6914;
+    --wood-soft: #d9c7a3;
+    --line: #d9d2c1;
+    --mint: #00ff85;
+    --maxw: 1400px;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  img { max-width: 100%; display: block; height: auto; }
+  a { color: var(--wood); text-decoration: none; border-bottom: 1px solid currentColor; }
+  h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+  h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 400; letter-spacing: -0.02em; }
+  h2 { font-size: clamp(28px, 4vw, 44px); }
+  h3 { font-size: 22px; }
+  p { margin: 0 0 1em; color: var(--ink-2); font-size: 16px; }
+
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+
+  /* HEADER */
+  header.site {
+    padding: 32px 0;
+    border-bottom: 1px solid var(--line);
+    position: sticky;
+    top: 0;
+    background: rgba(246, 241, 232, .95);
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+  header.site .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  header.site .brand { font-family: 'Cormorant Garamond', serif; font-size: 28px; }
+  header.site .brand a { color: var(--ink); border: none; }
+  header.site nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
+  header.site nav a { color: var(--ink-2); border: none; padding: 8px 0; }
+  header.site nav a:hover { color: var(--wood); }
+  header.site .back { font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood); }
+
+  /* HERO */
+  .hero { padding: 80px 0 60px; border-bottom: 1px solid var(--line); }
+  .hero .eyebrow { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 24px; }
+  .hero p.lead { font-size: 20px; color: var(--ink); font-weight: 300; max-width: 720px; margin-top: 24px; }
+  .hero .stats { display: flex; gap: 48px; margin-top: 40px; flex-wrap: wrap; }
+  .hero .stat { padding: 16px 0; border-top: 1px solid var(--line); min-width: 100px; }
+  .hero .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--ink); line-height: 1; }
+  .hero .stat .label { margin-top: 4px; font-size: 12px; color: var(--ink-2); letter-spacing: 0.02em; }
+
+  /* SECTION */
+  section.cat { padding: 80px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 100px; }
+  section.cat .eyebrow { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 16px; }
+  section.cat .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 56px; align-items: start; }
+  @media (max-width: 800px) { section.cat .intro { grid-template-columns: 1fr; } }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; }
+  .grid.tight { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+  .grid.wide { grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); }
+
+  /* CARD */
+  .card { background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s; }
+  .card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(26, 24, 21, .1); }
+  .card .imgwrap { background: var(--cream-2); aspect-ratio: 16/9; overflow: hidden; cursor: zoom-in; }
+  .card .imgwrap.tall { aspect-ratio: 9/16; }
+  .card .imgwrap.square { aspect-ratio: 1/1; }
+  .card .imgwrap img { width: 100%; height: 100%; object-fit: cover; }
+  .card .body { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
+  .card .title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--ink); line-height: 1.2; }
+  .card .meta { font-size: 12px; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
+  .card .meta .src { color: var(--wood); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+  .card .desc { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+
+  /* LOGO display */
+  .logo-card { background: #fff; border: 1px solid var(--line); padding: 40px; display: flex; align-items: center; justify-content: center; min-height: 180px; }
+  .logo-card.dark { background: var(--ink); }
+  .logo-card svg { max-width: 100%; height: auto; }
+  .logo-meta { padding: 16px 0; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; }
+
+  /* COLOR swatches */
+  .swatch { background: #fff; border: 1px solid var(--line); overflow: hidden; }
+  .swatch .chip { aspect-ratio: 3/2; }
+  .swatch .body { padding: 16px 20px; font-size: 13px; }
+  .swatch .body .name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--ink); }
+  .swatch .body .hex { color: var(--ink-2); font-family: monospace; font-size: 12px; margin-top: 4px; }
+
+  /* LIGHTBOX */
+  .lightbox {
+    position: fixed; inset: 0;
+    background: rgba(26, 24, 21, .95);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 40px;
+    cursor: zoom-out;
+  }
+  .lightbox.open { display: flex; }
+  .lightbox img { max-width: 100%; max-height: 100%; object-fit: contain; }
+  .lightbox .close {
+    position: absolute; top: 24px; right: 24px;
+    color: #fff; font-size: 24px;
+    background: none; border: 0; cursor: pointer;
+    width: 40px; height: 40px;
+  }
+
+  /* FOOTER */
+  footer { padding: 60px 0; text-align: center; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); }
+  footer .brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="container row">
+    <div class="brand"><a href="index.html">Northville</a></div>
+    <nav>
+      <a href="#houses">Hus</a>
+      <a href="#streetviews">Streetviews</a>
+      <a href="#center">Village Center</a>
+      <a href="#aerial">Aerial</a>
+      <a href="#app">App</a>
+      <a href="#maps">Kartor</a>
+      <a href="#logos">Logos</a>
+      <a href="#colors">Färger</a>
+      <a href="#generated">Genererat</a>
+    </nav>
+    <a href="index.html" class="back">← Tillbaka till kampanjen</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <div class="eyebrow">Asset Library · Drive + Generated</div>
+    <h1>Allt material på ett ställe.</h1>
+    <p class="lead">Källrender från Archus/projektets Drive-mapp + de bilder som genererats i Higgsfield för kampanjen. Klicka för fullstorlek. Alla länkar går till råfiler i <a href="https://github.com/Haus-AI-POCspace/hyperframe">hyperframe-repot</a> så de kan användas som image-to-image-referenser direkt.</p>
+    <div class="stats">
+      <div class="stat"><div class="num">6</div><div class="label">hus-renders</div></div>
+      <div class="stat"><div class="num">6</div><div class="label">streetviews</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">village center</div></div>
+      <div class="stat"><div class="num">2</div><div class="label">aerial-vyer</div></div>
+      <div class="stat"><div class="num">2</div><div class="label">kartor</div></div>
+      <div class="stat"><div class="num">1</div><div class="label">app-design</div></div>
+      <div class="stat"><div class="num">3</div><div class="label">logos</div></div>
+      <div class="stat"><div class="num">10+</div><div class="label">genererade</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOUSES -->
+<section class="cat" id="houses">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Husen — S · M · L</div>
+        <h2>Tre modeller i tre slamfärger.</h2>
+      </div>
+      <div>
+        <p>Den faktiska arkitekturen från Archus 2026: L-form med två volymer (huvudgavel + sidoflygel), vertikal stående panel, brant gavel utan takfötter, sidoflygel med fönsterruta, naturrum framför stor glasfasad inramat av vertikalt trä-spjäljärr. Tre slamfärger: <strong>slamgrå</strong> (S), <strong>tjärsvart</strong> (M), <strong>falu-röd</strong> (L).</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 16px;">Clean renders (utan bakgrund)</h3>
+    <div class="grid">
+      <div class="card"><div class="imgwrap"><img src="refs/small_nb.png" alt="S model clean" loading="lazy" /></div><div class="body"><div class="title">S · Slamgrå · clean</div><div class="meta"><span class="src">Drive · HUSEN</span><span>1920×1080</span></div><div class="desc">Single-story 80 m². 4 850 000 SEK.</div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/medium_nb.png" alt="M model clean" loading="lazy" /></div><div class="body"><div class="title">M · Tjärsvart · clean</div><div class="meta"><span class="src">Drive · HUSEN</span><span>1920×1080</span></div><div class="desc">1.5-story 101 m². 5 500 000 SEK.</div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/large_nb.png" alt="L model clean" loading="lazy" /></div><div class="body"><div class="title">L · Falu-röd · clean</div><div class="meta"><span class="src">Drive · HUSEN</span><span>1920×1080</span></div><div class="desc">2-story 112 m². 5 850 000 SEK.</div></div></div>
+    </div>
+
+    <h3 style="margin: 48px 0 16px;">Med kontext (gräs, mark)</h3>
+    <div class="grid">
+      <div class="card"><div class="imgwrap"><img src="refs/drive/house_small.png" alt="S with context" loading="lazy" /></div><div class="body"><div class="title">S · med gräs &amp; tomt</div><div class="meta"><span class="src">Drive · HUSEN</span><span>1920×1080</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/drive/house_medium.png" alt="M with context" loading="lazy" /></div><div class="body"><div class="title">M · med gräs &amp; tomt</div><div class="meta"><span class="src">Drive · HUSEN</span><span>1920×1080</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/drive/house_large.png" alt="L with context" loading="lazy" /></div><div class="body"><div class="title">L · med gräs &amp; tomt</div><div class="meta"><span class="src">Drive · HUSEN</span><span>1920×1080</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STREETVIEWS -->
+<section class="cat" id="streetviews" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Streetviews — •BILDER</div>
+        <h2>Husen i sin riktiga miljö.</h2>
+      </div>
+      <div>
+        <p>Twin Motion-renderingar från 9 mars som visar slamfärgs-husen längs gator, med vegetation, parkering, grannar, lekande barn. Visar hur arkitekturen sitter ihop i bebodd kontext.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div class="card"><div class="imgwrap"><img src="refs/village_image1.png" alt="Streetview kids and cars" loading="lazy" /></div><div class="body"><div class="title">Gata · familj &amp; bilar</div><div class="meta"><span class="src">Drive · BILDER · Image1</span><span>1920×1080</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/image16.png" alt="Streetview wide" loading="lazy" /></div><div class="body"><div class="title">Gata · Image16</div><div class="meta"><span class="src">Drive · BILDER</span><span>1920×1080</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/image17.png" alt="Streetview grey + red" loading="lazy" /></div><div class="body"><div class="title">Gata · grå + falu-röd</div><div class="meta"><span class="src">Drive · BILDER · Image17</span><span>1920×1080</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/village_image18.png" alt="Streetview wide green" loading="lazy" /></div><div class="body"><div class="title">Gata · grön sommar</div><div class="meta"><span class="src">Drive · BILDER · Image18</span><span>1920×1080</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/image20.png" alt="Streetview car" loading="lazy" /></div><div class="body"><div class="title">Gata · parkering &amp; hund</div><div class="meta"><span class="src">Drive · BILDER · Image20</span><span>1920×1080</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/image21.png" alt="Streetview" loading="lazy" /></div><div class="body"><div class="title">Gata · Image21</div><div class="meta"><span class="src">Drive · BILDER</span><span>1920×1080</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- VILLAGE CENTER -->
+<section class="cat" id="center">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Village Center</div>
+        <h2>Den runda hjärtbyggnaden.</h2>
+      </div>
+      <div>
+        <p>3 000 m² cirkulär träbyggnad med <strong>diamant/X-spjäljärr-fasad</strong> som signatur. Detta är den faktiska designen — helt annat än min initiala generering med vertikala plank. Hela husprojektet kretsar visuellt runt den här geometrin.</p>
+      </div>
+    </div>
+    <div class="grid wide">
+      <div class="card"><div class="imgwrap"><img src="refs/image22.png" alt="Village Center exterior" loading="lazy" /></div><div class="body"><div class="title">Village Center · golden hour exterior</div><div class="meta"><span class="src">Drive · BILDER · Image22</span><span>1920×1080</span></div><div class="desc">Den definitiva referensbilden — använd som image-to-image-grund för alla VC-genereringar.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- AERIAL -->
+<section class="cat" id="aerial" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Aerial / Drönarbilder</div>
+        <h2>Byn från ovan.</h2>
+      </div>
+      <div>
+        <p>Hela byn — det runda VC i mitten, slamfärgs-husen runt, paths, parker. Image23 är den primära aerial-ref:en med riktig komposition. Aerial_overview är en suddigare alternativ-vinkel.</p>
+      </div>
+    </div>
+    <div class="grid wide">
+      <div class="card"><div class="imgwrap"><img src="refs/image23.png" alt="Aerial with Village Center" loading="lazy" /></div><div class="body"><div class="title">Aerial · VC + hus i 3 färger</div><div class="meta"><span class="src">Drive · BILDER · Image23</span><span>1920×1080</span></div><div class="desc">Hjälte-aerial. Använd som image-to-image för alla drönar-vyer.</div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/aerial_overview.png" alt="Aerial overview blurry" loading="lazy" /></div><div class="body"><div class="title">Aerial · landskaps-vy (suddig)</div><div class="meta"><span class="src">Drive · BILDER PRES · overview</span><span>2000×1125</span></div><div class="desc">Wider men låg upplösning. För kompositionsförståelse.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- APP -->
+<section class="cat" id="app">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">App</div>
+        <h2>Det som binder ihop allt.</h2>
+      </div>
+      <div>
+        <p>Mockup på Northville-appen. Boka pool, festlokal, gym, gäst-hotell. Mitt hus (ritningar, manualer, el, kvitton). Grannkontakt. Marketplace för tjänster.</p>
+      </div>
+    </div>
+    <div class="grid tight">
+      <div class="card"><div class="imgwrap tall"><img src="refs/drive/nv_app.png" alt="Northville app design" loading="lazy" /></div><div class="body"><div class="title">App · phone mockup</div><div class="meta"><span class="src">Drive · BILDER PRES</span><span>430×932</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- MAPS -->
+<section class="cat" id="maps" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Kartor &amp; Master Plan</div>
+        <h2>Var Northville ligger.</h2>
+      </div>
+      <div>
+        <p>Mellan Västerås och Tillberga, på Hubbo-Jädra 3:6. 800 m till Tillberga station, 2 km till Finnslätten, 8 km till Västerås centrum. Hela markytan: 106 038 m².</p>
+      </div>
+    </div>
+    <div class="grid wide">
+      <div class="card"><div class="imgwrap"><img src="refs/drive/nykarta.jpg" alt="Nykarta master plan" loading="lazy" /></div><div class="body"><div class="title">Nykarta · master plan</div><div class="meta"><span class="src">Drive · BILDER PRES</span><span>3844×2162</span></div><div class="desc">Den nya master plan-kartan. Hög upplösning.</div></div></div>
+      <div class="card"><div class="imgwrap"><img src="refs/drive/karta.jpg" alt="Location map" loading="lazy" /></div><div class="body"><div class="title">Karta · läge mellan V-rås &amp; Tillberga</div><div class="meta"><span class="src">Drive · BILDER PRES</span><span>2913×1318</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- LOGOS -->
+<section class="cat" id="logos">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Logos &amp; brand marks</div>
+        <h2>Northville-typografin.</h2>
+      </div>
+      <div>
+        <p>Vektor-versioner inline (SVG) — kan kopieras direkt. Mint-grön accent (<code>#00FF85</code> / <code>#00FF91</code>) på mörk bakgrund är brandens signaturkulör.</p>
+      </div>
+    </div>
+    <div class="grid">
+      <div>
+        <div class="logo-card dark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990.14 162.02" style="width: 80%;">
+            <g fill="#00ff91">
+              <path d="M36.22,49.4v109.77H0V0H45.67l63.89,109.77V0h36.22V159.17h-45.67L36.22,49.4Z"/>
+              <path d="M222.83,162.02c-32.71,0-62.57-19.54-62.57-62.35s29.86-62.13,62.57-62.13,62.57,19.32,62.57,62.13-29.86,62.35-62.57,62.35Zm0-28.1c14.71,0,25.69-9.44,25.69-34.25s-11.42-34.03-25.69-34.03-25.69,9-25.69,34.03,10.98,34.25,25.69,34.25Z"/>
+              <path d="M356.97,75.08c-17.34,0-26.56,6.37-26.56,24.81v59.28h-36.22V41.05h34.91v22.39c5.49-13.83,15.37-22.61,32.27-23.27,1.76,0,3.73,0,5.49,.22v35.35c-3.95-.44-6.59-.66-9.88-.66Z"/>
+              <path d="M424.78,8.78V41.05h25.91v34.79h-25.91v43.81c0,11.2,3.51,13.39,15.59,13.39h10.32v26.13h-23.05c-28.98,0-39.08-5.49-39.08-33.15v-50.18h-10.29V40.18h10.29V8.78h36.22Z"/>
+              <path d="M575.93,88.26v70.91h-36.22v-61.91c0-16.91-.44-30.74-18-30.74-15.37,0-22.17,10.32-22.17,32.05v60.59h-36.22V0h36.22V56.64c5.27-8.78,18.22-18.22,36.66-18.22,30.3,0,39.74,17.78,39.74,49.84Z"/>
+              <path d="M667.69,41.05h37.32l-42.15,118.11h-40.18l-43.03-118.11h39.08l25.03,83.21,23.93-83.21Z"/>
+              <path d="M752.88,28.98h-36.22V0h36.22V28.98Zm.22,130.19h-36.44V41.05h36.44v118.11Z"/>
+              <path d="M768.9,159.17V0h36.22V159.17h-36.22Z"/>
+              <path d="M818.93,159.17V0h36.22V159.17h-36.22Z"/>
+              <path d="M930.7,162.02c-38.42,0-64.77-23.49-64.77-62.57s28.76-61.91,63.23-61.91c39.08,0,63.23,29.86,60.81,71.79h-87.6c1.1,16.68,14.05,24.59,27.22,24.59s22.39-4.83,26.56-11.86h33.37c-10.54,27.88-35.13,39.96-58.84,39.96Zm23.27-74.65c-.44-14.71-11.2-22.17-24.81-22.17-12.73,0-24.37,6.59-26.35,22.17h51.15Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="logo-meta"><span>Northville wordmark · mint</span><span>SVG</span></div>
+      </div>
+      <div>
+        <div class="logo-card dark">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990.14 162.02" style="width: 80%;">
+            <g fill="#fff">
+              <path d="M36.22,49.4v109.77H0V0H45.67l63.89,109.77V0h36.22V159.17h-45.67L36.22,49.4Z"/>
+              <path d="M222.83,162.02c-32.71,0-62.57-19.54-62.57-62.35s29.86-62.13,62.57-62.13,62.57,19.32,62.57,62.13-29.86,62.35-62.57,62.35Zm0-28.1c14.71,0,25.69-9.44,25.69-34.25s-11.42-34.03-25.69-34.03-25.69,9-25.69,34.03,10.98,34.25,25.69,34.25Z"/>
+              <path d="M356.97,75.08c-17.34,0-26.56,6.37-26.56,24.81v59.28h-36.22V41.05h34.91v22.39c5.49-13.83,15.37-22.61,32.27-23.27,1.76,0,3.73,0,5.49,.22v35.35c-3.95-.44-6.59-.66-9.88-.66Z"/>
+              <path d="M424.78,8.78V41.05h25.91v34.79h-25.91v43.81c0,11.2,3.51,13.39,15.59,13.39h10.32v26.13h-23.05c-28.98,0-39.08-5.49-39.08-33.15v-50.18h-10.29V40.18h10.29V8.78h36.22Z"/>
+              <path d="M575.93,88.26v70.91h-36.22v-61.91c0-16.91-.44-30.74-18-30.74-15.37,0-22.17,10.32-22.17,32.05v60.59h-36.22V0h36.22V56.64c5.27-8.78,18.22-18.22,36.66-18.22,30.3,0,39.74,17.78,39.74,49.84Z"/>
+              <path d="M667.69,41.05h37.32l-42.15,118.11h-40.18l-43.03-118.11h39.08l25.03,83.21,23.93-83.21Z"/>
+              <path d="M752.88,28.98h-36.22V0h36.22V28.98Zm.22,130.19h-36.44V41.05h36.44v118.11Z"/>
+              <path d="M768.9,159.17V0h36.22V159.17h-36.22Z"/>
+              <path d="M818.93,159.17V0h36.22V159.17h-36.22Z"/>
+              <path d="M930.7,162.02c-38.42,0-64.77-23.49-64.77-62.57s28.76-61.91,63.23-61.91c39.08,0,63.23,29.86,60.81,71.79h-87.6c1.1,16.68,14.05,24.59,27.22,24.59s22.39-4.83,26.56-11.86h33.37c-10.54,27.88-35.13,39.96-58.84,39.96Zm23.27-74.65c-.44-14.71-11.2-22.17-24.81-22.17-12.73,0-24.37,6.59-26.35,22.17h51.15Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="logo-meta"><span>Northville · white</span><span>SVG</span></div>
+      </div>
+      <div>
+        <div class="logo-card">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 990.14 162.02" style="width: 80%;">
+            <g fill="#1a1815">
+              <path d="M36.22,49.4v109.77H0V0H45.67l63.89,109.77V0h36.22V159.17h-45.67L36.22,49.4Z"/>
+              <path d="M222.83,162.02c-32.71,0-62.57-19.54-62.57-62.35s29.86-62.13,62.57-62.13,62.57,19.32,62.57,62.13-29.86,62.35-62.57,62.35Zm0-28.1c14.71,0,25.69-9.44,25.69-34.25s-11.42-34.03-25.69-34.03-25.69,9-25.69,34.03,10.98,34.25,25.69,34.25Z"/>
+              <path d="M356.97,75.08c-17.34,0-26.56,6.37-26.56,24.81v59.28h-36.22V41.05h34.91v22.39c5.49-13.83,15.37-22.61,32.27-23.27,1.76,0,3.73,0,5.49,.22v35.35c-3.95-.44-6.59-.66-9.88-.66Z"/>
+              <path d="M424.78,8.78V41.05h25.91v34.79h-25.91v43.81c0,11.2,3.51,13.39,15.59,13.39h10.32v26.13h-23.05c-28.98,0-39.08-5.49-39.08-33.15v-50.18h-10.29V40.18h10.29V8.78h36.22Z"/>
+              <path d="M575.93,88.26v70.91h-36.22v-61.91c0-16.91-.44-30.74-18-30.74-15.37,0-22.17,10.32-22.17,32.05v60.59h-36.22V0h36.22V56.64c5.27-8.78,18.22-18.22,36.66-18.22,30.3,0,39.74,17.78,39.74,49.84Z"/>
+              <path d="M667.69,41.05h37.32l-42.15,118.11h-40.18l-43.03-118.11h39.08l25.03,83.21,23.93-83.21Z"/>
+              <path d="M752.88,28.98h-36.22V0h36.22V28.98Zm.22,130.19h-36.44V41.05h36.44v118.11Z"/>
+              <path d="M768.9,159.17V0h36.22V159.17h-36.22Z"/>
+              <path d="M818.93,159.17V0h36.22V159.17h-36.22Z"/>
+              <path d="M930.7,162.02c-38.42,0-64.77-23.49-64.77-62.57s28.76-61.91,63.23-61.91c39.08,0,63.23,29.86,60.81,71.79h-87.6c1.1,16.68,14.05,24.59,27.22,24.59s22.39-4.83,26.56-11.86h33.37c-10.54,27.88-35.13,39.96-58.84,39.96Zm23.27-74.65c-.44-14.71-11.2-22.17-24.81-22.17-12.73,0-24.37,6.59-26.35,22.17h51.15Z"/>
+            </g>
+          </svg>
+        </div>
+        <div class="logo-meta"><span>Northville · black</span><span>SVG</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLORS -->
+<section class="cat" id="colors" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Färger</div>
+        <h2>Slamfärger + brand.</h2>
+      </div>
+      <div>
+        <p>Tre traditionella slamfärger för husen (matchade till Archus-renderingarna) plus brandfärgen för logo/digital ytor. Sandfärgad bakgrund som genomgår alla layouts.</p>
+      </div>
+    </div>
+    <div class="grid tight">
+      <div class="swatch"><div class="chip" style="background: #7a2a1f;"></div><div class="body"><div class="name">Falu-röd</div><div class="hex">#7A2A1F · L-modellen</div></div></div>
+      <div class="swatch"><div class="chip" style="background: #25221e;"></div><div class="body"><div class="name">Tjärsvart</div><div class="hex">#25221E · M-modellen</div></div></div>
+      <div class="swatch"><div class="chip" style="background: #8a7864;"></div><div class="body"><div class="name">Slamgrå</div><div class="hex">#8A7864 · S-modellen</div></div></div>
+      <div class="swatch"><div class="chip" style="background: #00ff85;"></div><div class="body"><div class="name">Mint accent</div><div class="hex">#00FF85 · brand</div></div></div>
+      <div class="swatch"><div class="chip" style="background: #f6f1e8;"></div><div class="body"><div class="name">Cream BG</div><div class="hex">#F6F1E8 · sajt-bakgrund</div></div></div>
+      <div class="swatch"><div class="chip" style="background: #1a1815;"></div><div class="body"><div class="name">Ink</div><div class="hex">#1A1815 · text</div></div></div>
+      <div class="swatch"><div class="chip" style="background: #d9c7a3;"></div><div class="body"><div class="name">Wood soft</div><div class="hex">#D9C7A3 · accent</div></div></div>
+      <div class="swatch"><div class="chip" style="background: #8b6914;"></div><div class="body"><div class="name">Wood</div><div class="hex">#8B6914 · länkfärg</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GENERATED -->
+<section class="cat" id="generated">
+  <div class="container">
+    <div class="intro">
+      <div>
+        <div class="eyebrow">Genererade assets</div>
+        <h2>Det som producerats i Higgsfield.</h2>
+      </div>
+      <div>
+        <p>Image-to-image-genereringar mot Drive-refs ovan. För full lista, scroll på <a href="index.html">huvudsidan</a>. Här är de viktigaste preview-länkarna direkt.</p>
+      </div>
+    </div>
+
+    <h3 style="margin-bottom: 16px;">Hus (image-to-image från _nb)</h3>
+    <div class="grid">
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050604_e2cbfe4f-6539-4958-83af-84dd849eaac6.png" alt="Generated S" loading="lazy" /></div><div class="body"><div class="title">S Slamgrå · genererad</div><div class="meta"><span class="src">Higgsfield · nano_banana_2</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050609_c116b64c-84b0-4446-b14c-8b6de54c3ddf.png" alt="Generated M" loading="lazy" /></div><div class="body"><div class="title">M Tjärsvart · genererad</div><div class="meta"><span class="src">Higgsfield · nano_banana_2</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050615_53b240d6-0cab-447b-8ff3-5cb0f86f14c7.png" alt="Generated L" loading="lazy" /></div><div class="body"><div class="title">L Falu-röd · genererad</div><div class="meta"><span class="src">Higgsfield · nano_banana_2</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050732_71f718f6-b74b-48b9-999b-777069bf8e10.png" alt="Generated lineup" loading="lazy" /></div><div class="body"><div class="title">S·M·L lineup · genererad</div><div class="meta"><span class="src">Higgsfield · nano_banana_2</span></div></div></div>
+    </div>
+
+    <h3 style="margin: 48px 0 16px;">Village Center suite (image-to-image från Image22)</h3>
+    <div class="grid">
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052524_4c187111-e4ed-4449-8b63-441d5a32922e.png" alt="Generated VC approach" loading="lazy" /></div><div class="body"><div class="title">VC · golden hour approach</div><div class="meta"><span class="src">Higgsfield</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052528_9b10b147-c228-4cba-ac3a-29a9d261760d.png" alt="Generated VC coworking" loading="lazy" /></div><div class="body"><div class="title">VC · coworking interiör</div><div class="meta"><span class="src">Higgsfield</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052532_a961a28f-dfed-4488-88e7-32bc1c7bae83.png" alt="Generated VC restaurant" loading="lazy" /></div><div class="body"><div class="title">VC · restaurang</div><div class="meta"><span class="src">Higgsfield</span></div></div></div>
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052537_9c4df364-5bdb-40cf-aa94-a0e830b88fb1.png" alt="Generated VC pool" loading="lazy" /></div><div class="body"><div class="title">VC · pool &amp; relax</div><div class="meta"><span class="src">Higgsfield</span></div></div></div>
+    </div>
+
+    <h3 style="margin: 48px 0 16px;">Aerial (image-to-image från Image23)</h3>
+    <div class="grid">
+      <div class="card"><div class="imgwrap"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052519_e56cfbad-a9ee-4d12-8c03-bffea7426469.png" alt="Generated aerial" loading="lazy" /></div><div class="body"><div class="title">Aerial · crisp 4K</div><div class="meta"><span class="src">Higgsfield</span></div></div></div>
+    </div>
+
+    <p style="margin-top: 48px;">För hela kampanjen + filmer: <a href="index.html">öppna huvudsidan →</a></p>
+  </div>
+</section>
+
+<!-- LIGHTBOX -->
+<div class="lightbox" id="lb" onclick="this.classList.remove('open')">
+  <button class="close" onclick="event.stopPropagation(); document.getElementById('lb').classList.remove('open')">×</button>
+  <img id="lbimg" src="" alt="" />
+</div>
+
+<footer>
+  <div class="container">
+    <div class="brand">Northville Asset Library</div>
+    <div>Drive-renderingar (•BILDER, HUSEN, BILDER PRESENTATION) + Higgsfield-genererade kampanjbilder.</div>
+    <div style="margin-top: 8px;">Alla refs ligger publikt i <a href="https://github.com/Haus-AI-POCspace/hyperframe/tree/main/refs">hyperframe/refs/</a> så Higgsfield kan hämta dem direkt via raw URL.</div>
+  </div>
+</footer>
+
+<script>
+  // Lightbox: click image to enlarge
+  document.querySelectorAll('.card .imgwrap').forEach(function(el) {
+    el.addEventListener('click', function() {
+      var img = el.querySelector('img');
+      if (!img) return;
+      var lb = document.getElementById('lb');
+      document.getElementById('lbimg').src = img.src;
+      lb.classList.add('open');
+    });
+  });
+  // ESC closes
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') document.getElementById('lb').classList.remove('open');
+  });
+</script>
+
+</body>
+</html>
