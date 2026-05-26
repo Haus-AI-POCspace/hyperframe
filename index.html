@@ -6,163 +6,228 @@
 <title>Northville — Brand Universe</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet" />
 <style>
+  /* === BRAND FONTS === */
+  @font-face {
+    font-family: 'Proxy Mono';
+    src: url('assets/fonts/ProxyMono.otf') format('opentype');
+    font-weight: 400; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Apercu';
+    src: url('assets/fonts/Apercu-Light.otf') format('opentype');
+    font-weight: 300; font-style: normal; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Apercu';
+    src: url('assets/fonts/Apercu-Italic.otf') format('opentype');
+    font-weight: 400; font-style: italic; font-display: swap;
+  }
+  @font-face {
+    font-family: 'Apercu';
+    src: url('assets/fonts/Apercu-Bold.otf') format('opentype');
+    font-weight: 700; font-style: normal; font-display: swap;
+  }
+
   :root {
-    --cream: #f6f1e8;
-    --cream-2: #ede5d3;
-    --ink: #1a1815;
-    --ink-2: #4a4640;
-    --falu: #7a2a1f;
-    --char: #25221e;
-    --taupe: #8a7864;
-    --wood: #8b6914;
-    --wood-soft: #d9c7a3;
-    --line: #d9d2c1;
-    --mint: #00ff85;
+    /* Northville brand palette — sid 22 i brandbook */
+    --nature: #EEE5CE;       /* main beige bg */
+    --nature-2: #E5DAB8;     /* darker beige tile */
+    --forest: #334546;       /* dark forest green */
+    --forest-2: #25393B;     /* deeper forest */
+    --bright: #06FF83;       /* signature mint green */
+    --bright-soft: #C8FFE3;
+    --sunny: #F5E78B;        /* yellow accent */
+    --peach: #F8C5A5;        /* peach accent */
+    --ink: #334546;          /* alias for forest */
+    --ink-2: #5F7475;        /* forest-tinted muted text */
+    --line: rgba(51, 69, 70, 0.18);
+    --line-bright: #06FF83;
     --maxw: 1400px;
   }
+
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
-  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  html, body { margin: 0; padding: 0; background: var(--nature); color: var(--forest); }
+  body { font-family: 'Apercu', system-ui, -apple-system, sans-serif; font-weight: 300; line-height: 1.55; -webkit-font-smoothing: antialiased; }
   img, video { max-width: 100%; display: block; height: auto; }
-  a { color: var(--wood); text-decoration: none; border-bottom: 1px solid currentColor; }
-  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
-  h1 { font-size: clamp(56px, 11vw, 160px); font-weight: 400; letter-spacing: -0.03em; }
-  h2 { font-size: clamp(36px, 6vw, 64px); }
-  h3 { font-size: clamp(24px, 3vw, 36px); }
-  h4 { font-size: 16px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood); }
-  p { margin: 0 0 1em; color: var(--ink-2); font-size: 17px; }
-  .lead { font-size: 22px; color: var(--ink); font-weight: 300; line-height: 1.4; }
+  a { color: var(--forest); text-decoration: none; border-bottom: 1px solid var(--bright); }
+  a:hover { color: var(--bright); }
+
+  h1, h2, h3 { font-family: 'Apercu', sans-serif; font-weight: 700; line-height: 1.0; letter-spacing: -0.035em; color: var(--forest); margin: 0; }
+  h1 { font-size: clamp(56px, 11vw, 180px); letter-spacing: -0.05em; }
+  h2 { font-size: clamp(36px, 6vw, 72px); }
+  h3 { font-size: clamp(24px, 3vw, 36px); letter-spacing: -0.025em; }
+  h4 { font-size: 14px; font-family: 'Proxy Mono', monospace; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; color: var(--forest); margin: 0; }
+  p { margin: 0 0 1em; color: var(--ink-2); font-size: 17px; font-weight: 300; }
+  .lead { font-size: 22px; color: var(--forest); font-weight: 300; line-height: 1.45; }
   .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
-  .eyebrow { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 24px; }
-  .uttag { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); padding: 6px 12px; border: 1px solid var(--wood); display: inline-block; }
 
-  /* HEADER */
-  header.site { padding: 24px 0; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(246,241,232,.95); backdrop-filter: blur(12px); z-index: 50; }
-  header.site .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  header.site .brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; }
-  header.site .brand a { color: var(--ink); border: none; }
-  header.site nav { display: flex; gap: 24px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
-  header.site nav a { color: var(--ink-2); border: none; }
-  header.site nav a:hover { color: var(--wood); }
-  header.site .lib { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 16px; background: var(--ink); color: var(--cream); border: none; }
+  .eyebrow { font-family: 'Proxy Mono', monospace; font-size: 12px; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bright); margin-bottom: 24px; }
+  .uttag { font-family: 'Proxy Mono', monospace; font-size: 11px; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); padding: 0; border: 0; display: inline-block; }
 
-  /* HERO */
-  .hero { position: relative; min-height: 100vh; overflow: hidden; display: flex; align-items: flex-end; padding: 80px 0 120px; }
+  /* === BRAND STRIP (header, brand-book style) === */
+  header.site { position: sticky; top: 0; z-index: 100; background: rgba(238, 229, 206, 0.92); backdrop-filter: blur(20px); border-bottom: 1px solid var(--bright); }
+  header.site .strip-top { padding: 10px 0; border-bottom: 1px solid var(--bright); }
+  header.site .strip-top .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+  header.site .strip-top .docref { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); }
+  header.site .strip-main { padding: 18px 0; }
+  header.site .strip-main .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  header.site .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: -0.05em; line-height: 1; color: var(--bright); }
+  header.site .brand a { color: var(--bright); border: none; line-height: 1; }
+  header.site .brand a:hover { color: var(--bright); }
+  header.site nav { display: flex; gap: 16px; flex-wrap: wrap; }
+  header.site nav a { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--forest); border: none; }
+  header.site nav a:hover { color: var(--bright); }
+  header.site .lib { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 16px; background: var(--forest); color: var(--nature); border: none; }
+  header.site .lib:hover { background: var(--bright); color: var(--forest); }
+
+  /* === HERO === */
+  .hero { position: relative; min-height: 92vh; overflow: hidden; display: flex; align-items: flex-end; padding: 0; background: var(--forest); }
   .hero-bg { position: absolute; inset: 0; z-index: 0; }
   .hero-bg img, .hero-bg video { width: 100%; height: 100%; object-fit: cover; }
-  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,24,21,.55) 0%, rgba(26,24,21,.2) 40%, rgba(246,241,232,.05) 100%); }
-  .hero-inner { position: relative; z-index: 1; color: #fff; }
-  .hero h1 { color: #fff; }
-  .hero .sub { color: rgba(255,255,255,.9); font-size: 22px; max-width: 640px; margin-top: 32px; font-weight: 300; }
-  .hero .meta { color: rgba(255,255,255,.75); margin-top: 24px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(51,69,70,.35) 0%, transparent 30%, rgba(51,69,70,.18) 100%); z-index: 1; }
+  /* Film-grain overlay — subtle moving noise */
+  .grain { position: absolute; inset: -100% -100%; z-index: 2; pointer-events: none; opacity: 0.18; mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='1.6' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.7 0'/></filter><rect width='400' height='400' filter='url(%23n)'/></svg>");
+    background-size: 400px 400px;
+    animation: grainShift 0.6s steps(6) infinite;
+  }
+  @keyframes grainShift {
+    0%   { transform: translate(0, 0); }
+    16%  { transform: translate(-2%, 1%); }
+    33%  { transform: translate(-3%, -2%); }
+    50%  { transform: translate(2%, 2%); }
+    66%  { transform: translate(-1%, -3%); }
+    83%  { transform: translate(3%, 1%); }
+    100% { transform: translate(0, 0); }
+  }
+  .hero-inner { position: relative; z-index: 3; color: var(--nature); width: 100%; padding: 32px 0 28px; }
+  .hero .hero-foot { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; padding-top: 18px; border-top: 1px solid var(--bright); }
+  .hero .hero-foot .left { display: flex; flex-direction: column; gap: 6px; }
+  .hero .hero-foot .docref { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); }
+  .hero .hero-foot .place { font-family: 'Apercu', sans-serif; font-weight: 700; color: var(--nature); font-size: clamp(22px, 3vw, 38px); letter-spacing: -0.03em; line-height: 1.05; max-width: 700px; }
+  .hero .hero-foot .right { text-align: right; }
+  .hero .hero-foot .right .small { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); margin-bottom: 4px; }
+  .hero .hero-foot .right .big { font-family: 'Proxy Mono', monospace; font-size: clamp(28px, 5vw, 56px); color: var(--nature); line-height: 1; }
 
-  /* SECTION base */
-  section.uttag-section { padding: 120px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
+  /* === SECTION base === */
+  section.uttag-section { padding: 120px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; position: relative; overflow: hidden; }
+  section.uttag-section.dark { background: var(--forest); color: var(--nature); border-top-color: var(--bright); }
+  section.uttag-section.dark h2, section.uttag-section.dark h3, section.uttag-section.dark .lead { color: var(--nature); }
+  section.uttag-section.dark p { color: rgba(238, 229, 206, 0.75); }
+  section.uttag-section.dark .note { color: rgba(238, 229, 206, 0.65); }
+  section.uttag-section.dark .uttag, section.uttag-section.dark .eyebrow { color: var(--bright); }
+  /* brandbook-style giant section number top-right */
+  section.uttag-section .sectionnumber { position: absolute; top: 60px; right: 32px; font-family: 'Proxy Mono', monospace; font-size: clamp(70px, 11vw, 160px); color: var(--bright); opacity: 0.18; line-height: 0.85; pointer-events: none; user-select: none; }
+  section.uttag-section.dark .sectionnumber { color: var(--nature); opacity: 0.14; }
+
   section.uttag-section .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 56px; gap: 32px; flex-wrap: wrap; }
-  section.uttag-section .head .label { max-width: 600px; }
-  section.uttag-section .head h2 { margin-top: 12px; }
-  section.uttag-section .head .note { font-size: 13px; color: var(--ink-2); max-width: 320px; text-align: right; }
+  section.uttag-section .head .label { max-width: 700px; position: relative; z-index: 1; }
+  section.uttag-section .head h2 { margin-top: 16px; }
+  section.uttag-section .head .note { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-2); max-width: 340px; text-align: right; line-height: 1.5; text-transform: none; position: relative; z-index: 1; }
 
   /* GRID */
   .grid { display: grid; gap: 32px; }
   .g2 { grid-template-columns: repeat(2, 1fr); }
   .g3 { grid-template-columns: repeat(3, 1fr); }
   .g4 { grid-template-columns: repeat(4, 1fr); }
-  @media (max-width: 900px) {
-    .g2, .g3, .g4 { grid-template-columns: 1fr; }
-  }
+  @media (max-width: 900px) { .g2, .g3, .g4 { grid-template-columns: 1fr; } }
 
   /* TONES */
-  .tone { padding: 40px; background: #fff; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
-  .tone.dark { background: var(--ink); color: var(--cream); }
-  .tone.dark .lbl { color: var(--wood-soft); }
-  .tone .lbl { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); font-weight: 600; }
-  .tone .quote { font-family: 'Cormorant Garamond', serif; font-size: 26px; line-height: 1.3; color: inherit; }
-  .tone.dark .quote { color: var(--cream); }
-  .tone .when { font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 16px; margin-top: auto; }
-  .tone.dark .when { color: rgba(246,241,232,.7); border-top-color: rgba(217,210,193,.2); }
+  .tone { padding: 40px; background: var(--nature); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+  .tone.dark { background: var(--forest); color: var(--nature); border-color: transparent; }
+  .tone.bright { background: var(--bright); color: var(--forest); border-color: transparent; }
+  .tone .lbl { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); font-weight: 400; }
+  .tone.bright .lbl { color: var(--forest); }
+  .tone .quote { font-family: 'Apercu', sans-serif; font-weight: 300; font-size: clamp(20px, 2vw, 26px); line-height: 1.35; color: inherit; letter-spacing: -0.01em; }
+  .tone.dark .quote { color: var(--nature); }
+  .tone .when { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 16px; margin-top: auto; line-height: 1.55; }
+  .tone.dark .when { color: rgba(238,229,206,.55); border-top-color: rgba(238,229,206,.18); }
+  .tone.bright .when { color: var(--forest); border-top-color: rgba(51,69,70,.25); opacity: 0.75; }
 
   /* TAGLINES */
   .taglines { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
-  .tagline { padding: 32px 24px; border: 1px solid var(--line); border-top: 0; border-left: 0; background: #fff; display: flex; align-items: center; min-height: 140px; }
+  .tagline { padding: 32px 24px; border: 1px solid var(--line); border-top: 0; border-left: 0; background: var(--nature); display: flex; align-items: center; min-height: 150px; }
   .tagline:nth-child(odd) { border-left: 1px solid var(--line); }
   .tagline:nth-child(-n+2) { border-top: 1px solid var(--line); }
-  .tagline blockquote { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.15; color: var(--ink); }
-  .tagline .nr { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.18em; color: var(--wood); margin-bottom: 10px; display: block; }
+  .tagline blockquote { margin: 0; font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.05; color: var(--forest); letter-spacing: -0.03em; }
+  .tagline .nr { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; color: var(--bright); margin-bottom: 12px; display: block; text-transform: uppercase; }
   @media (max-width: 700px) {
     .taglines { grid-template-columns: 1fr; }
     .tagline { border-left: 1px solid var(--line) !important; }
   }
 
   /* PRINT AD spread */
-  .spread { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; min-height: 640px; background: #fff; border: 1px solid var(--line); overflow: hidden; }
+  .spread { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; min-height: 640px; background: var(--nature); border: 1px solid var(--line); overflow: hidden; }
   .spread .visual { position: relative; overflow: hidden; }
   .spread .visual img { width: 100%; height: 100%; object-fit: cover; }
   .spread .copy { padding: 56px; display: flex; flex-direction: column; justify-content: space-between; }
-  .spread .copy h3 { font-size: clamp(38px, 4vw, 60px); line-height: 1; color: var(--ink); }
-  .spread .copy .body { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 320px; }
-  .spread .copy .cta { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); border-top: 1px solid var(--line); padding-top: 20px; }
+  .spread .copy h3 { font-size: clamp(38px, 4vw, 64px); line-height: 0.98; color: var(--forest); font-family: 'Apercu'; font-weight: 700; letter-spacing: -0.04em; }
+  .spread .copy .body { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 360px; }
+  .spread .copy .cta { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); border-top: 1px solid var(--line); padding-top: 20px; }
   @media (max-width: 800px) { .spread { grid-template-columns: 1fr; } .spread .visual { min-height: 320px; } }
 
   /* POSTER */
   .poster-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
-  .poster { aspect-ratio: 2/3; background: var(--cream-2); border: 1px solid var(--line); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
-  .poster.dark { background: var(--ink); color: var(--cream); }
-  .poster.dark .mark, .poster.dark .num, .poster.dark .line { color: var(--cream); }
-  .poster.red { background: var(--falu); color: var(--cream); }
-  .poster.red .mark, .poster.red .num, .poster.red .line { color: var(--cream); }
-  .poster .mark { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: -0.01em; }
-  .poster .num { font-family: 'Cormorant Garamond', serif; font-size: clamp(80px, 14vw, 200px); line-height: 0.85; font-weight: 400; }
-  .poster .line { font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.1; }
-  .poster .foot { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  .poster { aspect-ratio: 2/3; background: var(--nature-2); border: 1px solid var(--line); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .poster.dark { background: var(--forest); color: var(--nature); border-color: transparent; }
+  .poster.dark .mark { color: var(--bright); }
+  .poster.dark .num, .poster.dark .line { color: var(--nature); }
+  .poster.bright { background: var(--bright); color: var(--forest); border-color: transparent; }
+  .poster.bright .mark, .poster.bright .num, .poster.bright .line { color: var(--forest); }
+  .poster.peach { background: var(--peach); color: var(--forest); border-color: transparent; }
+  .poster.peach .mark, .poster.peach .num, .poster.peach .line { color: var(--forest); }
+  .poster .mark { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 22px; letter-spacing: -0.04em; color: var(--bright); }
+  .poster .num { font-family: 'Proxy Mono', monospace; font-size: clamp(80px, 14vw, 200px); line-height: 0.85; font-weight: 400; color: var(--forest); }
+  .poster .line { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 28px; line-height: 1.05; letter-spacing: -0.025em; color: var(--forest); }
+  .poster .foot { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; }
   @media (max-width: 900px) { .poster-row { grid-template-columns: 1fr; } }
 
   /* IG grid */
   .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; max-width: 720px; }
-  .ig-tile { aspect-ratio: 1/1; background: var(--cream-2); border: 1px solid var(--line); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; }
+  .ig-tile { aspect-ratio: 1/1; background: var(--nature-2); border: 1px solid var(--line); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; }
   .ig-tile img { width: 100%; height: 100%; object-fit: cover; }
-  .ig-tile .copy { position: relative; z-index: 1; font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 1.6vw, 22px); line-height: 1.1; }
-  .ig-tile.dark { background: var(--ink); color: var(--cream); }
-  .ig-tile.mint { background: var(--mint); color: var(--ink); }
-  .ig-tile.falu { background: var(--falu); color: var(--cream); }
-  .ig-tile.char { background: var(--char); color: var(--cream); }
-  .ig-tile .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; }
+  .ig-tile .copy { position: relative; z-index: 1; font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(14px, 1.4vw, 20px); line-height: 1.1; letter-spacing: -0.025em; }
+  .ig-tile.dark { background: var(--forest); color: var(--nature); border-color: transparent; }
+  .ig-tile.mint { background: var(--bright); color: var(--forest); border-color: transparent; }
+  .ig-tile.falu { background: var(--peach); color: var(--forest); border-color: transparent; }
+  .ig-tile.char { background: var(--forest-2); color: var(--nature); border-color: transparent; }
+  .ig-tile.sunny { background: var(--sunny); color: var(--forest); border-color: transparent; }
+  .ig-tile .stat-num { font-family: 'Proxy Mono', monospace; font-size: 64px; line-height: 1; }
   .ig-tile.image { padding: 0; }
 
-  /* PHONE mockup (Reel + app) */
+  /* PHONE mockup */
   .phone-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start; }
-  .phone { aspect-ratio: 9/19; max-width: 280px; background: #000; border-radius: 36px; padding: 8px; box-shadow: 0 24px 60px rgba(0,0,0,.15); margin: 0 auto; }
-  .phone .screen { background: var(--cream); border-radius: 28px; height: 100%; overflow: hidden; position: relative; }
-  .phone .screen img { width: 100%; height: 100%; object-fit: cover; }
-  .phone .screen video { width: 100%; height: 100%; object-fit: cover; }
-  .phone .screen .reel-caption { position: absolute; bottom: 60px; left: 16px; right: 60px; color: #fff; font-size: 14px; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+  .phone { aspect-ratio: 9/19; max-width: 280px; background: #000; border-radius: 36px; padding: 8px; box-shadow: 0 24px 60px rgba(51,69,70,.18); margin: 0 auto; }
+  .phone .screen { background: var(--nature); border-radius: 28px; height: 100%; overflow: hidden; position: relative; }
+  .phone .screen img, .phone .screen video { width: 100%; height: 100%; object-fit: cover; }
+  .phone .screen .reel-caption { position: absolute; bottom: 60px; left: 16px; right: 60px; color: var(--nature); font-size: 14px; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
   .phone-caption { margin-top: 16px; }
-  .phone-caption h4 { color: var(--ink); font-size: 16px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0; text-transform: none; margin-bottom: 6px; }
+  .phone-caption h4 { color: var(--forest); font-size: 14px; font-family: 'Apercu', sans-serif; font-weight: 700; letter-spacing: -0.01em; text-transform: none; margin-bottom: 6px; }
   .phone-caption p { font-size: 13px; color: var(--ink-2); margin: 0; }
   @media (max-width: 800px) { .phone-row { grid-template-columns: 1fr; } }
 
   /* SALES SHEET */
-  .salesheet { background: #fff; border: 1px solid var(--line); padding: 56px; }
+  .salesheet { background: var(--nature); border: 1px solid var(--line); padding: 56px; }
   .salesheet .top { display: flex; justify-content: space-between; align-items: start; border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 32px; }
-  .salesheet h3 { font-size: 48px; }
-  .salesheet .sub { font-size: 14px; color: var(--ink-2); margin-top: 8px; }
+  .salesheet h3 { font-size: clamp(36px, 5vw, 56px); font-family: 'Apercu'; font-weight: 700; color: var(--forest); letter-spacing: -0.035em; }
+  .salesheet .sub { font-size: 14px; color: var(--ink-2); margin-top: 8px; font-family: 'Proxy Mono', monospace; letter-spacing: 0.02em; text-transform: uppercase; }
   .salesheet .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-bottom: 40px; }
-  .salesheet .stat-item .n { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--ink); line-height: 1; }
-  .salesheet .stat-item .l { font-size: 11px; letter-spacing: 0.04em; color: var(--ink-2); margin-top: 4px; }
+  .salesheet .stat-item .n { font-family: 'Proxy Mono', monospace; font-size: clamp(30px, 3vw, 38px); color: var(--forest); line-height: 1; }
+  .salesheet .stat-item .l { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); margin-top: 8px; }
   .salesheet .models { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
-  .salesheet .model-cell { padding: 24px; background: var(--cream-2); border-left: 3px solid currentColor; }
-  .salesheet .model-cell.s { color: var(--taupe); }
-  .salesheet .model-cell.m { color: var(--char); }
-  .salesheet .model-cell.l { color: var(--falu); }
-  .salesheet .model-cell .name { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--ink); }
-  .salesheet .model-cell .spec { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
-  .salesheet .model-cell .price { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); margin-top: 12px; }
+  .salesheet .model-cell { padding: 24px; background: var(--nature-2); border-left: 3px solid currentColor; }
+  .salesheet .model-cell.s { color: var(--ink-2); }
+  .salesheet .model-cell.m { color: var(--forest); }
+  .salesheet .model-cell.l { color: var(--bright); }
+  .salesheet .model-cell .name { font-family: 'Apercu'; font-weight: 700; font-size: 22px; color: var(--forest); letter-spacing: -0.02em; }
+  .salesheet .model-cell .spec { font-size: 13px; color: var(--ink-2); margin-top: 6px; line-height: 1.55; }
+  .salesheet .model-cell .price { font-family: 'Proxy Mono', monospace; font-size: 18px; color: var(--forest); margin-top: 12px; letter-spacing: 0.02em; }
   .salesheet .amenities { columns: 3; column-gap: 32px; font-size: 14px; color: var(--ink-2); }
   .salesheet .amenities ul { list-style: none; padding: 0; margin: 0; }
   .salesheet .amenities li { padding: 8px 0; break-inside: avoid; }
-  .salesheet .amenities li::before { content: '— '; color: var(--wood); }
+  .salesheet .amenities li::before { content: '— '; color: var(--bright); }
   @media (max-width: 900px) {
     .salesheet { padding: 32px; }
     .salesheet .stats-row { grid-template-columns: repeat(2, 1fr); }
@@ -171,53 +236,53 @@
   }
 
   /* LETTER */
-  .letter { background: #fff; padding: 80px; border: 1px solid var(--line); max-width: 760px; margin: 0 auto; position: relative; box-shadow: 0 24px 60px rgba(26,24,21,.06); }
-  .letter .salutation { font-family: 'Caveat', cursive; font-size: 42px; color: var(--ink); margin-bottom: 32px; }
-  .letter .body { font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.5; color: var(--ink); }
-  .letter .body p { font-size: 22px; color: var(--ink); margin-bottom: 1em; }
-  .letter .sign { font-family: 'Caveat', cursive; font-size: 36px; color: var(--ink); margin-top: 40px; }
-  .letter .role { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-top: 8px; }
+  .letter { background: var(--nature); padding: 80px; border: 1px solid var(--line); max-width: 760px; margin: 0 auto; position: relative; box-shadow: 0 24px 60px rgba(51,69,70,.06); }
+  .letter .salutation { font-family: 'Caveat', cursive; font-size: 42px; color: var(--forest); margin-bottom: 32px; }
+  .letter .body { font-family: 'Apercu', sans-serif; font-weight: 300; font-size: 19px; line-height: 1.6; color: var(--forest); }
+  .letter .body p { font-family: 'Apercu', sans-serif; font-weight: 300; font-size: 19px; color: var(--forest); margin-bottom: 1em; }
+  .letter .sign { font-family: 'Caveat', cursive; font-size: 36px; color: var(--forest); margin-top: 40px; }
+  .letter .role { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); margin-top: 8px; }
   @media (max-width: 700px) { .letter { padding: 40px 28px; } }
 
   /* MANIFEST */
-  .manifest { background: var(--ink); color: var(--cream); padding: 120px 80px; position: relative; }
-  .manifest::before { content: '"'; position: absolute; top: 40px; left: 60px; font-family: 'Cormorant Garamond', serif; font-size: 320px; color: var(--mint); opacity: 0.15; line-height: 1; }
-  .manifest-inner { max-width: 800px; position: relative; }
-  .manifest h3 { color: var(--cream); margin-bottom: 32px; font-size: 36px; }
-  .manifest p { font-family: 'Cormorant Garamond', serif; font-size: 26px; line-height: 1.5; color: var(--cream); margin-bottom: 1em; }
-  .manifest .sign { color: var(--wood-soft); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 40px; font-family: 'Inter', sans-serif; }
-  @media (max-width: 700px) { .manifest { padding: 56px 28px; } .manifest p { font-size: 20px; } }
+  .manifest { background: var(--forest); color: var(--nature); padding: 120px 80px; position: relative; overflow: hidden; border-top: 1px solid var(--bright); }
+  .manifest::before { content: '09'; position: absolute; top: 40px; right: 40px; font-family: 'Proxy Mono', monospace; font-size: clamp(120px, 18vw, 280px); color: var(--bright); opacity: 0.18; line-height: 1; pointer-events: none; }
+  .manifest-inner { max-width: 800px; position: relative; z-index: 1; }
+  .manifest h3 { color: var(--nature); margin-bottom: 32px; font-size: clamp(28px, 4vw, 48px); font-family: 'Apercu'; font-weight: 700; letter-spacing: -0.03em; }
+  .manifest p { font-family: 'Apercu', sans-serif; font-weight: 300; font-size: clamp(18px, 1.8vw, 22px); line-height: 1.55; color: var(--nature); margin-bottom: 1em; }
+  .manifest .sign { font-family: 'Proxy Mono', monospace; color: var(--bright); font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; margin-top: 40px; }
+  @media (max-width: 700px) { .manifest { padding: 56px 28px; } }
 
   /* IN-APP copy */
   .app-samples { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-  .app-sample { background: #fff; border: 1px solid var(--line); padding: 28px; }
-  .app-sample .kind { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 8px; font-weight: 600; }
-  .app-sample .title-line { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
-  .app-sample .body-line { font-size: 14px; color: var(--ink-2); margin-bottom: 12px; }
+  .app-sample { background: var(--nature); border: 1px solid var(--line); padding: 28px; }
+  .app-sample .kind { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); margin-bottom: 12px; }
+  .app-sample .title-line { font-family: 'Apercu'; font-weight: 700; font-size: 18px; color: var(--forest); margin-bottom: 6px; letter-spacing: -0.015em; }
+  .app-sample .body-line { font-size: 14px; color: var(--ink-2); margin-bottom: 12px; line-height: 1.55; }
   .app-sample .btns { display: flex; gap: 8px; margin-top: 12px; }
-  .app-sample .btn { padding: 8px 14px; background: var(--ink); color: var(--cream); font-size: 12px; font-weight: 600; }
-  .app-sample .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  .app-sample .btn { font-family: 'Proxy Mono', monospace; padding: 10px 14px; background: var(--forest); color: var(--nature); font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
+  .app-sample .btn.ghost { background: transparent; color: var(--forest); border: 1px solid var(--forest); }
   @media (max-width: 700px) { .app-samples { grid-template-columns: 1fr; } }
 
   /* PRESS */
-  .press { background: #fff; border: 1px solid var(--line); padding: 56px; max-width: 900px; margin: 0 auto; }
-  .press .pre { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); }
-  .press h3 { margin: 16px 0 24px; font-size: 36px; line-height: 1.1; }
-  .press .lead-p { font-size: 18px; color: var(--ink); margin-bottom: 24px; font-weight: 400; line-height: 1.5; }
-  .press .body-p { font-size: 15px; color: var(--ink-2); }
-  .press .body-p strong { color: var(--ink); }
-  .press .quote-block { margin: 32px 0; padding-left: 24px; border-left: 3px solid var(--wood); font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.4; color: var(--ink); font-style: italic; }
-  .press .fact-box { background: var(--cream-2); padding: 24px; margin-top: 32px; font-size: 14px; }
-  .press .fact-box .ttl { font-weight: 600; color: var(--ink); margin-bottom: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
+  .press { background: var(--nature); border: 1px solid var(--line); padding: 56px; max-width: 900px; margin: 0 auto; }
+  .press .pre { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); }
+  .press h3 { margin: 16px 0 24px; font-size: clamp(28px, 3.5vw, 40px); line-height: 1.05; font-family: 'Apercu'; font-weight: 700; color: var(--forest); letter-spacing: -0.03em; }
+  .press .lead-p { font-size: 18px; color: var(--forest); margin-bottom: 24px; font-weight: 300; line-height: 1.5; }
+  .press .body-p { font-size: 15px; color: var(--ink-2); line-height: 1.6; }
+  .press .body-p strong { color: var(--forest); font-weight: 700; }
+  .press .quote-block { margin: 32px 0; padding-left: 24px; border-left: 3px solid var(--bright); font-family: 'Apercu', sans-serif; font-weight: 300; font-size: 22px; line-height: 1.4; color: var(--forest); font-style: italic; }
+  .press .fact-box { background: var(--nature-2); padding: 24px; margin-top: 32px; font-size: 14px; color: var(--ink-2); }
+  .press .fact-box .ttl { font-family: 'Proxy Mono', monospace; font-weight: 400; color: var(--bright); margin-bottom: 12px; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; }
 
   /* SIGNAGE */
   .signage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
-  .sign-item { background: var(--char); color: var(--cream); padding: 40px 32px; aspect-ratio: 4/5; display: flex; flex-direction: column; justify-content: space-between; }
-  .sign-item.mint { background: var(--mint); color: var(--ink); }
-  .sign-item.cream { background: var(--cream); color: var(--ink); border: 1px solid var(--line); }
-  .sign-item .arrow { font-size: 60px; line-height: 1; }
-  .sign-item .label { font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1.1; }
-  .sign-item .small { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
+  .sign-item { background: var(--forest); color: var(--nature); padding: 40px 32px; aspect-ratio: 4/5; display: flex; flex-direction: column; justify-content: space-between; }
+  .sign-item.mint, .sign-item.bright { background: var(--bright); color: var(--forest); }
+  .sign-item.cream, .sign-item.nature { background: var(--nature); color: var(--forest); border: 1px solid var(--line); }
+  .sign-item .arrow { font-family: 'Apercu'; font-weight: 700; font-size: 60px; line-height: 1; }
+  .sign-item .label { font-family: 'Apercu'; font-weight: 700; font-size: 32px; line-height: 1.05; letter-spacing: -0.03em; }
+  .sign-item .small { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; opacity: 0.8; }
   @media (max-width: 800px) { .signage { grid-template-columns: 1fr; } }
 
   /* FILMS */
@@ -225,38 +290,47 @@
   .film-grid.long { grid-template-columns: repeat(2, 1fr); }
   .film-grid.short { grid-template-columns: repeat(3, 1fr); }
   @media (max-width: 900px) { .film-grid.long, .film-grid.short { grid-template-columns: 1fr; } }
-  .film-card { background: #fff; border: 1px solid var(--line); overflow: hidden; }
+  .film-card { background: var(--nature); border: 1px solid var(--line); overflow: hidden; }
   .film-card video { width: 100%; display: block; background: #000; }
   .film-card.l video { aspect-ratio: 16/9; object-fit: cover; }
   .film-card.s video { aspect-ratio: 9/16; object-fit: cover; }
   .film-card .body { padding: 20px; }
-  .film-card .body .role { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); font-weight: 600; margin-bottom: 8px; }
-  .film-card .body blockquote { margin: 8px 0; font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.3; color: var(--ink); font-style: italic; }
-  .film-card .body .meta { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
+  .film-card .body .role { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bright); margin-bottom: 8px; }
+  .film-card .body blockquote { margin: 8px 0; font-family: 'Apercu'; font-weight: 300; font-style: italic; font-size: 17px; line-height: 1.3; color: var(--forest); }
+  .film-card .body .meta { font-size: 12px; color: var(--ink-2); margin-top: 6px; line-height: 1.55; }
 
-  footer { padding: 60px 0; text-align: center; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); }
-  footer .brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; }
+  footer { padding: 60px 0; text-align: center; color: var(--ink-2); border-top: 1px solid var(--bright); background: var(--nature); }
+  footer .brand { font-family: 'Apercu'; font-weight: 700; font-size: 36px; color: var(--bright); margin-bottom: 8px; letter-spacing: -0.05em; line-height: 1; }
+  footer > .container > div:not(.brand) { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; }
 </style>
 </head>
 <body>
 
 <header class="site">
-  <div class="container row">
-    <div class="brand"><a href="#top">Northville</a></div>
-    <nav>
-      <a href="#voice">Röster</a>
-      <a href="#tags">Taglines</a>
-      <a href="#ad">Annons</a>
-      <a href="#poster">Affisch</a>
-      <a href="#ig">Social</a>
-      <a href="#sales">Sales sheet</a>
-      <a href="#letter">Brev</a>
-      <a href="#manifest">Manifest</a>
-      <a href="#app">App-copy</a>
-      <a href="#press">Press</a>
-      <a href="#films">Filmer</a>
-    </nav>
-    <a href="library.html" class="lib">Asset library →</a>
+  <div class="strip-top">
+    <div class="container row">
+      <span class="docref">Northville Brand Universe · 2026</span>
+      <span class="docref">14 uttag · 1 idé</span>
+    </div>
+  </div>
+  <div class="strip-main">
+    <div class="container row">
+      <div class="brand"><a href="#top">Northville</a></div>
+      <nav>
+        <a href="#voice">Röster</a>
+        <a href="#tags">Taglines</a>
+        <a href="#ad">Annons</a>
+        <a href="#poster">Affisch</a>
+        <a href="#ig">Social</a>
+        <a href="#sales">Sales sheet</a>
+        <a href="#letter">Brev</a>
+        <a href="#manifest">Manifest</a>
+        <a href="#app">App-copy</a>
+        <a href="#press">Press</a>
+        <a href="#films">Filmer</a>
+      </nav>
+      <a href="library.html" class="lib">Asset library →</a>
+    </div>
   </div>
 </header>
 
@@ -267,12 +341,19 @@
       <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_061857_1e773ba6-0b9b-4ccd-baf5-72ae064e7b6f.mp4" type="video/mp4" />
       <img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="Northville Village Center golden hour" />
     </video>
+    <div class="grain" aria-hidden="true"></div>
   </div>
   <div class="container hero-inner">
-    <div class="eyebrow" style="color: rgba(255,255,255,.85);">Brand Universe · 11 uttag av samma idé</div>
-    <h1>Nu återupp-<br/>täcker vi<br/>bykänslan.</h1>
-    <p class="sub">Northville är inte en kampanj. Det är ett brand-universum med tagline-bibliotek, tre tonröster och elva olika format — annons, affisch, sociala posts, sales sheet, brev från arkitekten, manifest, press, app-copy, skyltning och rörligt. Samma idé i olika kläder.</p>
-    <div class="meta">Mellan Västerås och Tillberga · 100 hus · 1 Village Center · 1 app</div>
+    <div class="hero-foot">
+      <div class="left">
+        <span class="docref">00 · Brand Universe</span>
+        <div class="place">Mellan Västerås &amp; Tillberga.<br/>100 hus runt en cirkulär Village Center.</div>
+      </div>
+      <div class="right">
+        <div class="small">Inflytt</div>
+        <div class="big">2026</div>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -289,7 +370,7 @@
 </section>
 
 <!-- VOICE / TONES -->
-<section class="uttag-section" id="voice" style="background: var(--cream-2);">
+<section class="uttag-section" id="voice" style="background: var(--nature-2);">
   <div class="container">
     <div class="head">
       <div class="label">
@@ -346,7 +427,7 @@
 </section>
 
 <!-- PRINT AD SPREAD -->
-<section class="uttag-section" id="ad" style="background: var(--cream-2);">
+<section class="uttag-section dark" id="ad">
   <div class="container">
     <div class="head">
       <div class="label">
@@ -389,7 +470,7 @@
         <div><div class="num">100</div><div class="line" style="margin-top: 12px;">hus.<br/>En by.</div></div>
         <div class="foot">Anmäl intresse · northville.se</div>
       </div>
-      <div class="poster red">
+      <div class="poster peach">
         <div class="mark">Northville</div>
         <div><div class="line" style="font-size: 38px; line-height: 1; max-width: 100%;">Du är inte hus #4327.</div><div class="line" style="margin-top: 16px;">Du är granne #17.</div></div>
         <div class="foot">100 platser · 1 kö · 1 app</div>
@@ -404,7 +485,7 @@
 </section>
 
 <!-- IG GRID -->
-<section class="uttag-section" id="ig" style="background: var(--cream-2);">
+<section class="uttag-section" id="ig" style="background: var(--nature-2);">
   <div class="container">
     <div class="head">
       <div class="label">
@@ -463,7 +544,7 @@
 </section>
 
 <!-- SALES SHEET -->
-<section class="uttag-section" id="sales" style="background: var(--cream-2);">
+<section class="uttag-section" id="sales" style="background: var(--nature-2);">
   <div class="container">
     <div class="head">
       <div class="label">
@@ -481,7 +562,7 @@
           <div class="sub">Mellan Västerås &amp; Tillberga · 800 m till Tillberga station · 8 km till V-rås C</div>
         </div>
         <div style="text-align: right;">
-          <div style="font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--ink); line-height: 1;">2026</div>
+          <div style="font-family: 'Apercu', sans-serif; font-size: 56px; color: var(--ink); line-height: 1;">2026</div>
           <div style="font-size: 11px; letter-spacing: 0.18em; color: var(--ink-2);">Första inflytt juni</div>
         </div>
       </div>
@@ -515,7 +596,7 @@
         </div>
       </div>
 
-      <h4 style="color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 24px; text-transform: none; letter-spacing: 0; margin-bottom: 16px;">Allt detta ingår i Village Center</h4>
+      <h4 style="color: var(--ink); font-family: 'Apercu', sans-serif; font-size: 24px; text-transform: none; letter-spacing: 0; margin-bottom: 16px;">Allt detta ingår i Village Center</h4>
       <div class="amenities">
         <ul>
           <li>Pool &amp; bastu</li>
@@ -565,7 +646,7 @@
 <section class="uttag-section" id="manifest" style="padding: 0;">
   <div class="manifest">
     <div class="container manifest-inner">
-      <span class="uttag" style="color: var(--wood-soft); border-color: var(--wood-soft);">/uttag 09 · Manifest</span>
+      <span class="uttag" style="color: var(--bright); border-color: var(--bright);">/uttag 09 · Manifest</span>
       <h3 style="margin-top: 24px;">Vi värdesätter varandra mer än kvadratmetrarna.</h3>
       <p>Sju av tio svenskar vill ha bättre relationer i sitt grannskap. 28 procent tycker det är svårt att få vänner som vuxna. Varannan har ingen riktig relation med sina grannar.</p>
       <p>Det är inte ett bostadsproblem. Det är ett vardags-problem. Och bostäderna vi har byggt de senaste femtio åren har gjort det värre, inte bättre.</p>
@@ -615,7 +696,7 @@
 </section>
 
 <!-- PRESS -->
-<section class="uttag-section" id="press" style="background: var(--cream-2);">
+<section class="uttag-section" id="press" style="background: var(--nature-2);">
   <div class="container">
     <div class="head">
       <div class="label">
@@ -630,7 +711,7 @@
       <h3>Sveriges första app-styrda by öppnar mellan Västerås och Tillberga 2026</h3>
       <p class="lead-p">Future Village, tillsammans med arkitektkontoret Archus, lanserar Northville — 100 små smarta trähus byggda runt ett 3 000 m² stort cirkulärt Village Center med gym, pool, förskola, restaurang och hotell. Allt boende-relaterat — från bokning av gäst-hotellrum till snöskottning — sker via en gemensam app.</p>
       <p class="body-p">Området är planerat i fyra sektioner längs fyra gator (Nord, Syd, Öst, Väst) på fastigheten Hubbo-Jädra 3:6, 800 meter från Tillberga station. Husen erbjuds i tre storlekar (80, 101 och 112 m²) i tre traditionella slamfärger till priser från 4,85 miljoner kronor. <strong>Försäljning startar januari 2027 med första inflytt juni samma år.</strong></p>
-      <div class="quote-block">"Vi bygger inte 100 hus. Vi bygger en by med 100 grannar. Det är medvetet att vi stannar vid hundra — för det är storleken där man fortfarande kan kunna sina grannars namn."<br/><span style="font-style: normal; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood);">— Johnnie Pettersson, arkitekt, Archus</span></div>
+      <div class="quote-block">"Vi bygger inte 100 hus. Vi bygger en by med 100 grannar. Det är medvetet att vi stannar vid hundra — för det är storleken där man fortfarande kan kunna sina grannars namn."<br/><span style="font-style: normal; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bright);">— Johnnie Pettersson, arkitekt, Archus</span></div>
       <p class="body-p">Northville har en planerad solpark på 4 000 m² som målet är ska producera 450 MWh per år — omkring 50 procent av områdets totala elbehov. Alla hus förbereds med laddstation och smart-hem-system. Restaurang, hotell och förskola drivs av externa verksamheter som betalar hyra, vilket finansierar driften av Village Center utan månadsavgift för de boende utöver bokade tjänster.</p>
       <div class="fact-box">
         <div class="ttl">Bakom Northville</div>
@@ -641,7 +722,7 @@
 </section>
 
 <!-- SIGNAGE -->
-<section class="uttag-section" id="signage">
+<section class="uttag-section dark" id="signage">
   <div class="container">
     <div class="head">
       <div class="label">
@@ -665,14 +746,14 @@
       <div class="sign-item cream">
         <div class="small">Förskolan</div>
         <div class="label">Lilla<br/>byn</div>
-        <div class="arrow" style="color: var(--falu);">→</div>
+        <div class="arrow" style="color: var(--bright);">→</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FILMS -->
-<section class="uttag-section" id="films" style="background: var(--cream-2);">
+<section class="uttag-section" id="films" style="background: var(--nature-2);">
   <div class="container">
     <div class="head">
       <div class="label">
@@ -682,7 +763,7 @@
       <div class="note">Cinematic hero film + UGC long-form. Reels på 9:16 ovan. Allt audio-on.</div>
     </div>
 
-    <h3 style="font-size: 22px; font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--wood); margin-bottom: 16px;">Hero films · 16:9 · 15 s</h3>
+    <h3 style="font-size: 22px; font-family: 'Proxy Mono', monospace; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--bright); margin-bottom: 16px;">Hero films · 16:9 · 15 s</h3>
     <div class="film-grid long">
       <div class="film-card l">
         <video src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_061857_1e773ba6-0b9b-4ccd-baf5-72ae064e7b6f.mp4" controls preload="metadata" poster="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png"></video>
@@ -705,13 +786,13 @@
 </section>
 
 <!-- CTA / WAITLIST -->
-<section class="uttag-section" id="cta" style="background: var(--ink); color: var(--cream);">
+<section class="uttag-section" id="cta" style="background: var(--ink); color: var(--nature);">
   <div class="container" style="text-align: center;">
-    <span class="uttag" style="color: var(--wood-soft); border-color: var(--wood-soft);">/uttag 14 · CTA</span>
-    <h2 style="color: var(--cream); margin: 24px auto 0; max-width: 900px;">Det blir ingen Northville 2.<br/>Var en av de första hundra.</h2>
+    <span class="uttag" style="color: var(--bright); border-color: var(--bright);">/uttag 14 · CTA</span>
+    <h2 style="color: var(--nature); margin: 24px auto 0; max-width: 900px;">Det blir ingen Northville 2.<br/>Var en av de första hundra.</h2>
     <p style="color: rgba(246,241,232,.8); max-width: 600px; margin: 32px auto 0; font-size: 20px; font-weight: 300;">100 hus. 1 Village Center. 1 app. 1 enda kö. Anmäl intresse nu så hör vi av oss till de första hundra.</p>
-    <a href="#" style="display: inline-block; margin-top: 40px; padding: 18px 32px; background: var(--cream); color: var(--ink); border: 0; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;">Anmäl mig som granne</a>
-    <div style="margin-top: 40px;"><a href="library.html" style="color: var(--wood-soft); border-color: var(--wood-soft); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;">Eller bläddra i asset library →</a></div>
+    <a href="#" style="display: inline-block; margin-top: 40px; padding: 18px 32px; background: var(--nature); color: var(--ink); border: 0; font-family: 'Proxy Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;">Anmäl mig som granne</a>
+    <div style="margin-top: 40px;"><a href="library.html" style="color: var(--bright); border-color: var(--bright); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;">Eller bläddra i asset library →</a></div>
   </div>
 </section>
 
