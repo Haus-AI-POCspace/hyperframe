@@ -40,28 +40,54 @@
     --bright-soft: #C8FFE3;
     --sunny: #F5E78B;        /* yellow accent */
     --peach: #F8C5A5;        /* peach accent */
-    --ink: #334546;          /* alias for forest */
-    --ink-2: #5F7475;        /* forest-tinted muted text */
-    --line: rgba(51, 69, 70, 0.18);
+    --ink: #0E1717;          /* nästan-svart för body på beige (huvud-stilen) */
+    --ink-2: #5F6E6F;        /* muted body text */
+    --line: rgba(14, 23, 23, 0.16);
     --line-bright: #06FF83;
-    --maxw: 1400px;
+    --maxw: 1280px;
+    --gutter: clamp(20px, 4vw, 48px);
   }
 
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--nature); color: var(--forest); }
-  body { font-family: 'Apercu', system-ui, -apple-system, sans-serif; font-weight: 300; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; background: var(--nature); color: var(--ink); }
+  body { font-family: 'Apercu', system-ui, -apple-system, sans-serif; font-weight: 300; line-height: 1.6; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
   img, video { max-width: 100%; display: block; height: auto; }
-  a { color: var(--forest); text-decoration: none; border-bottom: 1px solid var(--bright); }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--bright); transition: color .25s ease; }
   a:hover { color: var(--bright); }
 
-  h1, h2, h3 { font-family: 'Apercu', sans-serif; font-weight: 700; line-height: 1.0; letter-spacing: -0.035em; color: var(--forest); margin: 0; }
-  h1 { font-size: clamp(56px, 11vw, 180px); letter-spacing: -0.05em; }
-  h2 { font-size: clamp(36px, 6vw, 72px); }
-  h3 { font-size: clamp(24px, 3vw, 36px); letter-spacing: -0.025em; }
-  h4 { font-size: 14px; font-family: 'Proxy Mono', monospace; font-weight: 400; letter-spacing: 0.02em; text-transform: uppercase; color: var(--forest); margin: 0; }
-  p { margin: 0 0 1em; color: var(--ink-2); font-size: 17px; font-weight: 300; }
-  .lead { font-size: 22px; color: var(--forest); font-weight: 300; line-height: 1.45; }
-  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  /* Headlines i Proxy Mono — brandbook chapter-titel-känsla */
+  h1, h2 {
+    font-family: 'Proxy Mono', monospace;
+    font-weight: 400;
+    line-height: 0.95;
+    letter-spacing: 0;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0;
+  }
+  h1 { font-size: clamp(56px, 11vw, 160px); }
+  h2 { font-size: clamp(32px, 5.5vw, 64px); }
+  /* Sub-rubriker (i kort/spread) i Apercu Bold för läsbarhet */
+  h3 { font-family: 'Apercu', sans-serif; font-weight: 700; line-height: 1.05; letter-spacing: -0.025em; color: var(--ink); margin: 0; font-size: clamp(22px, 2.8vw, 32px); }
+  h4 { font-size: 13px; font-family: 'Proxy Mono', monospace; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink); margin: 0; }
+  p { margin: 0 0 1em; color: var(--ink); font-size: 16px; font-weight: 300; line-height: 1.65; }
+  .lead { font-size: clamp(18px, 1.6vw, 22px); color: var(--ink); font-weight: 300; line-height: 1.5; max-width: 760px; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+
+  /* === SCROLL PROGRESS BAR (mint linje längst upp) === */
+  .scrollbar { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--bright); z-index: 200; transition: width .1s linear; pointer-events: none; }
+
+  /* === SCROLL REVEAL === */
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity .9s cubic-bezier(.22,.85,.36,1), transform .9s cubic-bezier(.22,.85,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  .reveal.delay-1 { transition-delay: .08s; }
+  .reveal.delay-2 { transition-delay: .16s; }
+  .reveal.delay-3 { transition-delay: .24s; }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+    html { scroll-behavior: auto; }
+  }
 
   .eyebrow { font-family: 'Proxy Mono', monospace; font-size: 12px; font-weight: 400; letter-spacing: 0.04em; text-transform: uppercase; color: var(--bright); margin-bottom: 24px; }
   .uttag { font-family: 'Proxy Mono', monospace; font-size: 11px; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); padding: 0; border: 0; display: inline-block; }
@@ -112,20 +138,23 @@
   .hero .hero-foot .right .big { font-family: 'Proxy Mono', monospace; font-size: clamp(28px, 5vw, 56px); color: var(--nature); line-height: 1; }
 
   /* === SECTION base === */
-  section.uttag-section { padding: 120px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; position: relative; overflow: hidden; }
+  section.uttag-section { padding: clamp(80px, 11vw, 160px) 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; position: relative; overflow: hidden; }
   section.uttag-section.dark { background: var(--forest); color: var(--nature); border-top-color: var(--bright); }
-  section.uttag-section.dark h2, section.uttag-section.dark h3, section.uttag-section.dark .lead { color: var(--nature); }
-  section.uttag-section.dark p { color: rgba(238, 229, 206, 0.75); }
-  section.uttag-section.dark .note { color: rgba(238, 229, 206, 0.65); }
+  section.uttag-section.dark h1, section.uttag-section.dark h2 { color: var(--bright); }
+  section.uttag-section.dark h3, section.uttag-section.dark h4 { color: var(--nature); }
+  section.uttag-section.dark .lead { color: var(--nature); }
+  section.uttag-section.dark p { color: rgba(238, 229, 206, 0.78); }
+  section.uttag-section.dark .note { color: rgba(6, 255, 131, 0.78); }
   section.uttag-section.dark .uttag, section.uttag-section.dark .eyebrow { color: var(--bright); }
+  section.uttag-section.dark a { color: var(--bright); border-bottom-color: var(--bright); }
   /* brandbook-style giant section number top-right */
-  section.uttag-section .sectionnumber { position: absolute; top: 60px; right: 32px; font-family: 'Proxy Mono', monospace; font-size: clamp(70px, 11vw, 160px); color: var(--bright); opacity: 0.18; line-height: 0.85; pointer-events: none; user-select: none; }
-  section.uttag-section.dark .sectionnumber { color: var(--nature); opacity: 0.14; }
+  section.uttag-section .sectionnumber { position: absolute; top: 48px; right: var(--gutter); font-family: 'Proxy Mono', monospace; font-size: clamp(64px, 10vw, 140px); color: var(--ink); opacity: 0.06; line-height: 0.85; pointer-events: none; user-select: none; font-weight: 400; }
+  section.uttag-section.dark .sectionnumber { color: var(--bright); opacity: 0.18; }
 
-  section.uttag-section .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 56px; gap: 32px; flex-wrap: wrap; }
-  section.uttag-section .head .label { max-width: 700px; position: relative; z-index: 1; }
-  section.uttag-section .head h2 { margin-top: 16px; }
-  section.uttag-section .head .note { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-2); max-width: 340px; text-align: right; line-height: 1.5; text-transform: none; position: relative; z-index: 1; }
+  section.uttag-section .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: clamp(40px, 6vw, 72px); gap: 32px; flex-wrap: wrap; }
+  section.uttag-section .head .label { max-width: 720px; position: relative; z-index: 1; }
+  section.uttag-section .head h2 { margin-top: 20px; }
+  section.uttag-section .head .note { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-2); max-width: 320px; text-align: right; line-height: 1.5; text-transform: none; position: relative; z-index: 1; }
 
   /* GRID */
   .grid { display: grid; gap: 32px; }
@@ -306,6 +335,7 @@
 </head>
 <body>
 
+<div class="scrollbar" aria-hidden="true"></div>
 <header class="site">
   <div class="strip-top">
     <div class="container row">
@@ -338,7 +368,7 @@
 <section class="hero" id="top">
   <div class="hero-bg">
     <video autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png">
-      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_061857_1e773ba6-0b9b-4ccd-baf5-72ae064e7b6f.mp4" type="video/mp4" />
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_093620_df84636a-572a-4674-b927-966467585ef3.mp4" type="video/mp4" />
       <img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="Northville Village Center golden hour" />
     </video>
     <div class="grain" aria-hidden="true"></div>
@@ -371,6 +401,7 @@
 
 <!-- VOICE / TONES -->
 <section class="uttag-section" id="voice" style="background: var(--nature-2);">
+  <div class="sectionnumber" aria-hidden="true">01</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -402,6 +433,7 @@
 
 <!-- TAGLINES -->
 <section class="uttag-section" id="tags">
+  <div class="sectionnumber" aria-hidden="true">02</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -428,6 +460,7 @@
 
 <!-- PRINT AD SPREAD -->
 <section class="uttag-section dark" id="ad">
+  <div class="sectionnumber" aria-hidden="true">03</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -455,6 +488,7 @@
 
 <!-- POSTER -->
 <section class="uttag-section" id="poster">
+  <div class="sectionnumber" aria-hidden="true">04</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -486,6 +520,7 @@
 
 <!-- IG GRID -->
 <section class="uttag-section" id="ig" style="background: var(--nature-2);">
+  <div class="sectionnumber" aria-hidden="true">05</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -511,6 +546,7 @@
 
 <!-- PHONE / REEL -->
 <section class="uttag-section" id="reel">
+  <div class="sectionnumber" aria-hidden="true">06</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -545,6 +581,7 @@
 
 <!-- SALES SHEET -->
 <section class="uttag-section" id="sales" style="background: var(--nature-2);">
+  <div class="sectionnumber" aria-hidden="true">07</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -619,6 +656,7 @@
 
 <!-- LETTER -->
 <section class="uttag-section" id="letter">
+  <div class="sectionnumber" aria-hidden="true">08</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -659,6 +697,7 @@
 
 <!-- APP COPY -->
 <section class="uttag-section" id="app">
+  <div class="sectionnumber" aria-hidden="true">10</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -697,6 +736,7 @@
 
 <!-- PRESS -->
 <section class="uttag-section" id="press" style="background: var(--nature-2);">
+  <div class="sectionnumber" aria-hidden="true">11</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -723,6 +763,7 @@
 
 <!-- SIGNAGE -->
 <section class="uttag-section dark" id="signage">
+  <div class="sectionnumber" aria-hidden="true">12</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -754,6 +795,7 @@
 
 <!-- FILMS -->
 <section class="uttag-section" id="films" style="background: var(--nature-2);">
+  <div class="sectionnumber" aria-hidden="true">13</div>
   <div class="container">
     <div class="head">
       <div class="label">
@@ -784,11 +826,12 @@
 </section>
 
 <!-- CTA / WAITLIST -->
-<section class="uttag-section" id="cta" style="background: var(--ink); color: var(--nature);">
+<section class="uttag-section dark" id="cta">
+  <div class="sectionnumber" aria-hidden="true">14</div>
   <div class="container" style="text-align: center;">
     <span class="uttag" style="color: var(--bright); border-color: var(--bright);">/uttag 14 · CTA</span>
-    <h2 style="color: var(--nature); margin: 24px auto 0; max-width: 900px;">Det blir ingen Northville 2.<br/>Var en av de första hundra.</h2>
-    <p style="color: rgba(246,241,232,.8); max-width: 600px; margin: 32px auto 0; font-size: 20px; font-weight: 300;">100 hus. 1 Village Center. 1 app. 1 enda kö. Anmäl intresse nu så hör vi av oss till de första hundra.</p>
+    <h2 style="margin: 24px auto 0; max-width: 900px;">Det blir ingen Northville 2.<br/>Var en av de första hundra.</h2>
+    <p style="max-width: 600px; margin: 32px auto 0; font-size: 20px; font-weight: 300;">100 hus. 1 Village Center. 1 app. 1 enda kö. Anmäl intresse nu så hör vi av oss till de första hundra.</p>
     <a href="#" style="display: inline-block; margin-top: 40px; padding: 18px 32px; background: var(--nature); color: var(--ink); border: 0; font-family: 'Proxy Mono', monospace; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;">Anmäl mig som granne</a>
     <div style="margin-top: 40px;"><a href="library.html" style="color: var(--bright); border-color: var(--bright); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;">Eller bläddra i asset library →</a></div>
   </div>
@@ -801,6 +844,62 @@
     <div style="margin-top: 8px; font-size: 11px;">Future Village · Archus · Projcon · Haus · 2026</div>
   </div>
 </footer>
+
+<script>
+  // Scroll progress bar (top, mint)
+  (function () {
+    const bar = document.querySelector('.scrollbar');
+    if (!bar) return;
+    let raf = null;
+    function update() {
+      const sc = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? Math.min(1, sc / h) : 0;
+      bar.style.width = (pct * 100).toFixed(2) + '%';
+      raf = null;
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Scroll reveal — fade + lift on enter viewport
+  (function () {
+    const targets = [];
+    document.querySelectorAll('section.uttag-section, section.uttag-section .head, section.uttag-section .tone, section.uttag-section .tagline, section.uttag-section .poster, section.uttag-section .ig-tile, section.uttag-section .phone, section.uttag-section .app-sample, section.uttag-section .sign-item, section.uttag-section .film-card, section.uttag-section .spread, section.uttag-section .salesheet, section.uttag-section .letter, section.uttag-section .press, .manifest').forEach(function (el) {
+      el.classList.add('reveal');
+      targets.push(el);
+    });
+    if (!('IntersectionObserver' in window)) {
+      targets.forEach(function (el) { el.classList.add('in'); });
+      return;
+    }
+    const io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('in');
+          io.unobserve(e.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    targets.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Subtle parallax on hero video (slows scroll, keeps text-free)
+  (function () {
+    const hero = document.querySelector('.hero-bg');
+    if (!hero || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    let raf = null;
+    function update() {
+      const y = window.scrollY;
+      const max = window.innerHeight;
+      if (y > max) { raf = null; return; }
+      hero.style.transform = 'translate3d(0,' + (y * 0.18).toFixed(1) + 'px,0)';
+      raf = null;
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+  })();
+</script>
 
 </body>
 </html>
