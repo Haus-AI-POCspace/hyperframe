@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Northville — Nu återupptäcker vi bykänslan</title>
+<title>Northville — Brand Universe</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&family=Caveat:wght@500&display=swap" rel="stylesheet" />
 <style>
   :root {
     --cream: #f6f1e8;
@@ -14,147 +14,225 @@
     --ink: #1a1815;
     --ink-2: #4a4640;
     --falu: #7a2a1f;
-    --ochre: #c08a3b;
     --char: #25221e;
     --taupe: #8a7864;
     --wood: #8b6914;
     --wood-soft: #d9c7a3;
     --line: #d9d2c1;
-    --shadow: 0 12px 40px rgba(26, 24, 21, .08);
-    --maxw: 1280px;
+    --mint: #00ff85;
+    --maxw: 1400px;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
   body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased; }
   img, video { max-width: 100%; display: block; height: auto; }
   a { color: var(--wood); text-decoration: none; border-bottom: 1px solid currentColor; }
-  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
-  h1 { font-size: clamp(48px, 9vw, 120px); font-weight: 400; letter-spacing: -0.02em; }
-  h2 { font-size: clamp(32px, 5vw, 56px); }
-  h3 { font-size: clamp(22px, 2.6vw, 30px); }
-  h4 { font-size: 18px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood); }
+  h1, h2, h3, h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.05; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
+  h1 { font-size: clamp(56px, 11vw, 160px); font-weight: 400; letter-spacing: -0.03em; }
+  h2 { font-size: clamp(36px, 6vw, 64px); }
+  h3 { font-size: clamp(24px, 3vw, 36px); }
+  h4 { font-size: 16px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood); }
   p { margin: 0 0 1em; color: var(--ink-2); font-size: 17px; }
-  .lead { font-size: 21px; color: var(--ink); font-weight: 300; }
+  .lead { font-size: 22px; color: var(--ink); font-weight: 300; line-height: 1.4; }
   .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
-  .section { padding: 120px 0; border-top: 1px solid var(--line); }
-  .section:first-child { border-top: 0; }
   .eyebrow { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 24px; }
-  .en { display: block; font-family: 'Inter', sans-serif; font-style: italic; font-size: 0.7em; font-weight: 300; color: var(--ink-2); margin-top: 8px; letter-spacing: 0; line-height: 1.35; }
+  .uttag { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); padding: 6px 12px; border: 1px solid var(--wood); display: inline-block; }
+
+  /* HEADER */
+  header.site { padding: 24px 0; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: rgba(246,241,232,.95); backdrop-filter: blur(12px); z-index: 50; }
+  header.site .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+  header.site .brand { font-family: 'Cormorant Garamond', serif; font-size: 26px; }
+  header.site .brand a { color: var(--ink); border: none; }
+  header.site nav { display: flex; gap: 24px; flex-wrap: wrap; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; }
+  header.site nav a { color: var(--ink-2); border: none; }
+  header.site nav a:hover { color: var(--wood); }
+  header.site .lib { font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; padding: 10px 16px; background: var(--ink); color: var(--cream); border: none; }
 
   /* HERO */
-  .hero { position: relative; min-height: 92vh; overflow: hidden; display: flex; align-items: center; padding: 80px 0; border-top: 0; }
+  .hero { position: relative; min-height: 100vh; overflow: hidden; display: flex; align-items: flex-end; padding: 80px 0 120px; }
   .hero-bg { position: absolute; inset: 0; z-index: 0; }
   .hero-bg img { width: 100%; height: 100%; object-fit: cover; }
-  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,24,21,.45) 0%, rgba(26,24,21,.25) 50%, rgba(246,241,232,.95) 100%); }
-  .hero-inner { position: relative; z-index: 1; color: #fff; max-width: 920px; }
+  .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(26,24,21,.55) 0%, rgba(26,24,21,.2) 40%, rgba(246,241,232,.05) 100%); }
+  .hero-inner { position: relative; z-index: 1; color: #fff; }
   .hero h1 { color: #fff; }
-  .hero h1 .en { color: rgba(255,255,255,.75); }
-  .hero .lead { color: rgba(255,255,255,.92); max-width: 640px; margin-top: 24px; }
-  .hero .meta { color: rgba(255,255,255,.75); margin-top: 16px; font-size: 14px; letter-spacing: 0.04em; }
-  .cta { display: inline-block; margin-top: 40px; padding: 18px 32px; background: var(--ink); color: var(--cream); border: 0; border-radius: 0; font-family: 'Inter', sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; }
+  .hero .sub { color: rgba(255,255,255,.9); font-size: 22px; max-width: 640px; margin-top: 32px; font-weight: 300; }
+  .hero .meta { color: rgba(255,255,255,.75); margin-top: 24px; font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; }
 
-  /* GRID UTILS */
+  /* SECTION base */
+  section.uttag-section { padding: 120px 0; border-top: 1px solid var(--line); scroll-margin-top: 80px; }
+  section.uttag-section .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: 56px; gap: 32px; flex-wrap: wrap; }
+  section.uttag-section .head .label { max-width: 600px; }
+  section.uttag-section .head h2 { margin-top: 12px; }
+  section.uttag-section .head .note { font-size: 13px; color: var(--ink-2); max-width: 320px; text-align: right; }
+
+  /* GRID */
   .grid { display: grid; gap: 32px; }
-  .grid-2 { grid-template-columns: repeat(2, 1fr); }
-  .grid-3 { grid-template-columns: repeat(3, 1fr); }
-  .grid-4 { grid-template-columns: repeat(4, 1fr); }
+  .g2 { grid-template-columns: repeat(2, 1fr); }
+  .g3 { grid-template-columns: repeat(3, 1fr); }
+  .g4 { grid-template-columns: repeat(4, 1fr); }
   @media (max-width: 900px) {
-    .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
+    .g2, .g3, .g4 { grid-template-columns: 1fr; }
   }
 
-  .card { background: #fff; padding: 32px; border: 1px solid var(--line); box-shadow: var(--shadow); }
-  .card.dark { background: var(--ink); color: var(--cream); }
-  .card.dark h3, .card.dark h4, .card.dark p { color: inherit; }
+  /* TONES */
+  .tone { padding: 40px; background: #fff; border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+  .tone.dark { background: var(--ink); color: var(--cream); }
+  .tone.dark .lbl { color: var(--wood-soft); }
+  .tone .lbl { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); font-weight: 600; }
+  .tone .quote { font-family: 'Cormorant Garamond', serif; font-size: 26px; line-height: 1.3; color: inherit; }
+  .tone.dark .quote { color: var(--cream); }
+  .tone .when { font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); padding-top: 16px; margin-top: auto; }
+  .tone.dark .when { color: rgba(246,241,232,.7); border-top-color: rgba(217,210,193,.2); }
 
-  /* Figure */
-  .figure { background: var(--cream-2); border: 1px solid var(--line); overflow: hidden; }
-  .figure img { width: 100%; aspect-ratio: 16/9; object-fit: cover; }
-  .figure.tall img { aspect-ratio: 9/16; }
-  .figure figcaption { padding: 16px 20px; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 16px; }
-  .figure figcaption .role { color: var(--wood); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
+  /* TAGLINES */
+  .taglines { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0; }
+  .tagline { padding: 32px 24px; border: 1px solid var(--line); border-top: 0; border-left: 0; background: #fff; display: flex; align-items: center; min-height: 140px; }
+  .tagline:nth-child(odd) { border-left: 1px solid var(--line); }
+  .tagline:nth-child(-n+2) { border-top: 1px solid var(--line); }
+  .tagline blockquote { margin: 0; font-family: 'Cormorant Garamond', serif; font-size: clamp(22px, 2.4vw, 32px); line-height: 1.15; color: var(--ink); }
+  .tagline .nr { font-family: 'Inter', sans-serif; font-size: 10px; letter-spacing: 0.18em; color: var(--wood); margin-bottom: 10px; display: block; }
+  @media (max-width: 700px) {
+    .taglines { grid-template-columns: 1fr; }
+    .tagline { border-left: 1px solid var(--line) !important; }
+  }
 
-  /* Films */
-  .film { background: #000; overflow: hidden; }
-  .film video { width: 100%; display: block; background: #000; }
-  .film.long video { aspect-ratio: 16/9; object-fit: cover; }
-  .film.short video { aspect-ratio: 9/16; object-fit: cover; }
-  .film-caption { background: #fff; padding: 24px; border: 1px solid var(--line); border-top: 0; }
-  .film-caption .role { color: var(--wood); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; margin-bottom: 8px; }
-  .film-caption blockquote { margin: 8px 0; font-family: 'Cormorant Garamond', serif; font-size: 20px; line-height: 1.35; color: var(--ink); font-style: italic; }
-  .film-caption .meta { color: var(--ink-2); font-size: 13px; }
+  /* PRINT AD spread */
+  .spread { display: grid; grid-template-columns: 1.4fr 1fr; gap: 0; min-height: 640px; background: #fff; border: 1px solid var(--line); overflow: hidden; }
+  .spread .visual { position: relative; overflow: hidden; }
+  .spread .visual img { width: 100%; height: 100%; object-fit: cover; }
+  .spread .copy { padding: 56px; display: flex; flex-direction: column; justify-content: space-between; }
+  .spread .copy h3 { font-size: clamp(38px, 4vw, 60px); line-height: 1; color: var(--ink); }
+  .spread .copy .body { font-size: 16px; line-height: 1.6; color: var(--ink-2); max-width: 320px; }
+  .spread .copy .cta { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); border-top: 1px solid var(--line); padding-top: 20px; }
+  @media (max-width: 800px) { .spread { grid-template-columns: 1fr; } .spread .visual { min-height: 320px; } }
 
-  /* Stats */
-  .stats { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0; margin-top: 40px; }
-  .stats .stat { padding: 32px 0; border-top: 1px solid var(--line); }
-  .stats .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 52px; line-height: 1; color: var(--ink); }
-  .stats .stat .label { margin-top: 8px; font-size: 12px; color: var(--ink-2); letter-spacing: 0.02em; }
-  @media (max-width: 900px) { .stats { grid-template-columns: repeat(2, 1fr); } }
+  /* POSTER */
+  .poster-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .poster { aspect-ratio: 2/3; background: var(--cream-2); border: 1px solid var(--line); padding: 40px; display: flex; flex-direction: column; justify-content: space-between; position: relative; overflow: hidden; }
+  .poster.dark { background: var(--ink); color: var(--cream); }
+  .poster.dark .mark, .poster.dark .num, .poster.dark .line { color: var(--cream); }
+  .poster.red { background: var(--falu); color: var(--cream); }
+  .poster.red .mark, .poster.red .num, .poster.red .line { color: var(--cream); }
+  .poster .mark { font-family: 'Cormorant Garamond', serif; font-size: 22px; letter-spacing: -0.01em; }
+  .poster .num { font-family: 'Cormorant Garamond', serif; font-size: clamp(80px, 14vw, 200px); line-height: 0.85; font-weight: 400; }
+  .poster .line { font-family: 'Cormorant Garamond', serif; font-size: 24px; line-height: 1.1; }
+  .poster .foot { font-size: 10px; letter-spacing: 0.18em; text-transform: uppercase; }
+  @media (max-width: 900px) { .poster-row { grid-template-columns: 1fr; } }
 
-  /* Three homes */
-  .homes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
-  .home { background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; }
-  .home .img { aspect-ratio: 16/10; background: var(--cream-2); }
-  .home .img img { width: 100%; height: 100%; object-fit: cover; }
-  .home .body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
-  .home .size { font-family: 'Cormorant Garamond', serif; font-size: 56px; line-height: 1; color: var(--ink); }
-  .home .size .unit { font-size: 22px; color: var(--ink-2); margin-left: 4px; }
-  .home .model { display: inline-block; font-family: 'Inter', sans-serif; font-size: 11px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 16px; padding: 4px 10px; border: 1px solid currentColor; }
-  .home.S .model { color: var(--taupe); }
-  .home.M .model { color: var(--char); }
-  .home.L .model { color: var(--falu); }
-  .home .specs { list-style: none; padding: 0; margin: 20px 0; font-size: 14px; color: var(--ink-2); }
-  .home .specs li { padding: 6px 0; border-bottom: 1px dashed var(--line); display: flex; justify-content: space-between; }
-  .home .specs li:last-child { border-bottom: 0; }
-  .home .price { margin-top: auto; font-family: 'Cormorant Garamond', serif; font-size: 32px; color: var(--ink); padding-top: 16px; border-top: 1px solid var(--line); }
-  @media (max-width: 900px) { .homes { grid-template-columns: 1fr; } }
+  /* IG grid */
+  .ig-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4px; max-width: 720px; }
+  .ig-tile { aspect-ratio: 1/1; background: var(--cream-2); border: 1px solid var(--line); overflow: hidden; position: relative; display: flex; align-items: center; justify-content: center; padding: 16px; text-align: center; }
+  .ig-tile img { width: 100%; height: 100%; object-fit: cover; }
+  .ig-tile .copy { position: relative; z-index: 1; font-family: 'Cormorant Garamond', serif; font-size: clamp(16px, 1.6vw, 22px); line-height: 1.1; }
+  .ig-tile.dark { background: var(--ink); color: var(--cream); }
+  .ig-tile.mint { background: var(--mint); color: var(--ink); }
+  .ig-tile.falu { background: var(--falu); color: var(--cream); }
+  .ig-tile.char { background: var(--char); color: var(--cream); }
+  .ig-tile .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 64px; line-height: 1; }
+  .ig-tile.image { padding: 0; }
 
-  /* Feature list */
-  .features { columns: 2; column-gap: 48px; margin-top: 32px; }
-  .features ul { list-style: none; padding: 0; margin: 0; }
-  .features li { padding: 12px 0; border-bottom: 1px solid var(--line); font-size: 15px; display: flex; align-items: baseline; gap: 12px; break-inside: avoid; }
-  .features li::before { content: ''; display: inline-block; width: 8px; height: 8px; background: var(--wood); border-radius: 50%; flex-shrink: 0; }
-  @media (max-width: 700px) { .features { columns: 1; } }
+  /* PHONE mockup (Reel + app) */
+  .phone-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; align-items: start; }
+  .phone { aspect-ratio: 9/19; max-width: 280px; background: #000; border-radius: 36px; padding: 8px; box-shadow: 0 24px 60px rgba(0,0,0,.15); margin: 0 auto; }
+  .phone .screen { background: var(--cream); border-radius: 28px; height: 100%; overflow: hidden; position: relative; }
+  .phone .screen img { width: 100%; height: 100%; object-fit: cover; }
+  .phone .screen video { width: 100%; height: 100%; object-fit: cover; }
+  .phone .screen .reel-caption { position: absolute; bottom: 60px; left: 16px; right: 60px; color: #fff; font-size: 14px; text-shadow: 0 1px 4px rgba(0,0,0,.6); }
+  .phone-caption { margin-top: 16px; }
+  .phone-caption h4 { color: var(--ink); font-size: 16px; font-family: 'Inter', sans-serif; font-weight: 600; letter-spacing: 0; text-transform: none; margin-bottom: 6px; }
+  .phone-caption p { font-size: 13px; color: var(--ink-2); margin: 0; }
+  @media (max-width: 800px) { .phone-row { grid-template-columns: 1fr; } }
 
-  /* Scripts */
-  .script { padding: 28px 32px; border-left: 3px solid var(--wood); background: var(--cream-2); margin-bottom: 24px; }
-  .script .who { font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; color: var(--wood); margin-bottom: 8px; }
-  .script blockquote { margin: 0 0 12px; font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.4; color: var(--ink); }
-  .script .note { font-size: 13px; color: var(--ink-2); }
+  /* SALES SHEET */
+  .salesheet { background: #fff; border: 1px solid var(--line); padding: 56px; }
+  .salesheet .top { display: flex; justify-content: space-between; align-items: start; border-bottom: 1px solid var(--line); padding-bottom: 32px; margin-bottom: 32px; }
+  .salesheet h3 { font-size: 48px; }
+  .salesheet .sub { font-size: 14px; color: var(--ink-2); margin-top: 8px; }
+  .salesheet .stats-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 24px; margin-bottom: 40px; }
+  .salesheet .stat-item .n { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--ink); line-height: 1; }
+  .salesheet .stat-item .l { font-size: 11px; letter-spacing: 0.04em; color: var(--ink-2); margin-top: 4px; }
+  .salesheet .models { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+  .salesheet .model-cell { padding: 24px; background: var(--cream-2); border-left: 3px solid currentColor; }
+  .salesheet .model-cell.s { color: var(--taupe); }
+  .salesheet .model-cell.m { color: var(--char); }
+  .salesheet .model-cell.l { color: var(--falu); }
+  .salesheet .model-cell .name { font-family: 'Cormorant Garamond', serif; font-size: 26px; color: var(--ink); }
+  .salesheet .model-cell .spec { font-size: 13px; color: var(--ink-2); margin-top: 6px; }
+  .salesheet .model-cell .price { font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--ink); margin-top: 12px; }
+  .salesheet .amenities { columns: 3; column-gap: 32px; font-size: 14px; color: var(--ink-2); }
+  .salesheet .amenities ul { list-style: none; padding: 0; margin: 0; }
+  .salesheet .amenities li { padding: 8px 0; break-inside: avoid; }
+  .salesheet .amenities li::before { content: '— '; color: var(--wood); }
+  @media (max-width: 900px) {
+    .salesheet { padding: 32px; }
+    .salesheet .stats-row { grid-template-columns: repeat(2, 1fr); }
+    .salesheet .models { grid-template-columns: 1fr; }
+    .salesheet .amenities { columns: 1; }
+  }
 
-  /* Persona */
-  .persona { padding: 24px; border: 1px solid var(--line); background: #fff; }
-  .persona h4 { color: var(--wood); margin-bottom: 6px; }
-  .persona .name { font-family: 'Cormorant Garamond', serif; font-size: 26px; margin-bottom: 8px; }
-  .persona p { font-size: 14px; margin-bottom: 8px; }
+  /* LETTER */
+  .letter { background: #fff; padding: 80px; border: 1px solid var(--line); max-width: 760px; margin: 0 auto; position: relative; box-shadow: 0 24px 60px rgba(26,24,21,.06); }
+  .letter .salutation { font-family: 'Caveat', cursive; font-size: 42px; color: var(--ink); margin-bottom: 32px; }
+  .letter .body { font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.5; color: var(--ink); }
+  .letter .body p { font-size: 22px; color: var(--ink); margin-bottom: 1em; }
+  .letter .sign { font-family: 'Caveat', cursive; font-size: 36px; color: var(--ink); margin-top: 40px; }
+  .letter .role { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-top: 8px; }
+  @media (max-width: 700px) { .letter { padding: 40px 28px; } }
 
-  /* Idea list */
-  .ideas { display: grid; gap: 16px; }
-  .idea { padding: 24px 28px; border: 1px solid var(--line); background: #fff; display: grid; grid-template-columns: 64px 1fr; gap: 20px; }
-  .idea .n { font-family: 'Cormorant Garamond', serif; font-size: 40px; color: var(--wood); line-height: 1; }
-  .idea h4 { margin-bottom: 6px; color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 18px; font-weight: 600; }
-  .idea p { font-size: 14px; margin: 0; }
+  /* MANIFEST */
+  .manifest { background: var(--ink); color: var(--cream); padding: 120px 80px; position: relative; }
+  .manifest::before { content: '"'; position: absolute; top: 40px; left: 60px; font-family: 'Cormorant Garamond', serif; font-size: 320px; color: var(--mint); opacity: 0.15; line-height: 1; }
+  .manifest-inner { max-width: 800px; position: relative; }
+  .manifest h3 { color: var(--cream); margin-bottom: 32px; font-size: 36px; }
+  .manifest p { font-family: 'Cormorant Garamond', serif; font-size: 26px; line-height: 1.5; color: var(--cream); margin-bottom: 1em; }
+  .manifest .sign { color: var(--wood-soft); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 40px; font-family: 'Inter', sans-serif; }
+  @media (max-width: 700px) { .manifest { padding: 56px 28px; } .manifest p { font-size: 20px; } }
 
-  /* Distribution table */
-  .dist { width: 100%; border-collapse: collapse; background: #fff; }
-  .dist th, .dist td { padding: 16px 20px; text-align: left; border-bottom: 1px solid var(--line); font-size: 14px; }
-  .dist th { background: var(--cream-2); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; color: var(--wood); }
-  .dist td:first-child { font-weight: 600; color: var(--ink); }
+  /* IN-APP copy */
+  .app-samples { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .app-sample { background: #fff; border: 1px solid var(--line); padding: 28px; }
+  .app-sample .kind { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 8px; font-weight: 600; }
+  .app-sample .title-line { font-size: 18px; font-weight: 600; color: var(--ink); margin-bottom: 6px; }
+  .app-sample .body-line { font-size: 14px; color: var(--ink-2); margin-bottom: 12px; }
+  .app-sample .btns { display: flex; gap: 8px; margin-top: 12px; }
+  .app-sample .btn { padding: 8px 14px; background: var(--ink); color: var(--cream); font-size: 12px; font-weight: 600; }
+  .app-sample .btn.ghost { background: transparent; color: var(--ink); border: 1px solid var(--ink); }
+  @media (max-width: 700px) { .app-samples { grid-template-columns: 1fr; } }
 
-  /* Trends */
-  .trends { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 56px; }
-  .trend { padding: 32px; background: #fff; border: 1px solid var(--line); }
-  .trend .num { font-family: 'Cormorant Garamond', serif; font-size: 80px; line-height: 0.9; color: var(--wood-soft); margin-bottom: 12px; }
-  .trend h4 { color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 22px; font-weight: 600; font-family: 'Cormorant Garamond', serif; margin-bottom: 16px; }
-  .trend .stat-row { padding: 8px 0; border-bottom: 1px dashed var(--line); font-size: 13px; color: var(--ink-2); }
-  @media (max-width: 900px) { .trends { grid-template-columns: 1fr; } }
+  /* PRESS */
+  .press { background: #fff; border: 1px solid var(--line); padding: 56px; max-width: 900px; margin: 0 auto; }
+  .press .pre { font-family: 'Inter', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); }
+  .press h3 { margin: 16px 0 24px; font-size: 36px; line-height: 1.1; }
+  .press .lead-p { font-size: 18px; color: var(--ink); margin-bottom: 24px; font-weight: 400; line-height: 1.5; }
+  .press .body-p { font-size: 15px; color: var(--ink-2); }
+  .press .body-p strong { color: var(--ink); }
+  .press .quote-block { margin: 32px 0; padding-left: 24px; border-left: 3px solid var(--wood); font-family: 'Cormorant Garamond', serif; font-size: 22px; line-height: 1.4; color: var(--ink); font-style: italic; }
+  .press .fact-box { background: var(--cream-2); padding: 24px; margin-top: 32px; font-size: 14px; }
+  .press .fact-box .ttl { font-weight: 600; color: var(--ink); margin-bottom: 12px; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
 
-  /* Source-material */
-  .source-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-top: 40px; }
-  .source-item { padding: 24px; background: #fff; border: 1px solid var(--line); display: flex; gap: 20px; }
-  .source-item .ic { width: 48px; height: 48px; background: var(--cream-2); border: 1px solid var(--line); border-radius: 4px; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-family: 'Cormorant Garamond', serif; font-size: 22px; color: var(--wood); }
-  .source-item h4 { color: var(--ink); text-transform: none; letter-spacing: 0; font-size: 16px; font-weight: 600; margin-bottom: 6px; }
-  .source-item p { font-size: 13px; margin: 0; }
-  @media (max-width: 900px) { .source-grid { grid-template-columns: 1fr; } }
+  /* SIGNAGE */
+  .signage { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .sign-item { background: var(--char); color: var(--cream); padding: 40px 32px; aspect-ratio: 4/5; display: flex; flex-direction: column; justify-content: space-between; }
+  .sign-item.mint { background: var(--mint); color: var(--ink); }
+  .sign-item.cream { background: var(--cream); color: var(--ink); border: 1px solid var(--line); }
+  .sign-item .arrow { font-size: 60px; line-height: 1; }
+  .sign-item .label { font-family: 'Cormorant Garamond', serif; font-size: 32px; line-height: 1.1; }
+  .sign-item .small { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.7; }
+  @media (max-width: 800px) { .signage { grid-template-columns: 1fr; } }
+
+  /* FILMS */
+  .film-grid { display: grid; gap: 24px; }
+  .film-grid.long { grid-template-columns: repeat(2, 1fr); }
+  .film-grid.short { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) { .film-grid.long, .film-grid.short { grid-template-columns: 1fr; } }
+  .film-card { background: #fff; border: 1px solid var(--line); overflow: hidden; }
+  .film-card video { width: 100%; display: block; background: #000; }
+  .film-card.l video { aspect-ratio: 16/9; object-fit: cover; }
+  .film-card.s video { aspect-ratio: 9/16; object-fit: cover; }
+  .film-card .body { padding: 20px; }
+  .film-card .body .role { font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); font-weight: 600; margin-bottom: 8px; }
+  .film-card .body blockquote { margin: 8px 0; font-family: 'Cormorant Garamond', serif; font-size: 18px; line-height: 1.3; color: var(--ink); font-style: italic; }
+  .film-card .body .meta { font-size: 12px; color: var(--ink-2); margin-top: 6px; }
 
   footer { padding: 60px 0; text-align: center; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); }
   footer .brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; }
@@ -162,610 +240,483 @@
 </head>
 <body>
 
+<header class="site">
+  <div class="container row">
+    <div class="brand"><a href="#top">Northville</a></div>
+    <nav>
+      <a href="#voice">Röster</a>
+      <a href="#tags">Taglines</a>
+      <a href="#ad">Annons</a>
+      <a href="#poster">Affisch</a>
+      <a href="#ig">Social</a>
+      <a href="#sales">Sales sheet</a>
+      <a href="#letter">Brev</a>
+      <a href="#manifest">Manifest</a>
+      <a href="#app">App-copy</a>
+      <a href="#press">Press</a>
+      <a href="#films">Filmer</a>
+    </nav>
+    <a href="library.html" class="lib">Asset library →</a>
+  </div>
+</header>
+
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="hero-bg">
-    <img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052519_e56cfbad-a9ee-4d12-8c03-bffea7426469.png" alt="Aerial view of Northville at dawn — 100 slamfärg homes around a round wooden Village Center" />
+    <img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="Northville Village Center golden hour" />
   </div>
   <div class="container hero-inner">
-    <div class="eyebrow" style="color: rgba(255,255,255,.85);">Northville · Future Village · Mellan Västerås och Tillberga</div>
-    <h1>Nu återupptäcker<br/>vi bykänslan.<span class="en">Sweden's first village built for relationships — and a hundred neighbors who'll know your name.</span></h1>
-    <p class="lead">100 små smarta hus i tre storlekar runt en cirkulär Village Center på 3 000 m². Hela vardagen bokas i en app — gym, pool, förskola, restaurang, gäst-hotell, snöskottning. Designat av Archus, drivet av Future Village.</p>
-    <p class="meta">100 hus · 1 Village Center · 1 app · 4 gator · 1 charter · <a href="library.html" style="color: rgba(255,255,255,.85); border-bottom-color: rgba(255,255,255,.4);">Asset Library →</a></p>
-    <a class="cta" href="#waitlist">Anmäl intresse</a>
+    <div class="eyebrow" style="color: rgba(255,255,255,.85);">Brand Universe · 11 uttag av samma idé</div>
+    <h1>Nu återupp-<br/>täcker vi<br/>bykänslan.</h1>
+    <p class="sub">Northville är inte en kampanj. Det är ett brand-universum med tagline-bibliotek, tre tonröster och elva olika format — annons, affisch, sociala posts, sales sheet, brev från arkitekten, manifest, press, app-copy, skyltning och rörligt. Samma idé i olika kläder.</p>
+    <div class="meta">Mellan Västerås och Tillberga · 100 hus · 1 Village Center · 1 app</div>
   </div>
 </section>
 
-<!-- CONCEPT / BRIEF -->
-<section class="section">
+<!-- ONE-PARAGRAPH INTRO -->
+<section class="uttag-section">
   <div class="container">
-    <div class="grid grid-2" style="align-items: start;">
-      <div>
-        <div class="eyebrow">Konceptet</div>
-        <h2>Den gamla byn löste relationer, tillhörighet och trygghet — men saknade bekvämligheter.<span class="en">The old village solved belonging but lost convenience. Northville keeps the village and adds the app.</span></h2>
-      </div>
-      <div>
-        <p class="lead">Vi flyttar byn in i en urban, bekväm och hållbar framtid. Northville är ett nytt boende-koncept där det privata, det delade och det offentliga rummet är designat för att <em>främja relationer och gemenskap</em>.</p>
-        <p>100 hus är stort nog att få resurser att dela på och litet nog att skapa tillhörighet. Mellan Västerås och Tillberga, 800 m från Tillberga station, 8 km från Västerås centrum, 2 km från Finnslätten.</p>
-      </div>
-    </div>
-
-    <div class="trends">
-      <div class="trend">
-        <div class="num">01</div>
-        <h4>Vi har svårt med vänner</h4>
-        <div class="stat-row"><strong>28 %</strong> av svenskarna tycker det är svårt att få nya vänner</div>
-        <div class="stat-row">Endast <strong>varannan</strong> har god relation med sina grannar</div>
-        <div class="stat-row"><strong>7 av 10</strong> vill ha bättre relationer i närområdet</div>
-      </div>
-      <div class="trend">
-        <div class="num">02</div>
-        <h4>Vi kämpar med livspusslet</h4>
-        <div class="stat-row">Föräldrar önskar mer tid för familjen och stöd från omgivningen</div>
-        <div class="stat-row">Flexibla arbetstider och jobb hemifrån topp-prioritet</div>
-        <div class="stat-row">Service och barnomsorg nära bostaden minskar stress</div>
-      </div>
-      <div class="trend">
-        <div class="num">03</div>
-        <h4>Nya post-covid beteenden</h4>
-        <div class="stat-row">Mix av kontor och hemma ställer nya krav på bostaden</div>
-        <div class="stat-row">Närhet till natur och grönområden — kritisk faktor</div>
-        <div class="stat-row">Rekreation och flexibla arbetstider värderas högre</div>
-      </div>
-    </div>
-
-    <div class="stats">
-      <div class="stat"><div class="num">100</div><div class="label">små smarta hus</div></div>
-      <div class="stat"><div class="num">3 000</div><div class="label">m² Village Center</div></div>
-      <div class="stat"><div class="num">4</div><div class="label">gator + 4 sektioner</div></div>
-      <div class="stat"><div class="num">450 MWh</div><div class="label">solpark · 50 % självförsörjning</div></div>
-      <div class="stat"><div class="num">1</div><div class="label">app som binder ihop allt</div></div>
+    <div style="max-width: 900px;">
+      <span class="uttag">/uppstart</span>
+      <h2 style="margin-top: 32px;">Northville är en by, inte ett bostadsprojekt.</h2>
+      <p class="lead" style="margin-top: 32px;">100 små smarta hus i tre slamfärger, runt en cirkulär Village Center på 3 000 m² med pool, gym, förskola, restaurang, hotell, coworking och allt däremellan. Det privata är litet, det delade är generöst. Allt bokas i en app. Mellan Västerås och Tillberga. Designat av Archus.</p>
+      <p style="margin-top: 24px;">Den här sidan visar inte EN annons. Den visar samma idé tolkad i elva olika format — så du ser hur brandet "låter" och hur det kan användas. För hela det visuella biblioteket: <a href="library.html">öppna asset library →</a></p>
     </div>
   </div>
 </section>
 
-<!-- THE THREE HOMES -->
-<section class="section" style="background: var(--cream-2);">
+<!-- VOICE / TONES -->
+<section class="uttag-section" id="voice" style="background: var(--cream-2);">
   <div class="container">
-    <div class="eyebrow">Husen — S · M · L</div>
-    <h2 style="max-width: 900px;">Tre modeller, tre slamfärger, samma idé.<span class="en">Three sizes, three traditional Swedish mineral-paint colours, one architectural language.</span></h2>
-    <p class="lead" style="max-width: 800px; margin-top: 24px;">Små smarta trähus i modern nordisk design. <strong>Stående panel</strong>, <strong>trätak utan takfötter</strong>, tre slamfärger som bygger lagom variation utan att bli stelt. Inga egna val eller anpassningar — allt för att hålla nere priset.</p>
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 01 · Röster</span>
+        <h2>Tre toner. Samma idé.</h2>
+      </div>
+      <div class="note">Brandet kan vara varmt och personligt, kort och direkt, eller stort och visionärt. Här är samma kärnbudskap i tre toner.</div>
+    </div>
 
-    <div class="homes">
-      <div class="home S">
-        <div class="img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050604_e2cbfe4f-6539-4958-83af-84dd849eaac6.png" alt="Northville S — taupe-grey single-story home with vertical wood batten naturrum screen" /></div>
+    <div class="grid g3">
+      <div class="tone">
+        <div class="lbl">Varm / personlig</div>
+        <div class="quote">"Jag visste inte att jag saknade mina grannar förrän jag flyttade till Northville. Pia bakar bullar, Roger lagar min cykel, ungarna leker överallt. Det är bara en by, men det är min."</div>
+        <div class="when">Använd i: Reels, Instagram captions, testimonials, brev, e-postnyhetsbrev.</div>
+      </div>
+      <div class="tone dark">
+        <div class="lbl">Direkt / utility</div>
+        <div class="quote">"100 smarta hus. Ett Village Center på 3 000 m². Pool, gym, förskola, restaurang, hotell. Allt bokas i en app. Mellan Västerås och Tillberga.<br/>Anmäl intresse."</div>
+        <div class="when">Använd i: annons-headlines, sales sheets, hemsida hero, OOH, press.</div>
+      </div>
+      <div class="tone">
+        <div class="lbl">Vision / founder</div>
+        <div class="quote">"Vi har inte ritat hus. Vi har ritat en by. För människor som värdesätter varandra mer än kvadratmeter. Det blir bara 100. Den första generationen som väljer det medvetet."</div>
+        <div class="when">Använd i: LinkedIn-posts, founder-films, pressmeddelanden, manifesto, investor pitches.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TAGLINES -->
+<section class="uttag-section" id="tags">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 02 · Tagline-bibliotek</span>
+        <h2>Tio sätt att säga samma sak.</h2>
+      </div>
+      <div class="note">Olika headline-stilar för olika kanaler — från storladdade poesi-taglines till skarpa utility-rader.</div>
+    </div>
+
+    <div class="taglines">
+      <div class="tagline"><div><span class="nr">01</span><blockquote>Nu återupptäcker vi bykänslan.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">02</span><blockquote>En by för relationer.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">03</span><blockquote>100 grannar. Inte 100 hushåll.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">04</span><blockquote>Designad av Sveriges designelit. Byggd för dig.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">05</span><blockquote>Pool, gym, förskola — och grannar — i en app.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">06</span><blockquote>Du är inte hus #4327. Du är granne #17.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">07</span><blockquote>100 hus. En by. En enda kö.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">08</span><blockquote>Mellan Västerås och Tillberga växer framtidens by.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">09</span><blockquote>Bykänsla. Bekväm. Smart. Boka i appen.</blockquote></div></div>
+      <div class="tagline"><div><span class="nr">10</span><blockquote>Värdesätt varandra mer än kvadratmetrarna.</blockquote></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRINT AD SPREAD -->
+<section class="uttag-section" id="ad" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 03 · Annons-uppslag</span>
+        <h2>Som det skulle se ut i RES eller Plaza.</h2>
+      </div>
+      <div class="note">Magazine-spread, dubbelsida. Bildberättelse vänster, headline + kort body + CTA höger.</div>
+    </div>
+
+    <div class="spread">
+      <div class="visual"><img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="Village Center" /></div>
+      <div class="copy">
+        <div>
+          <span class="uttag" style="margin-bottom: 24px;">Northville</span>
+          <h3>Du är inte hus #4327. Du är granne #17.</h3>
+        </div>
         <div class="body">
-          <div class="model">Model S · Slamgrå</div>
-          <div class="size">80<span class="unit">m²</span></div>
-          <ul class="specs">
-            <li><span>Våningar</span><span>1</span></li>
-            <li><span>Sovrum</span><span>2</span></li>
-            <li><span>Naturrum</span><span>20 m²</span></li>
-            <li><span>Altan</span><span>20 m²</span></li>
-            <li><span>Förråd</span><span>12 m²</span></li>
-            <li><span>Tomt</span><span>600 m²</span></li>
-          </ul>
+          Vi bygger 100 små smarta hus runt en cirkulär Village Center mellan Västerås och Tillberga. Vi tar in dem en i taget och säger nej till alla efter etthundra. Bokningar, grannar, hela vardagen — i en app.
+        </div>
+        <div class="cta">Anmäl intresse · northville.se</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POSTER -->
+<section class="uttag-section" id="poster">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 04 · Affisch &amp; OOH</span>
+        <h2>Type-led, minimal, läses från 30 meter.</h2>
+      </div>
+      <div class="note">Tre färgställningar — cream, falu-röd, charcoal. Numerologin (100) som ankare.</div>
+    </div>
+
+    <div class="poster-row">
+      <div class="poster">
+        <div class="mark">Northville</div>
+        <div><div class="num">100</div><div class="line" style="margin-top: 12px;">hus.<br/>En by.</div></div>
+        <div class="foot">Anmäl intresse · northville.se</div>
+      </div>
+      <div class="poster red">
+        <div class="mark">Northville</div>
+        <div><div class="line" style="font-size: 38px; line-height: 1; max-width: 100%;">Du är inte hus #4327.</div><div class="line" style="margin-top: 16px;">Du är granne #17.</div></div>
+        <div class="foot">100 platser · 1 kö · 1 app</div>
+      </div>
+      <div class="poster dark">
+        <div class="mark">Northville</div>
+        <div><div class="line" style="font-size: 44px; line-height: 1;">Bykänsla.<br/>Bekväm.<br/>Smart.</div></div>
+        <div class="foot">Mellan Västerås &amp; Tillberga</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- IG GRID -->
+<section class="uttag-section" id="ig" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 05 · Sociala medier</span>
+        <h2>IG feed som komposition.</h2>
+      </div>
+      <div class="note">Nio rutor — växling mellan bilder och typografi-rutor, gemensam palett, igenkänningsbart rytm.</div>
+    </div>
+
+    <div class="ig-grid">
+      <div class="ig-tile image"><img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image23.png" alt="" /></div>
+      <div class="ig-tile dark"><div class="copy">100 grannar.<br/>Inte 100 hushåll.</div></div>
+      <div class="ig-tile image"><img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/small_nb.png" alt="" /></div>
+      <div class="ig-tile mint"><div class="copy">Pool. Gym. Förskola.<br/>I en app.</div></div>
+      <div class="ig-tile image"><img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="" /></div>
+      <div class="ig-tile falu"><div class="copy"><div class="stat-num">3000<span style="font-size: 22px;">m²</span></div><div style="font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; margin-top: 8px;">Village Center</div></div></div>
+      <div class="ig-tile image"><img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/large_nb.png" alt="" /></div>
+      <div class="ig-tile char"><div class="copy">Boka frukost.<br/>Boka snöskottning.<br/>Boka mormors gästrum.</div></div>
+      <div class="ig-tile image"><img src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/village_image18.png" alt="" /></div>
+    </div>
+  </div>
+</section>
+
+<!-- PHONE / REEL -->
+<section class="uttag-section" id="reel">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 06 · Reels &amp; TikTok</span>
+        <h2>Talking-head + caption.</h2>
+      </div>
+      <div class="note">Tre rörliga klipp i 9:16 — en kvinna (appen), en kvinna (design), en arkitekt (founder). Klick = spela.</div>
+    </div>
+
+    <div class="phone-row">
+      <div>
+        <div class="phone"><div class="screen">
+          <video src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212118_0adb6bdd-f423-492e-9a41-1f94dbedf9b2.mp4" controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_202441_129b18f5-f818-48d8-878c-e8012c0c8f3a.png"></video>
+        </div></div>
+        <div class="phone-caption"><h4>Klipp A · "Appen"</h4><p>"100 smart homes. One Village Center. All in one app."</p></div>
+      </div>
+      <div>
+        <div class="phone"><div class="screen">
+          <video src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212122_b9507e65-1472-4845-b668-f06fc55fd50b.mp4" controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_202444_c21fe3ac-5652-4c5e-8a21-e86ab46ec297.png"></video>
+        </div></div>
+        <div class="phone-caption"><h4>Klipp B · "Design + relationer"</h4><p>"Designed by Sweden's design elite. Built for relationships."</p></div>
+      </div>
+      <div>
+        <div class="phone"><div class="screen">
+          <video src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212348_3bb57afd-53d5-40c2-943d-a6911aa6ad17.mp4" controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212125_768168fd-2414-4fea-8d3d-2e3d3bc25788.png"></video>
+        </div></div>
+        <div class="phone-caption"><h4>Klipp C · "Founder manifesto"</h4><p>"We didn't design houses. We designed a village."</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SALES SHEET -->
+<section class="uttag-section" id="sales" style="background: var(--cream-2);">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 07 · Sales sheet</span>
+        <h2>Skriv ut. Ta med på visning.</h2>
+      </div>
+      <div class="note">Faktiska siffror och priser. Det här är för köpare som vill ha det på papper.</div>
+    </div>
+
+    <div class="salesheet">
+      <div class="top">
+        <div>
+          <span class="uttag">Northville · Hubbo-Jädra 3:6</span>
+          <h3 style="margin-top: 12px;">100 hus &amp; ett Village Center.</h3>
+          <div class="sub">Mellan Västerås &amp; Tillberga · 800 m till Tillberga station · 8 km till V-rås C</div>
+        </div>
+        <div style="text-align: right;">
+          <div style="font-family: 'Cormorant Garamond', serif; font-size: 56px; color: var(--ink); line-height: 1;">2026</div>
+          <div style="font-size: 11px; letter-spacing: 0.18em; color: var(--ink-2);">Första inflytt juni</div>
+        </div>
+      </div>
+
+      <div class="stats-row">
+        <div class="stat-item"><div class="n">100</div><div class="l">små smarta hus</div></div>
+        <div class="stat-item"><div class="n">3 000</div><div class="l">m² Village Center</div></div>
+        <div class="stat-item"><div class="n">4 000</div><div class="l">m² solpark</div></div>
+        <div class="stat-item"><div class="n">450 MWh</div><div class="l">egen el / år</div></div>
+        <div class="stat-item"><div class="n">50 %</div><div class="l">självförsörjning</div></div>
+      </div>
+
+      <div class="models">
+        <div class="model-cell s">
+          <span class="uttag">Model S · Slamgrå</span>
+          <div class="name" style="margin-top: 8px;">80 m² · 1 plan</div>
+          <div class="spec">2 sovrum · naturrum 20 m² · altan 20 m² · förråd 12 m² · tomt 600 m²</div>
           <div class="price">4 850 000 SEK</div>
         </div>
-      </div>
-
-      <div class="home M">
-        <div class="img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050609_c116b64c-84b0-4446-b14c-8b6de54c3ddf.png" alt="Northville M — charcoal-black 1.5-story home with vertical wood batten naturrum screen" /></div>
-        <div class="body">
-          <div class="model">Model M · Tjärsvart</div>
-          <div class="size">101<span class="unit">m²</span></div>
-          <ul class="specs">
-            <li><span>Våningar</span><span>1,5</span></li>
-            <li><span>Sovrum</span><span>4</span></li>
-            <li><span>Naturrum</span><span>20 m²</span></li>
-            <li><span>Altan</span><span>20 m²</span></li>
-            <li><span>Förråd</span><span>12 m²</span></li>
-            <li><span>Tomt</span><span>600 m²</span></li>
-          </ul>
+        <div class="model-cell m">
+          <span class="uttag">Model M · Tjärsvart</span>
+          <div class="name" style="margin-top: 8px;">101 m² · 1,5 plan</div>
+          <div class="spec">4 sovrum · naturrum 20 m² · altan 20 m² · förråd 12 m² · tomt 600 m²</div>
           <div class="price">5 500 000 SEK</div>
         </div>
-      </div>
-
-      <div class="home L">
-        <div class="img"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050615_53b240d6-0cab-447b-8ff3-5cb0f86f14c7.png" alt="Northville L — falu-red two-story home with full-height vertical wood batten naturrum screen" /></div>
-        <div class="body">
-          <div class="model">Model L · Falu-röd</div>
-          <div class="size">112<span class="unit">m²</span></div>
-          <ul class="specs">
-            <li><span>Våningar</span><span>2</span></li>
-            <li><span>Sovrum</span><span>4</span></li>
-            <li><span>Naturrum</span><span>40 m²</span></li>
-            <li><span>Altan</span><span>20 m²</span></li>
-            <li><span>Förråd</span><span>12 m²</span></li>
-            <li><span>Tomt</span><span>600 m²</span></li>
-          </ul>
+        <div class="model-cell l">
+          <span class="uttag">Model L · Falu-röd</span>
+          <div class="name" style="margin-top: 8px;">112 m² · 2 plan</div>
+          <div class="spec">4 sovrum · naturrum 40 m² · altan 20 m² · förråd 12 m² · tomt 600 m²</div>
           <div class="price">5 850 000 SEK</div>
         </div>
       </div>
-    </div>
 
-    <div style="margin-top: 64px;">
-      <h3 style="margin-bottom: 24px;">Alla hus levereras med</h3>
-      <div class="features">
+      <h4 style="color: var(--ink); font-family: 'Cormorant Garamond', serif; font-size: 24px; text-transform: none; letter-spacing: 0; margin-bottom: 16px;">Allt detta ingår i Village Center</h4>
+      <div class="amenities">
         <ul>
-          <li>Stengolv med golvvärme på entréplan</li>
-          <li>Naturrum på betongplatta med full glasfasad</li>
-          <li>Trådäck i lärk runt entré/altan</li>
-          <li>Kamin — vedeldad</li>
-          <li>Öppet till nock över matplats</li>
-          <li>Smart-hem-system på alla uttag och brytare</li>
-          <li>Färdig gräsmatta, stenmurar och planteringar</li>
-          <li>Förråd 12 m²</li>
-          <li>Förberedd laddstation för egen bil</li>
+          <li>Pool &amp; bastu</li>
+          <li>Fullskaligt gym + omklädning</li>
+          <li>Coworking-space med tysta rum</li>
+          <li>Festlokal med stort kök</li>
+          <li>Biljard &amp; shuffleboard</li>
+          <li>Restaurang &amp; café</li>
+          <li>Hotell 10–15 rum</li>
+          <li>Förskola (två avdelningar)</li>
+          <li>Obemannad servicebutik</li>
+          <li>Boulé, lekplats</li>
+          <li>Tennisbana (isbana vintertid)</li>
+          <li>Fotbollsplan, joggingspår</li>
         </ul>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="grid grid-2" style="margin-top: 64px;">
-      <figure class="figure"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_050732_71f718f6-b74b-48b9-999b-777069bf8e10.png" alt="Three Northville homes — slamgrå, tjärsvart, falu-red — side by side along village street" /><figcaption><span>S · M · L längs samma gata</span><span class="role">Grannskap</span></figcaption></figure>
-      <figure class="figure"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_225650_ae4c5e6c-8f1d-44cd-aea6-bb19a9f56531.png" alt="Inside a Northville home — Scandinavian minimal living room" /><figcaption><span>Inne — stengolv, kamin, öppet till nock, naturrum bortom</span><span class="role">Interiör</span></figcaption></figure>
+<!-- LETTER -->
+<section class="uttag-section" id="letter">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 08 · Brev från arkitekten</span>
+        <h2>Personlig hänvändelse till de första hundra.</h2>
+      </div>
+      <div class="note">Skickas som DM, email eller tryckt brev till intresseanmälan. Skriven röst, första person.</div>
+    </div>
+
+    <div class="letter">
+      <div class="salutation">Kära granne #17,</div>
+      <div class="body">
+        <p>Du har anmält intresse till Northville. Tack. Av alla projekt jag ritat på trettio år är det här det jag är mest stolt över — och samtidigt mest beroende av att hitta rätt människor.</p>
+        <p>Vi bygger inte 100 hus. Vi bygger en by med 100 grannar. Du är inte den 17:e köparen — du är den 17:e personen som väljer att leva nära andra människor på riktigt.</p>
+        <p>Husen är små men allt det som vanligtvis ryms i ett stort hus finns istället ett kvarter bort: bastun, gymmet, festlokalen, restaurangen, gäst-hotellet. Vi bygger så vi orkar bjuda mormor på en helg utan att hon ska sova i tv-rummet.</p>
+        <p>Inom kort hör vi av oss med visning. Tills dess: läs gärna pressbrevet, eller hör av dig direkt till mig om du undrar något.</p>
+      </div>
+      <div class="sign">Johnnie</div>
+      <div class="role">Johnnie Pettersson · Arkitekt · Archus</div>
     </div>
   </div>
 </section>
 
-<!-- VILLAGE CENTER -->
-<section class="section">
-  <div class="container">
-    <div class="grid grid-2" style="align-items: start;">
-      <div>
-        <div class="eyebrow">Village Center · Hjärtat</div>
-        <h2>3 000 m². 12 meter i tak. Allt det som gör en stad värd att flytta från.<span class="en">A single round wooden building with a wood-shingle roof — gym, pool, restaurant, hotel, preschool, coworking.</span></h2>
-      </div>
-      <div>
-        <p class="lead">Cirkulär byggnad i trä, baserad på flera förskjutna cirklar. En nordisk inomhuspark med många <em>rum-i-rummet</em> — coworking ena stunden, festlokal nästa, gym, pool och restaurang dygnet runt.</p>
-        <p>Verksamheterna betalar hyra och finansierar driften — vilket gör att Village Center kan vara öppet utan att kosta dig en månadsavgift utöver bokade tjänster.</p>
-      </div>
-    </div>
-
-    <figure class="figure" style="margin-top: 56px;"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052524_4c187111-e4ed-4449-8b63-441d5a32922e.png" alt="Approach to the round wooden Village Center building" /><figcaption><span>Approach · cirkulär träbyggnad med trätak</span><span class="role">Center</span></figcaption></figure>
-
-    <div class="grid grid-3" style="margin-top: 32px;">
-      <figure class="figure"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052528_9b10b147-c228-4cba-ac3a-29a9d261760d.png" alt="Inside Village Center — Nordic indoor park with coworking" /><figcaption><span>Nordisk inomhuspark · 1 500 m²</span><span class="role">Coworking</span></figcaption></figure>
-      <figure class="figure"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052532_a961a28f-dfed-4488-88e7-32bc1c7bae83.png" alt="Village Center restaurant interior at twilight" /><figcaption><span>Restaurang &amp; café · frukost, lunch, middag</span><span class="role">Mat</span></figcaption></figure>
-      <figure class="figure"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052537_9c4df364-5bdb-40cf-aa94-a0e830b88fb1.png" alt="Indoor pool with sauna inside the Village Center" /><figcaption><span>Pool &amp; bastu · relaxavdelning</span><span class="role">Relax</span></figcaption></figure>
-    </div>
-
-    <div class="features" style="margin-top: 64px;">
-      <ul>
-        <li>1 500 m² nordisk inomhuspark — många rum i rummet</li>
-        <li>Relaxavdelning med pool och bastu</li>
-        <li>Coworking-space med tysta rum</li>
-        <li>Fullskaligt gym med omklädningsrum</li>
-        <li>Festlokal med stort kök, biljard, shuffleboard</li>
-        <li>Restaurang &amp; café — inomhus och utomhus</li>
-        <li>Hotell med 10–15 rum (gäster + Finnslätten-företag)</li>
-        <li>Förskola — två avdelningar</li>
-        <li>Obemannad servicebutik (Never-Closed)</li>
-        <li>Utomhus: boulé, lekplats, tennisbana (isbana vintertid)</li>
-        <li>Fotbollsplan, joggingspår, skidspår i skogen</li>
-        <li>Utegym</li>
-      </ul>
+<!-- MANIFESTO -->
+<section class="uttag-section" id="manifest" style="padding: 0;">
+  <div class="manifest">
+    <div class="container manifest-inner">
+      <span class="uttag" style="color: var(--wood-soft); border-color: var(--wood-soft);">/uttag 09 · Manifest</span>
+      <h3 style="margin-top: 24px;">Vi värdesätter varandra mer än kvadratmetrarna.</h3>
+      <p>Sju av tio svenskar vill ha bättre relationer i sitt grannskap. 28 procent tycker det är svårt att få vänner som vuxna. Varannan har ingen riktig relation med sina grannar.</p>
+      <p>Det är inte ett bostadsproblem. Det är ett vardags-problem. Och bostäderna vi har byggt de senaste femtio åren har gjort det värre, inte bättre.</p>
+      <p>Northville är inte en lösning på allt det. Men det är ett medvetet försök. Ett område där det privata är litet och det delade är generöst. Där bekvämligheter och natur möter bykänsla och tillhörighet. Där allt som gör vardagen krånglig kan bokas i en app.</p>
+      <p>Hundra hus. En by. För dig som tror att grannar är värda mer än ett vykort vid julen.</p>
+      <div class="sign">Future Village · Archus · Projcon · Haus</div>
     </div>
   </div>
 </section>
 
-<!-- THE APP -->
-<section class="section" style="background: var(--ink); color: var(--cream);">
+<!-- APP COPY -->
+<section class="uttag-section" id="app">
   <div class="container">
-    <div class="grid grid-2" style="align-items: center;">
-      <div>
-        <div class="eyebrow" style="color: var(--wood-soft);">Appen · Det som säljer</div>
-        <h2 style="color: var(--cream);">Ett område som föds digitalt.<span class="en" style="color: rgba(246,241,232,.7);">An entire neighbourhood, bookable from your pocket.</span></h2>
-        <p class="lead" style="color: rgba(246,241,232,.85); margin-top: 24px;">Appen är inte ett tillägg till Northville — den <em>är</em> Northville. All info om huset, alla bokningar, alla grannar, hela marknaden. På ett ställe.</p>
-
-        <div style="margin-top: 40px;">
-          <h4 style="color: var(--wood-soft); margin-bottom: 12px;">Mitt hus</h4>
-          <p style="color: rgba(246,241,232,.8); font-size: 15px;">Ritningar · kontrakt · manualer &amp; instruktioner · elförbrukning &amp; priser · alla kvitton</p>
-        </div>
-        <div style="margin-top: 28px;">
-          <h4 style="color: var(--wood-soft); margin-bottom: 12px;">Bokningar</h4>
-          <p style="color: rgba(246,241,232,.8); font-size: 15px;">Pool · festlokal · gym · gäst-hotell · restaurang · förskole-incheckning · alla gemensamma ytor</p>
-        </div>
-        <div style="margin-top: 28px;">
-          <h4 style="color: var(--wood-soft); margin-bottom: 12px;">Grannar &amp; områdesinfo</h4>
-          <p style="color: rgba(246,241,232,.8); font-size: 15px;">Onboarding för nyinflyttade · nyhetsflöde · direktkontakt · arrangemang</p>
-        </div>
-        <div style="margin-top: 28px;">
-          <h4 style="color: var(--wood-soft); margin-bottom: 12px;">Marketplace</h4>
-          <p style="color: rgba(246,241,232,.8); font-size: 15px;">Städ · trädgårdsskötsel · car-sharing · PT · snöskottning · tvätt · läxhjälp · barnpassning · gräsklippning · larm — paketerat tack vare skalfördelar</p>
-        </div>
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 10 · App-copy &amp; UX-microcopy</span>
+        <h2>Brandet i knappar och notiser.</h2>
       </div>
-      <div>
-        <figure class="figure tall" style="max-width: 480px; margin: 0 auto;"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_225759_fb25af85-93ec-4c36-a11c-2b08741b4491.png" alt="Northville app on a phone" /></figure>
-      </div>
+      <div class="note">Tone of voice för 4 vanliga app-moment. Korta, mänskliga, aldrig korporata.</div>
     </div>
-  </div>
-</section>
 
-<!-- MASTER PLAN -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">Master plan · Hubbo-Jädra 3:6</div>
-    <h2 style="max-width: 900px;">Fyra gator. Fyra sektioner. En cirkulär kärna.<span class="en">Four streets — Nord, Syd, Öst, Väst — varying in width, forming small natural squares. The round Village Center anchors everything.</span></h2>
-
-    <figure class="figure" style="margin-top: 56px;"><img src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_225803_6e0fbcb0-602c-4af1-bf98-6a0779f1605d.png" alt="Wide landscape between Västerås and Tillberga showing Northville" /><figcaption><span>Landscape · Hubbo-Jädra mellan Västerås och Tillberga</span><span class="role">Plats</span></figcaption></figure>
-
-    <div class="grid grid-2" style="margin-top: 64px; align-items: start;">
-      <div>
-        <h3 style="margin-bottom: 16px;">Området</h3>
-        <ul class="features"><ul>
-          <li>Total markyta: <strong>106 038 m²</strong> (10,6 ha)</li>
-          <li>Gator: 9 867 m² (Nord, Syd, Öst, Väst)</li>
-          <li>Sektion 1: 21 villor</li>
-          <li>Sektion 2: 28 villor</li>
-          <li>Sektion 3: 37 villor</li>
-          <li>Sektion 4: 14 villor</li>
-          <li>Sektion 5: Village Center 3 000 m²</li>
-          <li>Solpark: 4 000 m² (separat)</li>
-          <li>Tomter: 321–594 m², snitt ~390 m²</li>
-        </ul></ul>
+    <div class="app-samples">
+      <div class="app-sample">
+        <div class="kind">Push-notis · onboarding</div>
+        <div class="title-line">Välkommen till byn, Anna.</div>
+        <div class="body-line">Pia, din granne på Nordgatan 4, har precis bakat bullar. Hon säger att kaffet är på.</div>
       </div>
-      <div>
-        <h3 style="margin-bottom: 16px;">Läget</h3>
-        <ul class="features"><ul>
-          <li>800 m till Tillberga station</li>
-          <li>2 km till Finnslätten (cykelavstånd)</li>
-          <li>8 km till Västerås centrum</li>
-          <li>Precis intill Tillbergaleden</li>
-          <li>Fotbollsplan, lekpark inom området</li>
-          <li>Gång- och joggingspår i skogen</li>
-          <li>Skidspår på vintern</li>
-          <li>Ekologisk korridor mot pinjeskog</li>
-        </ul></ul>
+      <div class="app-sample">
+        <div class="kind">Modal · bokning lyckad</div>
+        <div class="title-line">Pool bokad — lördag 14–15.</div>
+        <div class="body-line">Du delar passet med Familjen Lind (3 personer). Säg gärna hej till dem.</div>
+        <div class="btns"><div class="btn">Lägg till i kalendern</div><div class="btn ghost">Ändra</div></div>
+      </div>
+      <div class="app-sample">
+        <div class="kind">In-app skärm · marketplace</div>
+        <div class="title-line">Boka snöskottning?</div>
+        <div class="body-line">Erik på Östgatan 12 erbjuder snöskottning för 200 kr per tillfälle. Han brukar börja vid 06:30. Du kan stötta din granne istället för ett företag.</div>
+        <div class="btns"><div class="btn">Boka Erik</div><div class="btn ghost">Visa fler</div></div>
+      </div>
+      <div class="app-sample">
+        <div class="kind">Email · veckans brev</div>
+        <div class="title-line">Denna vecka i Northville</div>
+        <div class="body-line">Onsdag: gemensam middag i Village Center, 18:30. Lördag: yoga vid poolen, 09:00. Anmäl barn till sportlovs-kollot innan fredag — sex platser kvar.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SUSTAINABILITY -->
-<section class="section" style="background: var(--cream-2);">
+<!-- PRESS -->
+<section class="uttag-section" id="press" style="background: var(--cream-2);">
   <div class="container">
-    <div class="grid grid-2" style="align-items: center;">
-      <div>
-        <div class="eyebrow">Hållbart</div>
-        <h2>Projektet börjar med 50 % egen el.<span class="en">A 4 000 m² solar park that targets covering half of the village's annual consumption.</span></h2>
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 11 · Pressmeddelande</span>
+        <h2>För journalisten som har en deadline.</h2>
       </div>
-      <div>
-        <ul class="features"><ul>
-          <li>Solpark 4 000 m² → <strong>450 000 kWh/år</strong></li>
-          <li>Mål: 50 % självförsörjning av områdets behov</li>
-          <li>Smart-hem-system i alla hus minskar el-konsumtion</li>
-          <li>Alla hus förberedda för egen laddstation</li>
-          <li>Car-sharing utreds som komplement</li>
-          <li>Minimerad miljöpåverkan genom hela byggkedjan</li>
-        </ul></ul>
+      <div class="note">Inledning + faktaruta. Skickas till lokalpress, branschmedia och nationella livsstilsredaktioner.</div>
+    </div>
+
+    <div class="press">
+      <div class="pre">Pressmeddelande · Future Village · 2026-05</div>
+      <h3>Sveriges första app-styrda by öppnar mellan Västerås och Tillberga 2026</h3>
+      <p class="lead-p">Future Village, tillsammans med arkitektkontoret Archus, lanserar Northville — 100 små smarta trähus byggda runt ett 3 000 m² stort cirkulärt Village Center med gym, pool, förskola, restaurang och hotell. Allt boende-relaterat — från bokning av gäst-hotellrum till snöskottning — sker via en gemensam app.</p>
+      <p class="body-p">Området är planerat i fyra sektioner längs fyra gator (Nord, Syd, Öst, Väst) på fastigheten Hubbo-Jädra 3:6, 800 meter från Tillberga station. Husen erbjuds i tre storlekar (80, 101 och 112 m²) i tre traditionella slamfärger till priser från 4,85 miljoner kronor. <strong>Försäljning startar januari 2027 med första inflytt juni samma år.</strong></p>
+      <div class="quote-block">"Vi bygger inte 100 hus. Vi bygger en by med 100 grannar. Det är medvetet att vi stannar vid hundra — för det är storleken där man fortfarande kan kunna sina grannars namn."<br/><span style="font-style: normal; font-size: 14px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood);">— Johnnie Pettersson, arkitekt, Archus</span></div>
+      <p class="body-p">Northville har en planerad solpark på 4 000 m² som målet är ska producera 450 MWh per år — omkring 50 procent av områdets totala elbehov. Alla hus förbereds med laddstation och smart-hem-system. Restaurang, hotell och förskola drivs av externa verksamheter som betalar hyra, vilket finansierar driften av Village Center utan månadsavgift för de boende utöver bokade tjänster.</p>
+      <div class="fact-box">
+        <div class="ttl">Bakom Northville</div>
+        Future Village (projektägare) · Archus (arkitekt, grundat 1986) · Projcon (projektledning) · Haus (kommunikation). För pressmaterial och högupplösta bilder: <a href="library.html">asset library</a>.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SIGNAGE -->
+<section class="uttag-section" id="signage">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 12 · Plats-skylt &amp; wayfinding</span>
+        <h2>Brandet i den byggda miljön.</h2>
+      </div>
+      <div class="note">Riktnings- och informationsskyltar i området. Charcoal, mint och cream som rotation. Stort typografiskt anslag.</div>
+    </div>
+
+    <div class="signage">
+      <div class="sign-item">
+        <div class="small">Mot</div>
+        <div class="label">Village<br/>Center</div>
+        <div class="arrow">→</div>
+      </div>
+      <div class="sign-item mint">
+        <div class="small">Northville</div>
+        <div class="label">Reception<br/>&amp; hotell</div>
+        <div class="small" style="color: var(--ink);">Öppet 24/7 · boka i app</div>
+      </div>
+      <div class="sign-item cream">
+        <div class="small">Förskolan</div>
+        <div class="label">Lilla<br/>byn</div>
+        <div class="arrow" style="color: var(--falu);">→</div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- FILMS -->
-<section class="section">
+<section class="uttag-section" id="films" style="background: var(--cream-2);">
   <div class="container">
-    <div class="eyebrow">Hero-film · två versioner</div>
-    <h2 style="margin-bottom: 24px; max-width: 900px;">Samma 15 sekunder, två register.<span class="en">Same village, two different tones — one cinematic, one a longer UGC endorsement.</span></h2>
-    <p class="lead" style="max-width: 800px;">Version B (cinematic, wild_card) är hjälten. Version A är en längre UGC-testimonial som Marketing Studio levererade när jag körde första iterationen i UGC-mode. Båda behålls — olika kanaler, olika roller.</p>
-
-    <div class="grid grid-2" style="margin-top: 48px;">
-      <div>
-        <div class="film long">
-          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052528_9b10b147-c228-4cba-ac3a-29a9d261760d.png">
-            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212114_a1fbedc5-09c0-47d4-9fdf-fa8be298e2e3.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="film-caption">
-          <div class="role">Version A · UGC long-form · 15 s · v1 architecture</div>
-          <blockquote>"Okay, Northville is unreal — 100 smart wooden homes circling a round Village Center… It feels like real community. I'm joining."</blockquote>
-          <div class="meta">Användning: LinkedIn, sajt-detalj, retargeting. <strong>Visuell varning:</strong> denna film renderades innan jag läst hela briefen — arkitekturen visar generiska Scandi-hus, inte slamfärg + trätak. Behåll som "creator endorsement" eller renderas om.</div>
-        </div>
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/uttag 13 · Rörliga</span>
+        <h2>Tre korta + två långa, samma värld.</h2>
       </div>
+      <div class="note">Cinematic hero film + UGC long-form. Reels på 9:16 ovan. Allt audio-on.</div>
+    </div>
 
-      <div>
-        <div class="film long">
-          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052519_e56cfbad-a9ee-4d12-8c03-bffea7426469.png">
-            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_230006_649c62c3-bcbc-4666-b8c6-e743d2816f42.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="film-caption">
-          <div class="role">Version B · Cinematic hero · 15 s · v2 architecture</div>
+    <h3 style="font-size: 22px; font-family: 'Inter', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 0.06em; color: var(--wood); margin-bottom: 16px;">Hero films · 16:9 · 15 s</h3>
+    <div class="film-grid long">
+      <div class="film-card l">
+        <video src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_230006_649c62c3-bcbc-4666-b8c6-e743d2816f42.mp4" controls preload="metadata" poster="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image23.png"></video>
+        <div class="body">
+          <div class="role">Cinematic · wild_card · 15 s</div>
           <blockquote>"Northville. Nu återupptäcker vi bykänslan. Anmäl intresse."</blockquote>
-          <div class="meta">Användning: sajt-hero, YouTube preroll, sales-deck, event-reveal. Renderad i wild_card-mode med slamfärg + trätak + inga takfötter i prompten.</div>
+          <div class="meta">För: sajt-hero, YouTube preroll, sales deck, event-reveal.</div>
+        </div>
+      </div>
+      <div class="film-card l">
+        <video src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212114_a1fbedc5-09c0-47d4-9fdf-fa8be298e2e3.mp4" controls preload="metadata" poster="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png"></video>
+        <div class="body">
+          <div class="role">UGC long-form · 15 s</div>
+          <blockquote>"Okay, Northville is unreal — 100 smart wooden homes circling a round Village Center…"</blockquote>
+          <div class="meta">För: LinkedIn, sajt-detalj, retargeting, founder DMs.</div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SHORT CLIPS -->
-<section class="section" style="background: var(--cream-2);">
-  <div class="container">
-    <div class="eyebrow">6-sekunders klipp · tre röster</div>
-    <h2 style="margin-bottom: 56px;">Tre olika personer. Tre olika anledningar att vilja flytta in.<span class="en">Three voices: the app angle, the design angle, the founder manifesto.</span></h2>
-
-    <div class="grid grid-3">
-      <div>
-        <div class="film short">
-          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_202441_129b18f5-f818-48d8-878c-e8012c0c8f3a.png">
-            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212118_0adb6bdd-f423-492e-9a41-1f94dbedf9b2.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="film-caption">
-          <div class="role">Klipp A · "Appen"</div>
-          <blockquote>"100 smart homes. One Village Center. All in one app. Northville. Join the waiting list."</blockquote>
-          <div class="meta">Persona: varm, pålitlig 40-årig kvinna. Dagljus UGC ute. Produkt-nytta.</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="film short">
-          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_202444_c21fe3ac-5652-4c5e-8a21-e86ab46ec297.png">
-            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212122_b9507e65-1472-4845-b668-f06fc55fd50b.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="film-caption">
-          <div class="role">Klipp B · "Design + relationer"</div>
-          <blockquote>"Designed by Sweden's design elite. Built for relationships, not just for living. Northville. Now taking the first hundred names."</blockquote>
-          <div class="meta">Persona: lugn 40-talist, golden hour UGC. Design-pitch.</div>
-        </div>
-      </div>
-
-      <div>
-        <div class="film short">
-          <video controls preload="metadata" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212125_768168fd-2414-4fea-8d3d-2e3d3bc25788.png">
-            <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260525_212348_3bb57afd-53d5-40c2-943d-a6911aa6ad17.mp4" type="video/mp4" />
-          </video>
-        </div>
-        <div class="film-caption">
-          <div class="role">Klipp C · "Founder manifesto"</div>
-          <blockquote>"We didn't design houses. We designed a village. A hundred neighbors. One Village Center. One app. Northville."</blockquote>
-          <div class="meta">Persona: arkitekt-figur Henrik, 45. Editorial. Trovärdighet.</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PERSONAS -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">De första 100 — vilka är de</div>
-    <h2 style="margin-bottom: 56px; max-width: 800px;">Fyra olika anledningar, en gemensam längtan: att <em>känna sina grannar</em>.</h2>
-
-    <div class="grid grid-4">
-      <div class="persona">
-        <h4>Persona 01</h4>
-        <div class="name">Finnslätten-medarbetaren</div>
-        <p><strong>32–45, ingenjör eller specialist på Northvolt eller ABB.</strong> Cyklar till jobbet på 6 min, tar gäst-hotellet när kollegor besöker, hatar att äta lunch ensam vid kontoret.</p>
-        <p style="color: var(--wood); font-weight: 500;">Köper för: gäst-hotell + restaurang + cykelavstånd.</p>
-      </div>
-      <div class="persona">
-        <h4>Persona 02</h4>
-        <div class="name">Den unga familjen</div>
-        <p><strong>34 + 36, två barn under 8.</strong> Tröttnat på Stockholm-priser och pendling. Vill ha förskola 200 m från köket och grannar som kan rycka in.</p>
-        <p style="color: var(--wood); font-weight: 500;">Köper för: förskola inne i Village Center.</p>
-      </div>
-      <div class="persona">
-        <h4>Persona 03</h4>
-        <div class="name">Downsizing-paret</div>
-        <p><strong>57 + 59, barnen har flyttat.</strong> Sålt 280 m²-villan, vill inte ha tråkig lägenhet i stan. Vill ha design att stå för + restaurang på fem minuter.</p>
-        <p style="color: var(--wood); font-weight: 500;">Köper för: restaurang + design + skötselfrihet.</p>
-      </div>
-      <div class="persona">
-        <h4>Persona 04</h4>
-        <div class="name">Remote-work-singeln</div>
-        <p><strong>32, jobbar för en startup i Berlin.</strong> Hatar att jobba ensam hemma. Vill ha coworking-spacet som sitt "riktiga" kontor och poolen som lunchrast.</p>
-        <p style="color: var(--wood); font-weight: 500;">Köper för: coworking + gemenskap.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- STRATEGY -->
-<section class="section" style="background: var(--cream-2);">
-  <div class="container">
-    <div class="eyebrow">Sex strategiska drag</div>
-    <h2 style="max-width: 900px;">Det här är inte ett bostadsprojekt — det är en rörelse med 100 platser.</h2>
-
-    <div class="grid grid-2" style="margin-top: 64px;">
-      <div class="card">
-        <h4>01 · Appen ÄR annonsen</h4>
-        <p>Varje klipp landar på telefonen. Produkt-funktionen ("Boka pool", "Gäst-hotell till mormor", "Förskole-incheckning") är marknadsföringen. Att visa bokningen säljer hårdare än att förklara gemenskapen.</p>
-      </div>
-      <div class="card">
-        <h4>02 · "De första 100" som charter</h4>
-        <p>Knapphet omformulerad som tillhörighet. Du är inte kund #4327 — du är granne #17. Begränsar publiken, fördjupar engagemang, skapar word-of-mouth, bygger en riktig kö före lansering.</p>
-      </div>
-      <div class="card">
-        <h4>03 · Den runda Village Center som ikon</h4>
-        <p>Apple har Apple Park. Northville har den cirkulära träbyggnaden med trätaket. Återkommer i varje film, varje stillbild, varje annons. Egen nordisk ikonografi.</p>
-      </div>
-      <div class="card">
-        <h4>04 · Tre trender = tre röster</h4>
-        <p>Vänskaps-trenden, livspusslet, post-covid. Varje trend översätts till en persona med eget skäl att vilja in. En kvinna i 40 räcker inte för 100 hus.</p>
-      </div>
-      <div class="card">
-        <h4>05 · Bykänsla som kulturell counter-position</h4>
-        <p>Bostäder säljs vanligtvis på m² och avkastning. Northville säljs på det ovanliga: <em>du kommer att kunna dina grannars namn</em>. Den linjen återkommer i varje script.</p>
-      </div>
-      <div class="card dark">
-        <h4 style="color: var(--wood-soft);">06 · Tonmix, en känsla</h4>
-        <p>Cinematic för hero (sajt, YouTube, deck). UGC för social (Reels, TikTok, IG). Founder för trovärdighet (LinkedIn, PR). Tre lägen, en palett: trä, ljus, lugn.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- DISTRIBUTION -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">Distributionsplan</div>
-    <h2 style="margin-bottom: 56px;">Var varje asset tjänar sitt syfte.</h2>
-
-    <table class="dist">
-      <thead>
-        <tr>
-          <th>Asset</th>
-          <th>Primär kanal</th>
-          <th>Sekundär</th>
-          <th>Roll</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr><td>Hero film B (cinematic)</td><td>Sajt-hero · YouTube preroll</td><td>Sales-deck · event-reveal</td><td>Awareness — aspiration</td></tr>
-        <tr><td>Hero film A (UGC long)</td><td>LinkedIn · sajt-detalj</td><td>Retargeting · founder DMs</td><td>Trust — "en riktig person"</td></tr>
-        <tr><td>Klipp A (appen)</td><td>Reels · TikTok</td><td>IG feed</td><td>Utility — visa produkten</td></tr>
-        <tr><td>Klipp B (design)</td><td>IG feed · Pinterest</td><td>Press-kit</td><td>Credibility — "design elite"</td></tr>
-        <tr><td>Klipp C (founder)</td><td>LinkedIn · founder-DM</td><td>Press / PR</td><td>Vision — premium trust</td></tr>
-        <tr><td>Drone-master-plan</td><td>Sajt-hero · ads</td><td>Print, posters</td><td>Ikonografi</td></tr>
-        <tr><td>Telefon-bild</td><td>App-store · IG carousel</td><td>OOH</td><td>Produkt-proof</td></tr>
-        <tr><td>Hus-stillbilder S/M/L</td><td>Sajt-detalj · prislista</td><td>Brochures, email</td><td>Konvertering</td></tr>
-        <tr><td>Village Center-stillbilder</td><td>Sajt amenities</td><td>Carousels</td><td>Motivera priset</td></tr>
-        <tr><td>Caption-bibliotek</td><td>Social rotation 4–6 v</td><td>Email subject lines</td><td>Always-on awareness</td></tr>
-      </tbody>
-    </table>
-  </div>
-</section>
-
-<!-- BEYOND -->
-<section class="section" style="background: var(--cream-2);">
-  <div class="container">
-    <div class="eyebrow">Nästa steg</div>
-    <h2 style="max-width: 900px;">Åtta saker att beställa härnäst — i prioritetsordning.</h2>
-
-    <div class="ideas" style="margin-top: 56px;">
-      <div class="idea"><div class="n">01</div><div><h4>Render om Klipp A &amp; B med rätt arkitektur</h4><p>De två 6-sekunders-klippen renderades innan jag läste briefen. Nya prompts: avatar i förgrund, slamfärg-hus + trätak i bakgrund. ~60 cr.</p></div></div>
-      <div class="idea"><div class="n">02</div><div><h4>Riktig app-demo-film (8–12 s)</h4><p>Skärm-recording-stil: ett finger trycker "Boka pool", "Gäst-hotell till mormor", "Snöskottning". Visar produkten istället för att förklara. Den högst konverterande asset vi inte har än.</p></div></div>
-      <div class="idea"><div class="n">03</div><div><h4>Founder-doc med Johnnie (arkitekt) eller Andreas (CD)</h4><p>60–90 s. Går genom Village Center i golden hour och berättar visionen i egna ord. Öppnar varje press-konversation, motiverar priset.</p></div></div>
-      <div class="idea"><div class="n">04</div><div><h4>"En dag i Northville" — 30 s lifestyle</h4><p>En familj från kaffe på altan till middag med grannar. Visar hela propositionen utan att förklara. En film du kan rotera i två år.</p></div></div>
-      <div class="idea"><div class="n">05</div><div><h4>Persona-expansion (3 × 6 s)</h4><p>Finnslätten-medarbetare, downsizing-paret, remote-work-singel. Triplar målgruppen för Reels.</p></div></div>
-      <div class="idea"><div class="n">06</div><div><h4>Master plan-diagram + interaktiv karta</h4><p>Axonometrisk ritning av alla 100 tomter runt Center, varje tomt klickbar. Dubbel funktion: knapphet ("plot #23 sålt") + säljverktyg.</p></div></div>
-      <div class="idea"><div class="n">07</div><div><h4>Charter 100 landing experience</h4><p>Ingen waitlist-form. En claim-your-place-upplevelse: namn, varför du vill vara granne, founders läser varje ansökan. Högsta intent-leads möjliga.</p></div></div>
-      <div class="idea"><div class="n">08</div><div><h4>Sound brand</h4><p>En 10-sekunders akustisk motiv (skandinaviskt piano + mjuk pad) som avslutar varje film. Igenkänning gratis efter några månaders rotation.</p></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- SOURCE -->
-<section class="section">
-  <div class="container">
-    <div class="eyebrow">Källmaterial</div>
-    <h2 style="max-width: 800px;">Originalfilmer, PDF:er, Photoshop-original och Twin Motion-renderingar.</h2>
-    <p class="lead" style="margin-top: 24px; max-width: 800px;">Allt detta sprintet bygger på finns i Northville-projektmappen på Drive — Archus-ritningar, originalfilmer (de 9 mars-klippen, NV_Center_zoom, Northville_graded_slowmo), tidigare appdemo-mov:er, kartor och Photoshop-originalbakgrunder.</p>
-
-    <div class="source-grid">
-      <div class="source-item">
-        <div class="ic">PDF</div>
-        <div>
-          <h4>NORTHVILLE PRES 2 maj.pdf</h4>
-          <p>Original-presentationen från 28 april 2023, för Northvolt. Full brief, husspecar, Village Center, app, finansiering, projektplan. 5,5 MB.</p>
-        </div>
-      </div>
-      <div class="source-item">
-        <div class="ic">MP4</div>
-        <div>
-          <h4>Northville.mp4</h4>
-          <p>Den färdiga första filmen (156 MB). Underlag för tonalitet och pace innan vi renderar om.</p>
-        </div>
-      </div>
-      <div class="source-item">
-        <div class="ic">PNG</div>
-        <div>
-          <h4>HUSEN/large·medium·small.png</h4>
-          <p>Mars 2026-renderingar av S/M/L-modellerna. Användes som visuell referens när jag skrev om alla bildprompts.</p>
-        </div>
-      </div>
-      <div class="source-item">
-        <div class="ic">PDF</div>
-        <div>
-          <h4>UNDERLAG/Situationsplan, Grönytor, Belysning, Spilledningar</h4>
-          <p>Archus tekniska underlag. 4 sektioner (21 + 28 + 37 + 14 villor), 4 gator, 9 867 m² gator, total 106 038 m².</p>
-        </div>
-      </div>
-      <div class="source-item">
-        <div class="ic">PSD</div>
-        <div>
-          <h4>Nykarta · NV_app · LOGO · iPhone-mockups</h4>
-          <p>BILDER PRESENTATION-mappen innehåller original PSD-filer, app-mockups (.mov), iPhone-templates och kartor.</p>
-        </div>
-      </div>
-      <div class="source-item">
-        <div class="ic">MP4</div>
-        <div>
-          <h4>VIDEO 9 MARS</h4>
-          <p>20+ rörliga assets från Twin Motion: <em>the_house_loop</em>, <em>NV_Center_zoom</em>, <em>village center.mp4</em>, <em>topvideo_16maj</em>. Källmaterial för framtida cut-downs.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TEAM -->
-<section class="section" style="background: var(--cream-2);">
-  <div class="container">
-    <div class="eyebrow">Bakom Northville</div>
-    <h2 style="max-width: 900px;">Future Village. Archus. Projcon. Haus.<span class="en">Roughly a hundred years of combined experience driving projects and businesses.</span></h2>
-
-    <div class="grid grid-4" style="margin-top: 56px;">
-      <div class="card">
-        <h4 style="color: var(--ink); text-transform: none; letter-spacing: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500;">Future Village</h4>
-        <p>Projektägare. Finansierar planeringsfasen samt marknadsföring och försäljning. Står i löpande dialog med flera potentiella investerare.</p>
-      </div>
-      <div class="card">
-        <h4 style="color: var(--ink); text-transform: none; letter-spacing: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500;">Archus</h4>
-        <p>Arkitekt, grundat 1986 med drivkraften att vara stor nog att ta uppdrag som förändrar samhällen. Koncern med fyra dotterbolag, över 100 medarbetare i Stockholm, Uppsala, Västerås, Borlänge, Linköping/Norrköping.</p>
-      </div>
-      <div class="card">
-        <h4 style="color: var(--ink); text-transform: none; letter-spacing: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500;">Projcon</h4>
-        <p>Projektledning och projekteringsledning. Grundat 2017, kontor i Västerås. Projekt-, bygg- och projekteringsledning, rådgivning, kontrollansvar och kalkyl.</p>
-      </div>
-      <div class="card">
-        <h4 style="color: var(--ink); text-transform: none; letter-spacing: 0; font-family: 'Cormorant Garamond', serif; font-size: 28px; font-weight: 500;">Haus</h4>
-        <p>Kommunikationsbyrå med fem affärsområden: Grow, Strategy, Society, Tech och Web. 40+ specialister med kontor i Stockholm, Västerås och Örebro.</p>
-      </div>
-    </div>
-
-    <div class="grid grid-4" style="margin-top: 32px;">
-      <div class="persona">
-        <h4>Projektledare</h4>
-        <div class="name">Christer Bäckström</div>
-      </div>
-      <div class="persona">
-        <h4>Arkitekt</h4>
-        <div class="name">Johnnie Pettersson</div>
-      </div>
-      <div class="persona">
-        <h4>Creative Director</h4>
-        <div class="name">Andreas Östman</div>
-      </div>
-      <div class="persona">
-        <h4>Projektledare</h4>
-        <div class="name">Stefan Costcun</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- WAITLIST -->
-<section class="section" id="waitlist" style="background: var(--ink); color: var(--cream);">
+<!-- CTA / WAITLIST -->
+<section class="uttag-section" id="cta" style="background: var(--ink); color: var(--cream);">
   <div class="container" style="text-align: center;">
-    <div class="eyebrow" style="color: var(--wood-soft);">Intresseanmälan</div>
-    <h2 style="color: var(--cream); max-width: 800px; margin: 0 auto;">Det blir ingen Northville 2. Var en av de första hundra.<span class="en" style="color: rgba(246,241,232,.7);">There won't be a Northville 2. Be one of the first hundred neighbours.</span></h2>
-    <p class="lead" style="color: rgba(246,241,232,.8); max-width: 600px; margin: 32px auto 0;">100 små smarta hus. Ett Village Center. En app. En enda kö, som öppnar nu.</p>
-    <a class="cta" href="#" style="background: var(--cream); color: var(--ink); margin-top: 40px;">Anmäl mig som granne</a>
+    <span class="uttag" style="color: var(--wood-soft); border-color: var(--wood-soft);">/uttag 14 · CTA</span>
+    <h2 style="color: var(--cream); margin: 24px auto 0; max-width: 900px;">Det blir ingen Northville 2.<br/>Var en av de första hundra.</h2>
+    <p style="color: rgba(246,241,232,.8); max-width: 600px; margin: 32px auto 0; font-size: 20px; font-weight: 300;">100 hus. 1 Village Center. 1 app. 1 enda kö. Anmäl intresse nu så hör vi av oss till de första hundra.</p>
+    <a href="#" style="display: inline-block; margin-top: 40px; padding: 18px 32px; background: var(--cream); color: var(--ink); border: 0; font-family: 'Inter', sans-serif; font-size: 13px; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase;">Anmäl mig som granne</a>
+    <div style="margin-top: 40px;"><a href="library.html" style="color: var(--wood-soft); border-color: var(--wood-soft); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase;">Eller bläddra i asset library →</a></div>
   </div>
 </section>
 
 <footer>
   <div class="container">
     <div class="brand">Northville</div>
-    <div>Campaign sprint · maj 2026 · genererat med Higgsfield (Marketing Studio + Soul) på productionhub-workspacet.</div>
-    <div style="margin-top: 8px;">12 stillbilder · 5 filmer (2 hero-varianter + 3 short clips) · 3 röster · ~370 credits.</div>
-    <div style="margin-top: 24px; font-size: 11px; color: var(--ink-2);">Källmaterial: Northville Drive-mapp · Archus situationsplan · 2 maj 2023-presentation. All ny content matchar slamfärg + stående panel + trätak + inga takfötter enligt original-briefen.</div>
+    <div>Brand universe · 14 uttag på en sida · alla refs i <a href="library.html">asset library</a></div>
+    <div style="margin-top: 8px; font-size: 11px;">Future Village · Archus · Projcon · Haus · 2026</div>
   </div>
 </footer>
 
