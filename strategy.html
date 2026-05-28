@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="sv">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Northville — Strategy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet" />
+<style>
+  /* === BRAND FONTS === */
+  @font-face { font-family: 'Proxy Mono'; src: url('assets/fonts/ProxyMono.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Apercu'; src: url('assets/fonts/Apercu-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Apercu'; src: url('assets/fonts/Apercu-Italic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Apercu'; src: url('assets/fonts/Apercu-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
+
+  :root {
+    --nature: #F7F2E5;
+    --nature-2: #EEE5CE;
+    --forest: #334546;
+    --forest-2: #25393B;
+    --bright: #06FF83;
+    --bright-soft: #C8FFE3;
+    --sunny: #F5E78B;
+    --peach: #F8C5A5;
+    --ink: #0E1717;
+    --ink-2: #5F6E6F;
+    --line: rgba(14, 23, 23, 0.13);
+    --maxw: 1280px;
+    --gutter: clamp(24px, 4.5vw, 56px);
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; background: var(--nature); color: var(--ink); }
+  body { font-family: 'Apercu', system-ui, sans-serif; font-weight: 300; line-height: 1.65; -webkit-font-smoothing: antialiased; }
+  img, video { max-width: 100%; display: block; height: auto; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--bright); transition: color .25s ease; }
+  a:hover { color: var(--bright); }
+  h1, h2 { font-family: 'Proxy Mono', monospace; font-weight: 400; line-height: 1.15; letter-spacing: 0.005em; text-transform: uppercase; color: var(--ink); margin: 0; }
+  h1 { font-size: clamp(56px, 11vw, 160px); line-height: 1.05; }
+  h2 { font-size: clamp(32px, 5.5vw, 64px); }
+  h3 { font-family: 'Apercu', sans-serif; font-weight: 700; line-height: 1.26; letter-spacing: -0.02em; color: var(--ink); margin: 0; font-size: clamp(22px, 2.8vw, 32px); }
+  p { margin: 0 0 1.2em; color: var(--ink); font-size: 17px; font-weight: 300; line-height: 1.7; }
+  .lead { font-size: clamp(20px, 1.9vw, 26px); color: var(--ink); font-weight: 300; line-height: 1.5; max-width: 800px; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
+  .uttag { font-family: 'Proxy Mono', monospace; font-size: 11px; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); padding: 0; border: 0; display: inline-block; }
+
+  /* SCROLL BAR + REVEAL */
+  .scrollbar { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--bright); z-index: 200; transition: width .1s linear; pointer-events: none; }
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity .9s cubic-bezier(.22,.85,.36,1), transform .9s cubic-bezier(.22,.85,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } html { scroll-behavior: auto; } }
+
+  /* HEADER (same shell as Brand Universe + Library) */
+  header.site { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(14, 23, 23, 0.30); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.25); transition: background .35s ease, border-color .35s ease; }
+  header.site .strip-tabs { border-bottom: 1px solid rgba(255,255,255,0.25); transition: border-color .35s ease; }
+  header.site .strip-tabs .row { display: flex; justify-content: center; align-items: stretch; gap: 0; flex-wrap: nowrap; }
+  header.site .strip-tabs .tab { flex: 0 0 auto; padding: 14px 28px; font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; opacity: 0.55; border: 0; border-bottom: 2px solid transparent; line-height: 1.4; transition: opacity .25s ease, color .25s ease, border-color .25s ease; text-align: center; }
+  header.site .strip-tabs .tab:hover { opacity: 1; }
+  header.site .strip-tabs .tab.active { opacity: 1; color: var(--bright); border-bottom-color: var(--bright); }
+  header.site .strip-main { padding: 20px 0; }
+  header.site .strip-main .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 24px; }
+  header.site .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 32px); letter-spacing: -0.05em; line-height: 1; color: #fff; transition: color .35s ease; }
+  header.site .brand a { color: inherit; border: none; line-height: 1; }
+  header.site .brand a:hover { opacity: 0.7; }
+  header.site nav.primary-nav { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+  header.site nav.primary-nav a { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; border: none; line-height: 1.6; opacity: 0.85; transition: color .35s ease, opacity .2s ease; }
+  header.site nav.primary-nav a:hover { color: var(--bright); opacity: 1; }
+  header.site nav.primary-nav a.lib { background: rgba(255,255,255,0.15); color: #fff; padding: 12px 20px; border: 1px solid rgba(255,255,255,0.35); margin-left: 4px; opacity: 1; }
+  header.site nav.primary-nav a.lib:hover { background: var(--bright); color: var(--ink); border-color: var(--bright); }
+  .menu-toggle { display: none; background: transparent; border: 0; padding: 0; cursor: pointer; width: 44px; height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; position: relative; z-index: 110; }
+  .menu-toggle .bar { display: block; width: 26px; height: 2px; background: #fff; transition: transform .3s ease, opacity .2s ease, background .35s ease; }
+  /* Solid state */
+  header.site.solid { background: rgba(247, 242, 229, 0.94); border-bottom-color: var(--ink); }
+  header.site.solid .strip-tabs { border-bottom-color: var(--line); }
+  header.site.solid .strip-tabs .tab { color: var(--ink); opacity: 0.45; }
+  header.site.solid .strip-tabs .tab.active { color: var(--ink); opacity: 1; border-bottom-color: var(--ink); }
+  header.site.solid .brand, header.site.solid nav.primary-nav a { color: var(--ink); opacity: 1; }
+  header.site.solid nav.primary-nav a.lib { background: var(--ink); color: var(--nature); border-color: var(--ink); }
+  header.site.solid .menu-toggle .bar { background: var(--ink); }
+  @media (max-width: 900px) {
+    header.site .strip-tabs .tab { padding: 12px 16px; font-size: 10px; letter-spacing: 0.04em; }
+    .menu-toggle { display: inline-flex; }
+    header.site nav.primary-nav { position: fixed; inset: 0; background: rgba(14,23,23,0.97); backdrop-filter: blur(24px); transform: translateX(100%); transition: transform .45s cubic-bezier(.22,.85,.36,1); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(60px, 14vw, 140px) var(--gutter); gap: 22px; z-index: 105; overflow-y: auto; }
+    header.site nav.primary-nav a { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(28px, 7vw, 44px); color: #fff !important; text-transform: none; letter-spacing: -0.025em; line-height: 1.15; opacity: 1 !important; }
+    header.site nav.primary-nav a.lib { margin-top: 28px; font-family: 'Proxy Mono', monospace; font-size: 12px; text-transform: uppercase; letter-spacing: 0.06em; padding: 16px 22px; background: var(--bright) !important; color: var(--ink) !important; border: 1px solid var(--bright); line-height: 1; }
+    header.site.is-open nav.primary-nav { transform: translateX(0); }
+    header.site.is-open .menu-toggle .bar { background: #fff !important; }
+    header.site.is-open .menu-toggle .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    header.site.is-open .menu-toggle .bar:nth-child(2) { opacity: 0; }
+    header.site.is-open .menu-toggle .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    body.menu-open { overflow: hidden; }
+  }
+
+  /* HERO */
+  .hero { position: relative; min-height: 88vh; display: flex; align-items: flex-end; padding: 120px 0 60px; background: var(--forest); overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: 0; background-image: url("https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_125129_f9aad098-5801-48ab-a885-8b86e29ee2d6.png"); background-size: cover; background-position: center; opacity: 0.35; filter: blur(2px); z-index: 0; }
+  .hero::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,23,23,.55) 0%, rgba(14,23,23,.4) 50%, rgba(14,23,23,.85) 100%); z-index: 1; }
+  .hero-inner { position: relative; z-index: 2; color: #fff; width: 100%; }
+  .hero h1 { color: #fff; max-width: 16ch; }
+  .hero .docref { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); margin-bottom: 32px; display: inline-block; }
+  .hero .sub { font-family: 'Apercu', sans-serif; font-weight: 700; color: #fff; font-size: clamp(24px, 3.4vw, 44px); letter-spacing: -0.03em; line-height: 1.26; max-width: 800px; margin-top: 32px; }
+
+  /* SECTION base */
+  section.cat { padding: clamp(120px, 15vw, 220px) 0; border-top: 1px solid var(--line); position: relative; overflow: hidden; scroll-margin-top: 100px; }
+  section.cat.dark { background: var(--forest); color: var(--nature); border-top-color: var(--bright); }
+  section.cat.dark h2 { color: var(--bright); }
+  section.cat.dark h3 { color: var(--nature); }
+  section.cat.dark p { color: rgba(247, 242, 229, 0.82); }
+  section.cat.dark .uttag { color: var(--bright); }
+  section.cat .head { display: flex; justify-content: space-between; align-items: end; margin-bottom: clamp(56px, 8vw, 96px); gap: 40px; flex-wrap: wrap; }
+  section.cat .head .label { max-width: 720px; }
+  section.cat .head h2 { margin-top: 24px; }
+  section.cat .head .note { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; color: var(--ink-2); max-width: 320px; text-align: right; line-height: 1.6; text-transform: none; }
+  section.cat.dark .head .note { color: rgba(6, 255, 131, 0.7); }
+  section.cat .sectionnumber { position: absolute; top: clamp(48px, 6vw, 80px); right: var(--gutter); font-family: 'Proxy Mono', monospace; font-size: clamp(80px, 12vw, 180px); color: var(--ink); opacity: 0.05; line-height: 0.85; pointer-events: none; user-select: none; }
+  section.cat.dark .sectionnumber { color: var(--bright); opacity: 0.18; }
+  @media (max-width: 900px) { section.cat .sectionnumber { display: none; } }
+
+  /* STAT BLOCK — datapunkter med stora siffror */
+  .stat-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  .stat-block { padding: 40px 32px; background: var(--nature); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+  section.cat.dark .stat-block { background: var(--forest-2); border-color: rgba(6,255,131,0.18); }
+  .stat-block .big-num { font-family: 'Proxy Mono', monospace; font-size: clamp(56px, 7vw, 96px); color: var(--ink); line-height: 1.05; }
+  section.cat.dark .stat-block .big-num { color: var(--bright); }
+  .stat-block .label { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.6; }
+  section.cat.dark .stat-block .label { color: rgba(247, 242, 229, 0.75); }
+  .stat-block .desc { font-size: 15px; color: var(--ink); line-height: 1.7; }
+  section.cat.dark .stat-block .desc { color: var(--nature); }
+  @media (max-width: 800px) { .stat-grid { grid-template-columns: 1fr; } }
+
+  /* INSIGHT cards */
+  .insight-row { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: start; }
+  @media (max-width: 800px) { .insight-row { grid-template-columns: 1fr; gap: 32px; } }
+  .insight-row .big-quote { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(28px, 4vw, 48px); line-height: 1.26; letter-spacing: -0.03em; color: var(--ink); }
+  section.cat.dark .insight-row .big-quote { color: var(--bright); }
+
+  /* PERSONAS */
+  .personas { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+  @media (max-width: 800px) { .personas { grid-template-columns: 1fr; } }
+  .persona { padding: 40px 32px; background: var(--nature-2); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 16px; }
+  .persona .ttl { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(22px, 2.5vw, 28px); color: var(--ink); letter-spacing: -0.02em; line-height: 1.2; }
+  .persona .age { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.6; }
+  .persona p { font-size: 15px; color: var(--ink); line-height: 1.7; margin: 0; }
+  .persona .pain, .persona .want { padding-top: 16px; border-top: 1px solid var(--line); }
+  .persona .pain b, .persona .want b { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); display: block; margin-bottom: 6px; font-weight: 400; }
+
+  /* FUNNEL */
+  .funnel-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .funnel-row { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .funnel-row { grid-template-columns: 1fr; } }
+  .funnel-cell { padding: 32px 24px; background: var(--nature); border: 1px solid var(--line); display: flex; flex-direction: column; gap: 14px; position: relative; }
+  .funnel-cell .step { font-family: 'Proxy Mono', monospace; font-size: 32px; color: var(--bright); line-height: 1; }
+  .funnel-cell .phase { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); line-height: 1.6; }
+  .funnel-cell .what { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.015em; line-height: 1.3; }
+  .funnel-cell p { font-size: 14px; color: var(--ink-2); margin: 0; line-height: 1.65; }
+
+  /* PARTNER STACK */
+  .partner-stack { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; }
+  @media (max-width: 900px) { .partner-stack { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .partner-stack { grid-template-columns: 1fr; } }
+  .partner { padding: 40px 32px; background: var(--forest-2); border: 1px solid rgba(6,255,131,0.18); }
+  .partner .name { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 22px; color: var(--bright); letter-spacing: -0.02em; line-height: 1.2; }
+  .partner .role { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: rgba(247, 242, 229, 0.65); margin: 10px 0 16px; line-height: 1.6; }
+  .partner p { font-size: 14px; color: var(--nature); line-height: 1.65; margin: 0; }
+
+  /* CTA blocks at bottom */
+  .cta-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+  @media (max-width: 800px) { .cta-row { grid-template-columns: 1fr; } }
+  .cta-card { padding: 56px 40px; background: var(--nature); border: 1px solid var(--line); transition: border-color .25s ease, transform .25s ease; display: flex; flex-direction: column; gap: 20px; text-decoration: none; }
+  .cta-card:hover { border-color: var(--ink); transform: translateY(-3px); }
+  .cta-card .kind { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink-2); line-height: 1.6; }
+  .cta-card .ttl { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(24px, 2.8vw, 32px); color: var(--ink); letter-spacing: -0.025em; line-height: 1.2; }
+  .cta-card p { font-size: 15px; color: var(--ink); margin: 0; line-height: 1.65; }
+  .cta-card .arrow { font-family: 'Proxy Mono', monospace; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--bright); margin-top: 8px; }
+
+  /* FOOTER */
+  footer { padding: 96px 0 64px; text-align: center; color: var(--ink-2); border-top: 1px solid var(--bright); background: var(--nature); }
+  footer .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 44px; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.05em; line-height: 1; }
+  footer > .container > div:not(.brand) { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.8; margin-top: 8px; }
+</style>
+</head>
+<body>
+
+<div class="scrollbar" aria-hidden="true"></div>
+<header class="site">
+  <div class="strip-tabs">
+    <div class="container row">
+      <a href="strategy.html" class="tab active">Strategy</a>
+      <a href="index.html" class="tab">Brand Universe</a>
+      <a href="library.html" class="tab">Asset Library</a>
+    </div>
+  </div>
+  <div class="strip-main">
+    <div class="container row">
+      <div class="brand"><a href="index.html">Northville</a></div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Öppna meny" aria-expanded="false" aria-controls="primary-nav">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav">
+        <a href="#problem">Problem</a>
+        <a href="#insight">Insight</a>
+        <a href="#idea">Idé</a>
+        <a href="#audience">Målgrupp</a>
+        <a href="#funnel">Funnel</a>
+        <a href="#stack">Partners</a>
+        <a href="index.html" class="lib">Till Brand Universe →</a>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<section class="hero" id="top">
+  <div class="container hero-inner">
+    <span class="docref">00 · Strategy · 2026</span>
+    <h1>Vi bygger inte 100 hus.<br/>Vi bygger en by.</h1>
+    <div class="sub">Strategin bakom Northville — varifrån idén kommer, vem den är för och hur vi når de första hundra.</div>
+  </div>
+</section>
+
+<!-- 01 · THE PROBLEM -->
+<section class="cat" id="problem">
+  <div class="sectionnumber" aria-hidden="true">01</div>
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/strategy 01 · Problem</span>
+        <h2>Vi byggde<br/>bort grannarna.</h2>
+      </div>
+      <div class="note">Vad gör att vardagen i ett bostadsområde sällan blir det vi hoppas på? Svaret ligger i hur vi har planerat dem.</div>
+    </div>
+
+    <div class="stat-grid reveal">
+      <div class="stat-block">
+        <div class="big-num">7 / 10</div>
+        <div class="label">vill ha bättre relationer</div>
+        <div class="desc">Sju av tio svenskar uppger att de skulle vilja ha en bättre relation med sina grannar. Viljan finns. Vägen dit gör det inte.</div>
+      </div>
+      <div class="stat-block">
+        <div class="big-num">28 %</div>
+        <div class="label">svårt att få vänner som vuxen</div>
+        <div class="desc">Var fjärde svensk uppger att det är svårt att hitta nya vänner som vuxen. Vardagen i ett villaområde är inte byggd för det.</div>
+      </div>
+      <div class="stat-block">
+        <div class="big-num">1 / 2</div>
+        <div class="label">har ingen relation med sina grannar</div>
+        <div class="desc">Varannan svensk säger att de inte har någon riktig relation med någon av sina grannar. Vi passerar varandra — inget mer.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; max-width: 800px;">
+      <p class="lead">De senaste femtio åren har vi byggt hus för individen. Stora privata ytor, små delade. Egen tomt, egen pool, egen entreprenör för snöskottningen. Det är inte ett bostadsproblem. <strong>Det är ett vardags-problem.</strong></p>
+    </div>
+  </div>
+</section>
+
+<!-- 02 · INSIGHT -->
+<section class="cat dark" id="insight">
+  <div class="sectionnumber" aria-hidden="true">02</div>
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/strategy 02 · Insight</span>
+        <h2>Det privata<br/>kan vara litet.</h2>
+      </div>
+      <div class="note">Människor vill inte ha större privat yta. De vill ha större delad yta.</div>
+    </div>
+
+    <div class="insight-row">
+      <div class="big-quote">"Vi byggde stora hus för att vi inte litade på det som låg utanför husen. Lös det yttre — och det inre kan krympa."</div>
+      <div>
+        <p>Den dolda insikten: ett kvarter med en pool är värt mer än hundra privata ytor. En gemensam matsal blir bättre mat än hundra kök. Ett delat gym är roligare än hundra hometrainers som dammar.</p>
+        <p>Northville flyttar 80 % av det privata till det delade. Det vi förlorar i kvadratmeter får vi tillbaka i grannar.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 03 · IDEA -->
+<section class="cat" id="idea">
+  <div class="sectionnumber" aria-hidden="true">03</div>
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/strategy 03 · Idé</span>
+        <h2>En by, inte<br/>ett bostadsprojekt.</h2>
+      </div>
+      <div class="note">Tre kärnkomponenter. Inget extra. Ingen verksamhet kan adderas senare utan att förändra hela värdeerbjudandet.</div>
+    </div>
+
+    <div class="stat-grid reveal">
+      <div class="stat-block">
+        <div class="label">Komponent A</div>
+        <div class="big-num" style="font-size: clamp(40px, 5vw, 64px);">100 hus</div>
+        <div class="desc">Små smarta trähus i tre slamfärger, designade av Archus. Tre modeller: S 80 m², M 101 m², L 112 m². Maximalt 100. När de är sålda är det stopp.</div>
+      </div>
+      <div class="stat-block">
+        <div class="label">Komponent B</div>
+        <div class="big-num" style="font-size: clamp(40px, 5vw, 64px);">1 Village Center</div>
+        <div class="desc">3 000 m² cirkulär träbyggnad i mitten. Pool, gym, förskola, restaurang, hotell, festlokal, coworking, butik. Allt det som en by behöver — på ett ställe.</div>
+      </div>
+      <div class="stat-block">
+        <div class="label">Komponent C</div>
+        <div class="big-num" style="font-size: clamp(40px, 5vw, 64px);">1 app</div>
+        <div class="desc">Bokningar, grannmarketplace, gemenskap, drift, kommunikation — i en app. Tekniken är osynlig, men gör att 100 hushåll kan dela 3 000 m² utan friktion.</div>
+      </div>
+    </div>
+
+    <div style="margin-top: 80px; max-width: 800px;">
+      <p class="lead">Det är medvetet att vi stannar vid hundra. Det är storleken där man fortfarande kan kunna sina grannars namn. Den första generationen som väljer det.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 04 · AUDIENCE -->
+<section class="cat" id="audience">
+  <div class="sectionnumber" aria-hidden="true">04</div>
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/strategy 04 · Målgrupp</span>
+        <h2>Tre personas.<br/>En kö.</h2>
+      </div>
+      <div class="note">Inte tre erbjudanden. Samma 100 platser, samma värdegrund. Skillnaden ligger i livsfas och vad de söker.</div>
+    </div>
+
+    <div class="personas reveal">
+      <div class="persona">
+        <div class="ttl">Familjen Lind</div>
+        <div class="age">35–45 år · 2 barn · första-/andragångsköpare</div>
+        <p>Säkert kvarter där barnen kan cykla obevakat. Förskola intill. Grannar att fika med under barnens lekdejt. Bytte lägenheten mot något med trädgård men vill inte sitta isolerad.</p>
+        <div class="pain"><b>Pain</b>Att flytta ut betyder att börja om socialt.</div>
+        <div class="want"><b>Want</b>Bykänsla utan att ge upp Västerås-närheten.</div>
+      </div>
+      <div class="persona">
+        <div class="ttl">Hemvändarna</div>
+        <div class="age">50–65 år · sålt huset · downsizing</div>
+        <p>Barnen utflugna, villan blev för stor och för krävande. Vill bo mindre men inte sämre. Resa, träna, äta ute. Söker ett sammanhang där man inte är pensionär — bara granne.</p>
+        <div class="pain"><b>Pain</b>Vanliga lägenheter saknar gemenskap.</div>
+        <div class="want"><b>Want</b>Mindre att äga, mer att vara med om.</div>
+      </div>
+      <div class="persona">
+        <div class="ttl">Pionjärerna</div>
+        <div class="age">30–45 år · designintresserade · DINKs</div>
+        <p>Följer Bo Bedre och Wallpaper. Värdesätter att bo i något designat, något som har en idé bakom sig. Vill bo medvetet, inte konsumentmässigt. Trivs i Stockholm men dröm är mindre stad.</p>
+        <div class="pain"><b>Pain</b>Generiskt villabygge är estetiskt smärtsamt.</div>
+        <div class="want"><b>Want</b>En manifest-flytt — något man kan stå för.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 · FUNNEL -->
+<section class="cat dark" id="funnel">
+  <div class="sectionnumber" aria-hidden="true">05</div>
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/strategy 05 · Funnel</span>
+        <h2>Hur vi når<br/>de första hundra.</h2>
+      </div>
+      <div class="note">Mindre annonsbudget än ett vanligt bostadsprojekt — men varje touchpoint är hand-designad för att låta byns röst bära.</div>
+    </div>
+
+    <div class="funnel-row reveal">
+      <div class="funnel-cell">
+        <div class="step">01</div>
+        <div class="phase">Awareness</div>
+        <div class="what">Cinematic hero-film</div>
+        <p>15 sek anamorphic Village Center-film på YouTube, sajt-hero, Vimeo. En enda gång att fastna i feed:en.</p>
+      </div>
+      <div class="funnel-cell">
+        <div class="step">02</div>
+        <div class="phase">Engagement</div>
+        <div class="what">Social IG + Reels</div>
+        <p>Tre tonröster (varm, direkt, vision). Tagline-bibliotek roterar. UGC-reels med arkitekten + första boende.</p>
+      </div>
+      <div class="funnel-cell">
+        <div class="step">03</div>
+        <div class="phase">Consideration</div>
+        <div class="what">Sales sheet + brev</div>
+        <p>Den som anmält intresse får sales sheet på papper, sedan ett personligt brev från arkitekten. Inget AI-generated. Konstruerat hantverk.</p>
+      </div>
+      <div class="funnel-cell">
+        <div class="step">04</div>
+        <div class="phase">Conversion</div>
+        <div class="what">Visning + app</div>
+        <p>En enda visning per kö-omgång. App-onboarding börjar samma dag — du är granne #17 från klick på "boka".</p>
+      </div>
+    </div>
+
+    <div style="margin-top: 64px; max-width: 800px;">
+      <p>Funneln är medvetet kort. Vi har 100 platser att sälja, inte 100 leads att samla. Var en av de första hundra är inte en CTA — det är hela värdesatsen.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 06 · STACK -->
+<section class="cat dark" id="stack" style="padding-top: 0;">
+  <div class="container">
+    <div class="head" style="margin-top: 0; padding-top: 0;">
+      <div class="label">
+        <span class="uttag">/strategy 06 · Stack</span>
+        <h2>Fyra partners.<br/>En by.</h2>
+      </div>
+      <div class="note">Varje aktör äger sin disciplin. Ingen styr över de andra. Bryggan är respekten för platsen.</div>
+    </div>
+
+    <div class="partner-stack reveal">
+      <div class="partner">
+        <div class="name">Future Village</div>
+        <div class="role">Projektägare</div>
+        <p>Visionen. Investerare och risken. Den som svarar när folk frågar varför.</p>
+      </div>
+      <div class="partner">
+        <div class="name">Archus</div>
+        <div class="role">Arkitekt · grundat 1986</div>
+        <p>Husen, Village Center, layout, slamfärgerna, diamond X-trellis-fasaden. Allt fysiskt som syns.</p>
+      </div>
+      <div class="partner">
+        <div class="name">Projcon</div>
+        <div class="role">Projektledning</div>
+        <p>Tidplan, byggprocess, entreprenörer, kommun-relation. Det som måste fungera utan att synas.</p>
+      </div>
+      <div class="partner">
+        <div class="name">Haus</div>
+        <div class="role">Brand · Kommunikation</div>
+        <p>Identitet, kampanj, sajt, sociala medier, taglines, sales sheet. Det här dokumentet du läser nu.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cat" id="next">
+  <div class="container">
+    <div class="head">
+      <div class="label">
+        <span class="uttag">/strategy 07 · Nästa steg</span>
+        <h2>Se det,<br/>använd det.</h2>
+      </div>
+      <div class="note">Strategin lever inte i ord. Den lever i de uttag den blir.</div>
+    </div>
+
+    <div class="cta-row reveal">
+      <a class="cta-card" href="index.html">
+        <span class="kind">Brand Universe → 14 uttag</span>
+        <span class="ttl">Se hur strategin blir varumärke.</span>
+        <p>Hero-film, taglines, annons-spread, sales sheet, brev från arkitekten, manifest, app-copy, signage och allt däremellan. Samma idé, fjorton format.</p>
+        <span class="arrow">Öppna Brand Universe →</span>
+      </a>
+      <a class="cta-card" href="library.html">
+        <span class="kind">Asset Library → råmaterialet</span>
+        <span class="ttl">Hämta bilder, logotyper och färger.</span>
+        <p>Drive-rendrer från Archus + alla AI-genererade kompletteringar. Klart att använda som image-to-image-referenser i nästa generering.</p>
+        <span class="arrow">Öppna Asset Library →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="container">
+    <div class="brand">Northville</div>
+    <div>Strategy v1 · 2026</div>
+    <div>Future Village · Archus · Projcon · Haus</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll progress bar
+  (function () {
+    const bar = document.querySelector('.scrollbar');
+    if (!bar) return;
+    let raf = null;
+    function update() {
+      const sc = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? Math.min(1, sc / h) : 0;
+      bar.style.width = (pct * 100).toFixed(2) + '%';
+      raf = null;
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Scroll reveal
+  (function () {
+    const targets = document.querySelectorAll('section.cat, .stat-block, .persona, .funnel-cell, .partner, .cta-card');
+    if (!('IntersectionObserver' in window)) { targets.forEach(t => t.classList.add('in', 'reveal')); return; }
+    targets.forEach(t => t.classList.add('reveal'));
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    targets.forEach(t => io.observe(t));
+  })();
+
+  // Header solidify
+  (function () {
+    const header = document.querySelector('header.site');
+    const hero = document.querySelector('.hero');
+    if (!header || !hero) return;
+    let raf = null;
+    function update() {
+      const threshold = hero.offsetHeight - header.offsetHeight - 8;
+      if (window.scrollY > threshold) header.classList.add('solid');
+      else header.classList.remove('solid');
+      raf = null;
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+
+  // Mobile hamburger
+  (function () {
+    const header = document.querySelector('header.site');
+    const btn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    if (!header || !btn || !nav) return;
+    function setOpen(open) {
+      header.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      document.body.classList.toggle('menu-open', open);
+    }
+    btn.addEventListener('click', () => setOpen(!header.classList.contains('is-open')));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && header.classList.contains('is-open')) setOpen(false); });
+  })();
+</script>
+
+</body>
+</html>

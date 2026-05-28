@@ -95,9 +95,12 @@
      Default: transparent black 30% overlay + white text (över hero-bild).
      .solid (toggleas via JS när du scrollat förbi heron): cream-beige + ink. */
   header.site { position: fixed; top: 0; left: 0; right: 0; z-index: 100; background: rgba(14, 23, 23, 0.30); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(255,255,255,0.25); transition: background .35s ease, border-color .35s ease; }
-  header.site .strip-top { padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.25); transition: border-color .35s ease; }
-  header.site .strip-top .row { display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-  header.site .strip-top .docref { font-family: 'Proxy Mono', monospace; font-size: 10px; letter-spacing: 0.05em; text-transform: uppercase; color: #fff; line-height: 1.4; opacity: 0.9; transition: color .35s ease; }
+  /* TABS — Strategy / Brand Universe / Asset Library */
+  header.site .strip-tabs { border-bottom: 1px solid rgba(255,255,255,0.25); transition: border-color .35s ease; }
+  header.site .strip-tabs .row { display: flex; justify-content: center; align-items: stretch; gap: 0; flex-wrap: nowrap; }
+  header.site .strip-tabs .tab { flex: 0 0 auto; padding: 14px 28px; font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; opacity: 0.55; border: 0; border-bottom: 2px solid transparent; line-height: 1.4; transition: opacity .25s ease, color .25s ease, border-color .25s ease, background .25s ease; text-align: center; }
+  header.site .strip-tabs .tab:hover { opacity: 1; }
+  header.site .strip-tabs .tab.active { opacity: 1; color: var(--bright); border-bottom-color: var(--bright); }
   header.site .strip-main { padding: 20px 0; }
   header.site .strip-main .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 24px; }
   header.site .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 32px); letter-spacing: -0.05em; line-height: 1; color: #fff; transition: color .35s ease; }
@@ -114,8 +117,10 @@
 
   /* Solid state efter att man scrollat förbi heron */
   header.site.solid { background: rgba(247, 242, 229, 0.94); backdrop-filter: blur(20px); border-bottom-color: var(--ink); }
-  header.site.solid .strip-top { border-bottom-color: var(--ink); }
-  header.site.solid .strip-top .docref { color: var(--ink); opacity: 1; }
+  header.site.solid .strip-tabs { border-bottom-color: var(--line); }
+  header.site.solid .strip-tabs .tab { color: var(--ink); opacity: 0.45; }
+  header.site.solid .strip-tabs .tab:hover { opacity: 1; }
+  header.site.solid .strip-tabs .tab.active { color: var(--ink); opacity: 1; border-bottom-color: var(--ink); }
   header.site.solid .brand { color: var(--ink); }
   header.site.solid nav.primary-nav a { color: var(--ink); opacity: 1; }
   header.site.solid nav.primary-nav a:hover { color: var(--ink); opacity: 0.6; }
@@ -124,8 +129,8 @@
   header.site.solid .menu-toggle .bar { background: var(--ink); }
 
   @media (max-width: 900px) {
-    /* Tighten top strip on mobile */
-    header.site .strip-top .docref:nth-child(2) { display: none; }
+    /* Smaller tabs on mobile */
+    header.site .strip-tabs .tab { padding: 12px 16px; font-size: 10px; letter-spacing: 0.04em; }
     /* Hamburger visible, inline nav hidden by default */
     .menu-toggle { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; gap: 5px; width: 44px; height: 44px; background: transparent; border: 0; padding: 0; cursor: pointer; z-index: 110; position: relative; -webkit-tap-highlight-color: transparent; }
     .menu-toggle .bar { display: block; width: 26px; height: 2px; background: #fff; transition: transform .3s ease, opacity .2s ease, background .35s ease; transform-origin: center; }
@@ -185,30 +190,8 @@
   .hero { position: relative; min-height: 92vh; overflow: hidden; display: flex; align-items: flex-end; padding: 0; background: var(--forest); }
   .hero-bg { position: absolute; inset: 0; z-index: 0; }
   .hero-bg img, .hero-bg video { width: 100%; height: 100%; object-fit: cover; }
+  .hero-bg .hero-video { display: block; }
   .hero-bg::after { content: ''; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(14,23,23,.45) 0%, rgba(14,23,23,.15) 30%, rgba(14,23,23,.55) 100%); z-index: 4; }
-
-  /* === HERO SLIDESHOW (4 Village Center stills, Ken Burns + crossfade) === */
-  .hero-slides { position: absolute; inset: 0; z-index: 0; }
-  .hero-slides .slide {
-    position: absolute; inset: 0; width: 100%; height: 100%;
-    object-fit: cover; opacity: 0;
-    animation: slideShow 24s infinite linear;
-    will-change: opacity, transform;
-  }
-  .hero-slides .slide:nth-child(1) { animation-delay: 0s; }
-  .hero-slides .slide:nth-child(2) { animation-delay: 6s; }
-  .hero-slides .slide:nth-child(3) { animation-delay: 12s; }
-  .hero-slides .slide:nth-child(4) { animation-delay: 18s; }
-  @keyframes slideShow {
-    0%   { opacity: 0; transform: scale(1.06); }
-    4%   { opacity: 1; }
-    25%  { opacity: 1; transform: scale(1.0); }
-    29%  { opacity: 0; transform: scale(1.0); }
-    100% { opacity: 0; transform: scale(1.06); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .hero-slides .slide { animation-duration: 60s; }
-  }
 
   /* Subtle film-grain overlay */
   .grain { position: absolute; inset: -100% -100%; z-index: 3; pointer-events: none; opacity: 0.14; mix-blend-mode: overlay;
@@ -497,10 +480,11 @@
 
 <div class="scrollbar" aria-hidden="true"></div>
 <header class="site">
-  <div class="strip-top">
+  <div class="strip-tabs">
     <div class="container row">
-      <span class="docref">Northville Brand Universe · 2026</span>
-      <span class="docref">14 uttag · 1 idé</span>
+      <a href="strategy.html" class="tab">Strategy</a>
+      <a href="index.html" class="tab active">Brand Universe</a>
+      <a href="library.html" class="tab">Asset Library</a>
     </div>
   </div>
   <div class="strip-main">
@@ -532,16 +516,13 @@
 <!-- HERO — 4-bild slideshow av Village Center (assets från library) -->
 <section class="hero" id="top">
   <div class="hero-bg">
-    <div class="hero-slides" aria-hidden="true">
-      <img class="slide" src="https://raw.githubusercontent.com/Haus-AI-POCspace/hyperframe/main/refs/image22.png" alt="" />
-      <img class="slide" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052528_9b10b147-c228-4cba-ac3a-29a9d261760d.png" alt="" />
-      <img class="slide" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052537_9c4df364-5bdb-40cf-aa94-a0e830b88fb1.png" alt="" />
-      <img class="slide" src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_052532_a961a28f-dfed-4488-88e7-32bc1c7bae83.png" alt="" />
-    </div>
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_125129_f9aad098-5801-48ab-a885-8b86e29ee2d6.png">
+      <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_144118_bdc642b1-43c9-46db-b11c-3b85be25faee.mp4" type="video/mp4" />
+    </video>
     <div class="grain" aria-hidden="true"></div>
   </div>
   <audio id="hero-audio" loop preload="auto">
-    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_093620_df84636a-572a-4674-b927-966467585ef3.mp4" type="audio/mp4" />
+    <source src="https://d8j0ntlcm91z4.cloudfront.net/user_2wylayoPdKl3TI5YnP5pbXPXTHI/hf_20260526_144118_bdc642b1-43c9-46db-b11c-3b85be25faee.mp4" type="audio/mp4" />
   </audio>
   <button class="hero-sound" id="hero-sound-btn" aria-label="Sätt på musik">
     <span class="ico">♪</span> Sound off

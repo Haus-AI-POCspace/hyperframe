@@ -6,65 +6,87 @@
 <title>Northville — Asset Library</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500&display=swap" rel="stylesheet" />
 <style>
+  /* === BRAND FONTS === */
+  @font-face { font-family: 'Proxy Mono'; src: url('assets/fonts/ProxyMono.otf') format('opentype'); font-weight: 400; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Apercu'; src: url('assets/fonts/Apercu-Light.otf') format('opentype'); font-weight: 300; font-style: normal; font-display: swap; }
+  @font-face { font-family: 'Apercu'; src: url('assets/fonts/Apercu-Italic.otf') format('opentype'); font-weight: 400; font-style: italic; font-display: swap; }
+  @font-face { font-family: 'Apercu'; src: url('assets/fonts/Apercu-Bold.otf') format('opentype'); font-weight: 700; font-style: normal; font-display: swap; }
   :root {
-    --cream: #f6f1e8;
-    --cream-2: #ede5d3;
-    --ink: #1a1815;
-    --ink-2: #4a4640;
-    --falu: #7a2a1f;
-    --char: #25221e;
-    --taupe: #8a7864;
-    --wood: #8b6914;
-    --wood-soft: #d9c7a3;
-    --line: #d9d2c1;
-    --mint: #00ff85;
-    --maxw: 1400px;
+    --nature: #F7F2E5;
+    --nature-2: #EEE5CE;
+    --ink: #0E1717;
+    --ink-2: #5F6E6F;
+    --forest-2: #25393B;
+    --forest: #334546;
+    --bright: #06FF83;
+    --bright-2: #06FF83;
+    --bright-soft: #C8FFE3;
+    --line: rgba(14, 23, 23, 0.13);
+    --mint-deprecated: #06FF83;
+    --maxw: 1280px;
+    --gutter: clamp(24px, 4.5vw, 56px);
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; padding: 0; background: var(--cream); color: var(--ink); }
-  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  html, body { margin: 0; padding: 0; background: var(--nature); color: var(--ink); }
+  body { font-family: 'Inter', system-ui, -apple-system, sans-serif; font-weight: 400; line-height: 1.65; -webkit-font-smoothing: antialiased; }
   img { max-width: 100%; display: block; height: auto; }
-  a { color: var(--wood); text-decoration: none; border-bottom: 1px solid currentColor; }
-  h1, h2, h3 { font-family: 'Cormorant Garamond', Georgia, serif; font-weight: 500; line-height: 1.1; letter-spacing: -0.01em; color: var(--ink); margin: 0; }
-  h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 400; letter-spacing: -0.02em; }
-  h2 { font-size: clamp(28px, 4vw, 44px); }
-  h3 { font-size: 22px; }
+  a { color: var(--ink); text-decoration: none; border-bottom: 1px solid currentColor; }
+  h1, h2 { font-family: 'Proxy Mono', monospace; font-weight: 400; line-height: 1.15; letter-spacing: 0.005em; text-transform: uppercase; color: var(--ink); margin: 0; }
+  h3 { font-family: 'Apercu', sans-serif; font-weight: 700; line-height: 1.26; letter-spacing: -0.02em; color: var(--ink); margin: 0; }
+  h1 { font-size: clamp(40px, 6vw, 88px); }
+  h2 { font-size: clamp(28px, 4vw, 48px); }
+  h3 { font-size: clamp(20px, 2vw, 26px); }
   p { margin: 0 0 1em; color: var(--ink-2); font-size: 16px; }
 
-  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 32px; }
+  .container { max-width: var(--maxw); margin: 0 auto; padding: 0 var(--gutter); }
 
-  /* HEADER */
-  header.site {
-    padding: 32px 0;
-    border-bottom: 1px solid var(--line);
-    position: sticky;
-    top: 0;
-    background: rgba(246, 241, 232, .95);
-    backdrop-filter: blur(12px);
-    z-index: 10;
+  /* === BRAND HEADER (tabs + sub-nav, same as Brand Universe) === */
+  header.site { position: sticky; top: 0; left: 0; right: 0; z-index: 100; background: rgba(247, 242, 229, 0.94); backdrop-filter: blur(20px); border-bottom: 1px solid var(--ink); }
+  header.site .strip-tabs { border-bottom: 1px solid var(--line); }
+  header.site .strip-tabs .row { display: flex; justify-content: center; align-items: stretch; gap: 0; flex-wrap: nowrap; }
+  header.site .strip-tabs .tab { flex: 0 0 auto; padding: 14px 28px; font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink); opacity: 0.45; border: 0; border-bottom: 2px solid transparent; line-height: 1.4; transition: opacity .25s ease, color .25s ease, border-color .25s ease; text-align: center; }
+  header.site .strip-tabs .tab:hover { opacity: 1; }
+  header.site .strip-tabs .tab.active { opacity: 1; color: var(--ink); border-bottom-color: var(--ink); }
+  header.site .strip-main { padding: 20px 0; }
+  header.site .strip-main .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: nowrap; gap: 24px; }
+  header.site .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(26px, 3vw, 32px); letter-spacing: -0.05em; line-height: 1; color: var(--ink); }
+  header.site .brand a { color: inherit; border: none; line-height: 1; }
+  header.site .brand a:hover { opacity: 0.7; }
+  header.site nav.primary-nav { display: flex; gap: 20px; flex-wrap: wrap; align-items: center; }
+  header.site nav.primary-nav a { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); border: none; line-height: 1.6; }
+  header.site nav.primary-nav a:hover { color: var(--ink); opacity: 0.6; }
+  header.site nav.primary-nav a.lib { background: var(--ink); color: var(--nature); padding: 12px 20px; border: 1px solid var(--ink); }
+  header.site nav.primary-nav a.lib:hover { background: var(--bright); color: var(--ink); border-color: var(--bright); }
+  .menu-toggle { display: none; background: transparent; border: 0; padding: 0; cursor: pointer; width: 44px; height: 44px; flex-direction: column; align-items: center; justify-content: center; gap: 5px; }
+  .menu-toggle .bar { display: block; width: 26px; height: 2px; background: var(--ink); transition: transform .3s ease, opacity .2s ease; }
+  @media (max-width: 900px) {
+    header.site .strip-tabs .tab { padding: 12px 16px; font-size: 10px; letter-spacing: 0.04em; }
+    .menu-toggle { display: inline-flex; }
+    header.site nav.primary-nav { position: fixed; inset: 0; background: rgba(14,23,23,0.97); backdrop-filter: blur(24px); transform: translateX(100%); transition: transform .45s cubic-bezier(.22,.85,.36,1); display: flex; flex-direction: column; align-items: flex-start; justify-content: center; padding: clamp(60px, 14vw, 140px) var(--gutter); gap: 22px; z-index: 105; overflow-y: auto; }
+    header.site nav.primary-nav a { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: clamp(28px, 7vw, 44px); color: #fff !important; text-transform: none; letter-spacing: -0.025em; line-height: 1.15; }
+    header.site nav.primary-nav a.lib { margin-top: 28px; font-family: 'Proxy Mono', monospace; font-size: 12px; font-weight: 400; text-transform: uppercase; letter-spacing: 0.06em; padding: 16px 22px; background: var(--bright) !important; color: var(--ink) !important; border: 1px solid var(--bright); line-height: 1; }
+    header.site.is-open nav.primary-nav { transform: translateX(0); }
+    header.site.is-open .menu-toggle .bar { background: #fff; }
+    header.site.is-open .menu-toggle .bar:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    header.site.is-open .menu-toggle .bar:nth-child(2) { opacity: 0; }
+    header.site.is-open .menu-toggle .bar:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+    body.menu-open { overflow: hidden; }
   }
-  header.site .row { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-  header.site .brand { font-family: 'Cormorant Garamond', serif; font-size: 28px; }
-  header.site .brand a { color: var(--ink); border: none; }
-  header.site nav { display: flex; gap: 16px; flex-wrap: wrap; font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; }
-  header.site nav a { color: var(--ink-2); border: none; padding: 8px 0; }
-  header.site nav a:hover { color: var(--wood); }
-  header.site .back { font-size: 13px; letter-spacing: 0.04em; text-transform: uppercase; color: var(--wood); }
 
   /* HERO */
   .hero { padding: 80px 0 60px; border-bottom: 1px solid var(--line); }
-  .hero .eyebrow { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 24px; }
+  .hero .eyebrow { font-family: 'Proxy Mono', monospace; font-size: 12px; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); margin-bottom: 24px; }
   .hero p.lead { font-size: 20px; color: var(--ink); font-weight: 300; max-width: 720px; margin-top: 24px; }
   .hero .stats { display: flex; gap: 48px; margin-top: 40px; flex-wrap: wrap; }
   .hero .stat { padding: 16px 0; border-top: 1px solid var(--line); min-width: 100px; }
-  .hero .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 36px; color: var(--ink); line-height: 1; }
+  .hero .stat .num { font-family: 'Proxy Mono', monospace; font-size: 40px; color: var(--ink); line-height: 1.1; }
   .hero .stat .label { margin-top: 4px; font-size: 12px; color: var(--ink-2); letter-spacing: 0.02em; }
 
   /* SECTION */
-  section.cat { padding: 80px 0; border-bottom: 1px solid var(--line); scroll-margin-top: 100px; }
-  section.cat .eyebrow { font-family: 'Inter', sans-serif; font-size: 12px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wood); margin-bottom: 16px; }
+  section.cat { padding: clamp(80px, 11vw, 160px) 0; border-bottom: 1px solid var(--line); scroll-margin-top: 120px; position: relative; }
+  section.cat .eyebrow { font-family: 'Proxy Mono', monospace; font-size: 12px; font-weight: 400; letter-spacing: 0.05em; text-transform: uppercase; color: var(--ink); margin-bottom: 16px; }
   section.cat .intro { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-bottom: 56px; align-items: start; }
   @media (max-width: 800px) { section.cat .intro { grid-template-columns: 1fr; } }
 
@@ -73,36 +95,38 @@
   .grid.tight { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
   .grid.wide { grid-template-columns: repeat(auto-fill, minmax(480px, 1fr)); }
 
-  /* CARD */
-  .card { background: #fff; border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; transition: transform .2s; }
-  .card:hover { transform: translateY(-2px); box-shadow: 0 12px 32px rgba(26, 24, 21, .1); }
-  .card .imgwrap { background: var(--cream-2); aspect-ratio: 16/9; overflow: hidden; cursor: zoom-in; }
+  /* CARD — system / appy */
+  .card { background: var(--nature); border: 1px solid var(--line); overflow: hidden; display: flex; flex-direction: column; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; position: relative; }
+  .card:hover { transform: translateY(-3px); box-shadow: 0 18px 48px rgba(14, 23, 23, .08); border-color: var(--ink); }
+  .card .imgwrap { background: var(--nature-2); aspect-ratio: 16/9; overflow: hidden; cursor: zoom-in; position: relative; }
   .card .imgwrap.tall { aspect-ratio: 9/16; }
   .card .imgwrap.square { aspect-ratio: 1/1; }
-  .card .imgwrap img { width: 100%; height: 100%; object-fit: cover; }
-  .card .body { padding: 16px 20px; flex: 1; display: flex; flex-direction: column; gap: 6px; }
-  .card .title { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--ink); line-height: 1.2; }
-  .card .meta { font-size: 12px; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; }
-  .card .meta .src { color: var(--wood); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 11px; }
-  .card .desc { font-size: 13px; color: var(--ink-2); margin-top: 4px; }
+  .card .imgwrap img { width: 100%; height: 100%; object-fit: cover; transition: transform .6s cubic-bezier(.22,.85,.36,1); }
+  .card:hover .imgwrap img { transform: scale(1.03); }
+  .card .body { padding: 20px 22px 22px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .card .title { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 17px; color: var(--ink); line-height: 1.3; letter-spacing: -0.015em; }
+  .card .meta { font-family: 'Proxy Mono', monospace; font-size: 10px; color: var(--ink-2); display: flex; justify-content: space-between; gap: 8px; line-height: 1.6; text-transform: uppercase; letter-spacing: 0.04em; }
+  .card .meta .src { color: var(--ink); font-weight: 400; }
+  .card .desc { font-family: 'Apercu', sans-serif; font-size: 13px; color: var(--ink-2); margin-top: 6px; line-height: 1.6; }
 
   /* LOGO display */
-  .logo-card { background: #fff; border: 1px solid var(--line); padding: 40px; display: flex; align-items: center; justify-content: center; min-height: 180px; }
-  .logo-card.dark { background: var(--ink); }
+  .logo-card { background: var(--nature); border: 1px solid var(--line); padding: 56px 40px; display: flex; align-items: center; justify-content: center; min-height: 200px; transition: border-color .25s ease; }
+  .logo-card.dark { background: var(--forest); }
   .logo-card svg { max-width: 100%; height: auto; }
-  .logo-meta { padding: 16px 0; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; }
+  .logo-meta { padding: 16px 0; font-family: 'Proxy Mono', monospace; font-size: 10px; color: var(--ink-2); border-top: 1px solid var(--line); display: flex; justify-content: space-between; gap: 8px; text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.6; }
 
   /* COLOR swatches */
-  .swatch { background: #fff; border: 1px solid var(--line); overflow: hidden; }
+  .swatch { background: var(--nature); border: 1px solid var(--line); overflow: hidden; transition: border-color .25s ease; }
+  .swatch:hover { border-color: var(--ink); }
   .swatch .chip { aspect-ratio: 3/2; }
-  .swatch .body { padding: 16px 20px; font-size: 13px; }
-  .swatch .body .name { font-family: 'Cormorant Garamond', serif; font-size: 20px; color: var(--ink); }
-  .swatch .body .hex { color: var(--ink-2); font-family: monospace; font-size: 12px; margin-top: 4px; }
+  .swatch .body { padding: 18px 22px; font-size: 13px; }
+  .swatch .body .name { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 18px; color: var(--ink); letter-spacing: -0.015em; }
+  .swatch .body .hex { color: var(--ink-2); font-family: 'Proxy Mono', monospace; font-size: 12px; margin-top: 8px; letter-spacing: 0.04em; }
 
   /* LIGHTBOX */
   .lightbox {
     position: fixed; inset: 0;
-    background: rgba(26, 24, 21, .95);
+    background: rgba(14, 23, 23, .96);
     display: none;
     align-items: center;
     justify-content: center;
@@ -120,33 +144,55 @@
   }
 
   /* FOOTER */
-  footer { padding: 60px 0; text-align: center; font-size: 13px; color: var(--ink-2); border-top: 1px solid var(--line); }
-  footer .brand { font-family: 'Cormorant Garamond', serif; font-size: 24px; color: var(--ink); margin-bottom: 8px; }
+  footer { padding: 96px 0 64px; text-align: center; color: var(--ink-2); border-top: 1px solid var(--bright); background: var(--nature); }
+  footer .brand { font-family: 'Apercu', sans-serif; font-weight: 700; font-size: 44px; color: var(--ink); margin-bottom: 16px; letter-spacing: -0.05em; line-height: 1; }
+  footer > .container > div:not(.brand), footer > .container > p { font-family: 'Proxy Mono', monospace; font-size: 11px; letter-spacing: 0.04em; text-transform: uppercase; line-height: 1.8; margin-top: 8px; }
+
+  /* Scroll progress (mint top bar) + reveal */
+  .scrollbar { position: fixed; top: 0; left: 0; height: 2px; width: 0; background: var(--bright); z-index: 200; transition: width .1s linear; pointer-events: none; }
+  .reveal { opacity: 0; transform: translateY(36px); transition: opacity .9s cubic-bezier(.22,.85,.36,1), transform .9s cubic-bezier(.22,.85,.36,1); }
+  .reveal.in { opacity: 1; transform: none; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
+
 </style>
 </head>
 <body>
 
+<div class="scrollbar" aria-hidden="true"></div>
 <header class="site">
-  <div class="container row">
-    <div class="brand"><a href="index.html">Northville</a></div>
-    <nav>
-      <a href="#houses">Hus</a>
-      <a href="#streetviews">Streetviews</a>
-      <a href="#center">Village Center</a>
-      <a href="#aerial">Aerial</a>
-      <a href="#app">App</a>
-      <a href="#maps">Kartor</a>
-      <a href="#logos">Logos</a>
-      <a href="#colors">Färger</a>
-      <a href="#generated">Genererat</a>
-    </nav>
-    <a href="index.html" class="back">← Tillbaka till kampanjen</a>
+  <div class="strip-tabs">
+    <div class="container row">
+      <a href="strategy.html" class="tab">Strategy</a>
+      <a href="index.html" class="tab">Brand Universe</a>
+      <a href="library.html" class="tab active">Asset Library</a>
+    </div>
+  </div>
+  <div class="strip-main">
+    <div class="container row">
+      <div class="brand"><a href="index.html">Northville</a></div>
+      <button class="menu-toggle" id="menu-toggle" aria-label="Öppna meny" aria-expanded="false" aria-controls="primary-nav">
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+        <span class="bar" aria-hidden="true"></span>
+      </button>
+      <nav class="primary-nav" id="primary-nav">
+        <a href="#houses">Hus</a>
+        <a href="#streetviews">Streetviews</a>
+        <a href="#center">Village Center</a>
+        <a href="#aerial">Aerial</a>
+        <a href="#app">App</a>
+        <a href="#maps">Kartor</a>
+        <a href="#logos">Logos</a>
+        <a href="#colors">Färger</a>
+        <a href="#generated">Genererat</a>
+      </nav>
+    </div>
   </div>
 </header>
 
 <section class="hero">
   <div class="container">
-    <div class="eyebrow">Asset Library · Drive + Generated</div>
+    <div class="eyebrow">Asset Library · v1.0 · Drive + Generated</div>
     <h1>Allt material på ett ställe.</h1>
     <p class="lead">Källrender från Archus/projektets Drive-mapp + de bilder som genererats i Higgsfield för kampanjen. Klicka för fullstorlek. Alla länkar går till råfiler i <a href="https://github.com/Haus-AI-POCspace/hyperframe">hyperframe-repot</a> så de kan användas som image-to-image-referenser direkt.</p>
     <div class="stats">
@@ -192,7 +238,7 @@
 </section>
 
 <!-- STREETVIEWS -->
-<section class="cat" id="streetviews" style="background: var(--cream-2);">
+<section class="cat" id="streetviews" style="background: var(--nature-2);">
   <div class="container">
     <div class="intro">
       <div>
@@ -233,7 +279,7 @@
 </section>
 
 <!-- AERIAL -->
-<section class="cat" id="aerial" style="background: var(--cream-2);">
+<section class="cat" id="aerial" style="background: var(--nature-2);">
   <div class="container">
     <div class="intro">
       <div>
@@ -270,7 +316,7 @@
 </section>
 
 <!-- MAPS -->
-<section class="cat" id="maps" style="background: var(--cream-2);">
+<section class="cat" id="maps" style="background: var(--nature-2);">
   <div class="container">
     <div class="intro">
       <div>
@@ -363,7 +409,7 @@
 </section>
 
 <!-- COLORS -->
-<section class="cat" id="colors" style="background: var(--cream-2);">
+<section class="cat" id="colors" style="background: var(--nature-2);">
   <div class="container">
     <div class="intro">
       <div>
@@ -454,6 +500,47 @@
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') document.getElementById('lb').classList.remove('open');
   });
+</script>
+
+
+<script>
+  (function () {
+    const bar = document.querySelector('.scrollbar');
+    if (!bar) return;
+    let raf = null;
+    function update() {
+      const sc = window.scrollY;
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = h > 0 ? Math.min(1, sc / h) : 0;
+      bar.style.width = (pct * 100).toFixed(2) + '%';
+      raf = null;
+    }
+    window.addEventListener('scroll', function () { if (!raf) raf = requestAnimationFrame(update); }, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+  })();
+  (function () {
+    const targets = document.querySelectorAll('section.cat, section.cat .card, section.cat .swatch, section.cat .logo-card');
+    if (!('IntersectionObserver' in window)) { targets.forEach(t => t.classList.add('in', 'reveal')); return; }
+    targets.forEach(t => t.classList.add('reveal'));
+    const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { rootMargin: '0px 0px -10% 0px', threshold: 0.05 });
+    targets.forEach(t => io.observe(t));
+  })();
+  (function () {
+    const header = document.querySelector('header.site');
+    const btn = document.getElementById('menu-toggle');
+    const nav = document.getElementById('primary-nav');
+    if (!header || !btn || !nav) return;
+    function setOpen(open) {
+      header.classList.toggle('is-open', open);
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      btn.setAttribute('aria-label', open ? 'Stäng meny' : 'Öppna meny');
+      document.body.classList.toggle('menu-open', open);
+    }
+    btn.addEventListener('click', () => setOpen(!header.classList.contains('is-open')));
+    nav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+    document.addEventListener('keydown', e => { if (e.key === 'Escape' && header.classList.contains('is-open')) setOpen(false); });
+  })();
 </script>
 
 </body>
